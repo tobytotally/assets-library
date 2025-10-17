@@ -70,7 +70,7 @@ jobs:
             echo "No nested .git in cropped/ found."
           fi
 
-      - name: Debug: list cropped contents (for quick inspection)
+      - name: Debug list cropped contents for quick inspection
         run: |
           cd "${{ github.workspace }}"
           echo "Cropped directory contents:"
