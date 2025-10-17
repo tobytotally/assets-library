@@ -1,0 +1,75 @@
+on:
+  push:
+    paths:
+      - 'logos/**'
+  workflow_dispatch:
+    inputs:
+      white_thresh:
+        description: 'White threshold for background detection (0-255)'
+        required: false
+        default: '245'
+      pad:
+        description: 'Padding in pixels to add after cropping'
+        required: false
+        default: '8'
+
+name: Auto-crop logos (PR-based)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: autocrop-agent
+  cancel-in-progress: true
+
+jobs:
+  autocrop:
+    # Skip running if the actor is the actions bot (prevents loops when action pushes)
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pillow numpy
+
+      - name: Run autocrop agent
+        env:
+          INPUT_DIR: logos
+          OUTPUT_DIR: cropped
+          CACHE_FILE: '.autocrop_cache.json'
+        run: |
+          WHITE_THRESH="${{ github.event.inputs.white_thresh || '245' }}"
+          PAD="${{ github.event.inputs.pad || '8' }}"
+          python scripts/autocrop.py \
+            --input-dir "${INPUT_DIR}" \
+            --output-dir "${OUTPUT_DIR}" \
+            --white-thresh "${WHITE_THRESH}" \
+            --pad "${PAD}" \
+            --cache-file "${CACHE_FILE}"
+
+      - name: Create pull request with cropped images (if any changes)
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Auto-crop logos: add/updated cropped images [skip ci]"
+          branch: "autocrop/changes"
+          title: "Auto-crop logos: processed images"
+          body: |
+            This PR contains auto-cropped versions of images from logos/.
+            - Cropping is done automatically by scripts/autocrop.py
+            - You can adjust the algorithm via workflow inputs or .github/auto-crop.yml
+          labels: automated, autocrop
+          path: cropped

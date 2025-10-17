@@ -1,0 +1,59 @@
+# GitHub Actions workflow: auto-crop logos on changes and open a PR with results
+on:
+  push:
+    paths:
+      - 'logos/**'
+  workflow_dispatch:
+
+name: Auto-crop logos
+
+jobs:
+  autocrop:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: autocrop-agent
+      cancel-in-progress: true
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pillow numpy
+
+      - name: Run autocrop agent
+        env:
+          INPUT_DIR: logos
+          OUTPUT_DIR: cropped
+          WHITE_THRESH: '245'
+          PAD: '8'
+          CACHE_FILE: '.autocrop_cache.json'
+        run: |
+          python scripts/autocrop.py \
+            --input-dir "${INPUT_DIR}" \
+            --output-dir "${OUTPUT_DIR}" \
+            --white-thresh "${WHITE_THRESH}" \
+            --pad "${PAD}" \
+            --cache-file "${CACHE_FILE}"
+
+      - name: Create pull request with cropped images (if any changes)
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Auto-crop logos: add/updated cropped images [skip ci]"
+          branch: "autocrop/changes"
+          title: "Auto-crop logos: processed images"
+          body: |
+            This PR contains auto-cropped versions of images from logos/.
+            - Cropping is done automatically by scripts/autocrop.py
+            - Review, adjust padding/threshold in .github/auto-crop.yml if needed.
+          labels: automated, autocrop
+          path: cropped
