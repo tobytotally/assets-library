@@ -1,7 +1,9 @@
+name: Auto-crop logos (PR-based)
+
 on:
   push:
     paths:
-      - 'logos/**'
+      - 'assets/images/logos/**'
   workflow_dispatch:
     inputs:
       white_thresh:
@@ -12,8 +14,6 @@ on:
         description: 'Padding in pixels to add after cropping'
         required: false
         default: '8'
-
-name: Auto-crop logos (PR-based)
 
 permissions:
   contents: write
@@ -47,18 +47,36 @@ jobs:
 
       - name: Run autocrop agent
         env:
-          INPUT_DIR: logos
+          INPUT_DIR: assets/images/logos/charity
           OUTPUT_DIR: cropped
           CACHE_FILE: '.autocrop_cache.json'
         run: |
           WHITE_THRESH="${{ github.event.inputs.white_thresh || '245' }}"
           PAD="${{ github.event.inputs.pad || '8' }}"
+          # ensure we run from repo root
+          cd "${{ github.workspace }}"
           python scripts/autocrop.py \
             --input-dir "${INPUT_DIR}" \
             --output-dir "${OUTPUT_DIR}" \
             --white-thresh "${WHITE_THRESH}" \
             --pad "${PAD}" \
             --cache-file "${CACHE_FILE}"
+
+      - name: Ensure no nested .git in output (prevents git errors)
+        run: |
+          cd "${{ github.workspace }}"
+          if [ -d "${{ github.workspace }}/cropped/.git" ]; then
+            echo "Removing nested .git in cropped/"
+            rm -rf "${{ github.workspace }}/cropped/.git"
+          else
+            echo "No nested .git in cropped/ found."
+          fi
+
+      - name: Debug: list cropped contents (for quick inspection)
+        run: |
+          cd "${{ github.workspace }}"
+          echo "Cropped directory contents:"
+          ls -la cropped || echo "cropped directory missing or empty"
 
       - name: Create pull request with cropped images (if any changes)
         uses: peter-evans/create-pull-request@v4
@@ -68,7 +86,7 @@ jobs:
           branch: "autocrop/changes"
           title: "Auto-crop logos: processed images"
           body: |
-            This PR contains auto-cropped versions of images from logos/.
+            This PR contains auto-cropped versions of images from assets/images/logos/charity.
             - Cropping is done automatically by scripts/autocrop.py
             - You can adjust the algorithm via workflow inputs or .github/auto-crop.yml
           labels: automated, autocrop
