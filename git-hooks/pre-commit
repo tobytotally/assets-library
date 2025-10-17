@@ -1,0 +1,73 @@
+#!/bin/bash
+# Git pre-commit hook for automatic image optimization
+# This hook automatically optimizes images before they are committed
+
+set -e
+
+echo "Running image optimization pre-commit hook..."
+
+# Get list of staged image files
+STAGED_IMAGES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(jpg|jpeg|png|gif|webp)$' || true)
+
+if [ -z "$STAGED_IMAGES" ]; then
+    echo "No images to optimize."
+    exit 0
+fi
+
+# Check if image optimization tools are available
+OPTIMIZED=0
+
+for IMAGE in $STAGED_IMAGES; do
+    if [ -f "$IMAGE" ]; then
+        echo "Processing: $IMAGE"
+        
+        # Get original file size
+        ORIGINAL_SIZE=$(stat -f%z "$IMAGE" 2>/dev/null || stat -c%s "$IMAGE" 2>/dev/null)
+        
+        # Optimize based on file type
+        case "$IMAGE" in
+            *.png)
+                if command -v optipng &> /dev/null; then
+                    optipng -quiet -o2 "$IMAGE" 2>/dev/null || true
+                    OPTIMIZED=1
+                elif command -v pngquant &> /dev/null; then
+                    pngquant --force --ext .png "$IMAGE" 2>/dev/null || true
+                    OPTIMIZED=1
+                fi
+                ;;
+            *.jpg|*.jpeg)
+                if command -v jpegoptim &> /dev/null; then
+                    jpegoptim --strip-all -m85 "$IMAGE" 2>/dev/null || true
+                    OPTIMIZED=1
+                elif command -v jpegtran &> /dev/null; then
+                    jpegtran -optimize -progressive -outfile "${IMAGE}.tmp" "$IMAGE" 2>/dev/null && mv "${IMAGE}.tmp" "$IMAGE" || true
+                    OPTIMIZED=1
+                fi
+                ;;
+            *.gif)
+                if command -v gifsicle &> /dev/null; then
+                    gifsicle -O3 "$IMAGE" -o "$IMAGE" 2>/dev/null || true
+                    OPTIMIZED=1
+                fi
+                ;;
+        esac
+        
+        # Get new file size and report
+        NEW_SIZE=$(stat -f%z "$IMAGE" 2>/dev/null || stat -c%s "$IMAGE" 2>/dev/null)
+        SAVED=$((ORIGINAL_SIZE - NEW_SIZE))
+        
+        if [ $SAVED -gt 0 ]; then
+            PERCENT=$((SAVED * 100 / ORIGINAL_SIZE))
+            echo "  ✓ Optimized $IMAGE - saved ${SAVED} bytes (${PERCENT}%)"
+            # Re-stage the optimized file
+            git add "$IMAGE"
+        fi
+    fi
+done
+
+if [ $OPTIMIZED -eq 0 ]; then
+    echo "Note: Install optipng, jpegoptim, or gifsicle for automatic image optimization"
+fi
+
+echo "Image optimization complete."
+exit 0

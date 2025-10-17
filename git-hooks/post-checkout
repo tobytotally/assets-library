@@ -1,0 +1,62 @@
+#!/bin/bash
+# Git post-checkout hook for automatic image format conversion
+# This hook can convert images to more efficient formats after checkout
+
+set -e
+
+# Get the previous and new HEAD
+PREV_HEAD=$1
+NEW_HEAD=$2
+BRANCH_CHECKOUT=$3
+
+# Only run on branch checkout
+if [ "$BRANCH_CHECKOUT" != "1" ]; then
+    exit 0
+fi
+
+echo "Running image format conversion post-checkout hook..."
+
+# Configuration - set to 1 to enable automatic conversion to WebP
+CONVERT_TO_WEBP=${GIT_IMAGE_CONVERT_WEBP:-0}
+
+if [ "$CONVERT_TO_WEBP" != "1" ]; then
+    echo "WebP conversion disabled. Set GIT_IMAGE_CONVERT_WEBP=1 to enable."
+    exit 0
+fi
+
+# Find all images that changed in this checkout
+CHANGED_IMAGES=$(git diff --name-only $PREV_HEAD $NEW_HEAD | grep -E '\.(jpg|jpeg|png)$' || true)
+
+if [ -z "$CHANGED_IMAGES" ]; then
+    echo "No images to convert."
+    exit 0
+fi
+
+# Check if cwebp is available
+if ! command -v cwebp &> /dev/null; then
+    echo "Note: Install webp tools (cwebp) for automatic WebP conversion"
+    exit 0
+fi
+
+for IMAGE in $CHANGED_IMAGES; do
+    if [ -f "$IMAGE" ]; then
+        WEBP_IMAGE="${IMAGE%.*}.webp"
+        
+        # Convert to WebP if it doesn't already exist
+        if [ ! -f "$WEBP_IMAGE" ]; then
+            echo "Converting $IMAGE to WebP..."
+            cwebp -q 85 "$IMAGE" -o "$WEBP_IMAGE" 2>/dev/null || true
+            
+            if [ -f "$WEBP_IMAGE" ]; then
+                ORIGINAL_SIZE=$(stat -f%z "$IMAGE" 2>/dev/null || stat -c%s "$IMAGE" 2>/dev/null)
+                WEBP_SIZE=$(stat -f%z "$WEBP_IMAGE" 2>/dev/null || stat -c%s "$WEBP_IMAGE" 2>/dev/null)
+                SAVED=$((ORIGINAL_SIZE - WEBP_SIZE))
+                PERCENT=$((SAVED * 100 / ORIGINAL_SIZE))
+                echo "  ✓ Created $WEBP_IMAGE - ${PERCENT}% smaller"
+            fi
+        fi
+    fi
+done
+
+echo "Image conversion complete."
+exit 0

@@ -1,0 +1,182 @@
+#!/bin/bash
+# git-image-convert - Convert images between formats
+# Usage: git image-convert [path] [format] [options]
+
+set -e
+
+USAGE="Usage: git image-convert [path] <format> [options]
+
+Convert images to a different format.
+
+Arguments:
+  path          Path to process (default: current directory)
+  format        Target format: jpg, png, webp, gif (required)
+
+Options:
+  --quality     Quality for lossy formats (1-100, default: 85)
+  --keep        Keep original files after conversion
+  --dry-run     Show what would be converted without making changes
+  -h, --help    Show this help message
+
+Examples:
+  git image-convert . webp              # Convert all images to WebP
+  git image-convert images/ png --keep  # Convert to PNG, keep originals
+  git image-convert . jpg --quality 90  # Convert to JPEG with quality 90
+"
+
+# Parse arguments
+PATH_TO_CONVERT="."
+TARGET_FORMAT=""
+QUALITY=85
+KEEP_ORIGINAL=0
+DRY_RUN=0
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -h|--help)
+            echo "$USAGE"
+            exit 0
+            ;;
+        --quality)
+            QUALITY="$2"
+            shift 2
+            ;;
+        --keep)
+            KEEP_ORIGINAL=1
+            shift
+            ;;
+        --dry-run)
+            DRY_RUN=1
+            shift
+            ;;
+        *)
+            if [ -z "$TARGET_FORMAT" ] && [ -d "$1" ]; then
+                PATH_TO_CONVERT="$1"
+            elif [ -z "$TARGET_FORMAT" ]; then
+                TARGET_FORMAT="$1"
+            fi
+            shift
+            ;;
+    esac
+done
+
+if [ -z "$TARGET_FORMAT" ]; then
+    echo "Error: Target format is required"
+    echo "$USAGE"
+    exit 1
+fi
+
+# Validate format
+case "${TARGET_FORMAT,,}" in
+    jpg|jpeg|png|webp|gif)
+        TARGET_FORMAT="${TARGET_FORMAT,,}"
+        ;;
+    *)
+        echo "Error: Unsupported format '$TARGET_FORMAT'"
+        echo "Supported formats: jpg, png, webp, gif"
+        exit 1
+        ;;
+esac
+
+# Check for required tools
+CONVERTER=""
+if [ "$TARGET_FORMAT" = "webp" ]; then
+    if command -v cwebp &> /dev/null; then
+        CONVERTER="cwebp"
+    else
+        echo "Error: cwebp is required for WebP conversion"
+        echo "Install with: brew install webp  (or)  apt-get install webp"
+        exit 1
+    fi
+elif command -v convert &> /dev/null; then
+    CONVERTER="convert"
+elif command -v gm &> /dev/null; then
+    CONVERTER="gm convert"
+else
+    echo "Error: ImageMagick or GraphicsMagick is required"
+    echo "Install with: brew install imagemagick  (or)  apt-get install imagemagick"
+    exit 1
+fi
+
+echo "Image Format Conversion Tool"
+echo "============================"
+echo "Path: $PATH_TO_CONVERT"
+echo "Target format: $TARGET_FORMAT"
+echo ""
+
+# Find all images (excluding target format)
+IMAGES=$(find "$PATH_TO_CONVERT" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" \) ! -iname "*.${TARGET_FORMAT}" 2>/dev/null || true)
+
+if [ -z "$IMAGES" ]; then
+    echo "No images found to convert."
+    exit 0
+fi
+
+COUNT=0
+TOTAL_SAVED=0
+
+for IMAGE in $IMAGES; do
+    if [ -f "$IMAGE" ]; then
+        BASE="${IMAGE%.*}"
+        OUTPUT="${BASE}.${TARGET_FORMAT}"
+        
+        # Skip if output already exists
+        if [ -f "$OUTPUT" ] && [ "$OUTPUT" != "$IMAGE" ]; then
+            echo "Skipping $IMAGE (output already exists)"
+            continue
+        fi
+        
+        if [ $DRY_RUN -eq 1 ]; then
+            echo "[DRY RUN] Would convert: $IMAGE -> $OUTPUT"
+            COUNT=$((COUNT + 1))
+            continue
+        fi
+        
+        echo "Converting: $IMAGE -> $OUTPUT"
+        
+        # Convert image
+        if [ "$CONVERTER" = "cwebp" ]; then
+            cwebp -q "$QUALITY" "$IMAGE" -o "$OUTPUT" 2>/dev/null || true
+        elif [ "$TARGET_FORMAT" = "jpg" ] || [ "$TARGET_FORMAT" = "jpeg" ]; then
+            $CONVERTER "$IMAGE" -quality "$QUALITY" "$OUTPUT" 2>/dev/null || true
+        else
+            $CONVERTER "$IMAGE" "$OUTPUT" 2>/dev/null || true
+        fi
+        
+        if [ -f "$OUTPUT" ]; then
+            ORIGINAL_SIZE=$(stat -f%z "$IMAGE" 2>/dev/null || stat -c%s "$IMAGE" 2>/dev/null)
+            NEW_SIZE=$(stat -f%z "$OUTPUT" 2>/dev/null || stat -c%s "$OUTPUT" 2>/dev/null)
+            DIFF=$((ORIGINAL_SIZE - NEW_SIZE))
+            
+            if [ $DIFF -gt 0 ]; then
+                PERCENT=$((DIFF * 100 / ORIGINAL_SIZE))
+                echo "  ✓ Created $OUTPUT - ${PERCENT}% smaller"
+                TOTAL_SAVED=$((TOTAL_SAVED + DIFF))
+            elif [ $DIFF -lt 0 ]; then
+                ABS_DIFF=$((-DIFF))
+                PERCENT=$((ABS_DIFF * 100 / ORIGINAL_SIZE))
+                echo "  ✓ Created $OUTPUT - ${PERCENT}% larger"
+            else
+                echo "  ✓ Created $OUTPUT - same size"
+            fi
+            
+            # Remove original if not keeping
+            if [ $KEEP_ORIGINAL -eq 0 ] && [ "$OUTPUT" != "$IMAGE" ]; then
+                rm "$IMAGE"
+                echo "  → Removed original"
+            fi
+        else
+            echo "  ✗ Failed to convert"
+        fi
+        
+        COUNT=$((COUNT + 1))
+    fi
+done
+
+echo ""
+echo "Summary:"
+echo "--------"
+echo "Images converted: $COUNT"
+if [ $DRY_RUN -eq 0 ] && [ $TOTAL_SAVED -gt 0 ]; then
+    echo "Total saved: $TOTAL_SAVED bytes"
+fi

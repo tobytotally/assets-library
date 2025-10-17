@@ -1,0 +1,153 @@
+#!/bin/bash
+# git-image-resize - Batch resize images in the repository
+# Usage: git image-resize [path] [width] [height] [options]
+
+set -e
+
+USAGE="Usage: git image-resize [path] <width> [height] [options]
+
+Batch resize images in the repository.
+
+Arguments:
+  path          Path to process (default: current directory)
+  width         Target width in pixels (required)
+  height        Target height in pixels (optional, maintains aspect ratio if omitted)
+
+Options:
+  --suffix      Suffix to add to resized files (default: none, overwrites original)
+  --format      Output format: jpg, png, webp (default: keep original)
+  --quality     JPEG/WebP quality 1-100 (default: 85)
+  --dry-run     Show what would be resized without making changes
+  -h, --help    Show this help message
+
+Examples:
+  git image-resize . 800              # Resize all images to 800px width
+  git image-resize images/ 1920 1080  # Resize to 1920x1080
+  git image-resize . 400 --suffix -thumb  # Create thumbnails
+"
+
+# Parse arguments
+PATH_TO_RESIZE="."
+WIDTH=""
+HEIGHT=""
+SUFFIX=""
+FORMAT=""
+QUALITY=85
+DRY_RUN=0
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -h|--help)
+            echo "$USAGE"
+            exit 0
+            ;;
+        --suffix)
+            SUFFIX="$2"
+            shift 2
+            ;;
+        --format)
+            FORMAT="$2"
+            shift 2
+            ;;
+        --quality)
+            QUALITY="$2"
+            shift 2
+            ;;
+        --dry-run)
+            DRY_RUN=1
+            shift
+            ;;
+        *)
+            if [ -z "$WIDTH" ] && [ -d "$1" ]; then
+                PATH_TO_RESIZE="$1"
+            elif [ -z "$WIDTH" ]; then
+                WIDTH="$1"
+            elif [ -z "$HEIGHT" ]; then
+                HEIGHT="$1"
+            fi
+            shift
+            ;;
+    esac
+done
+
+if [ -z "$WIDTH" ]; then
+    echo "Error: Width is required"
+    echo "$USAGE"
+    exit 1
+fi
+
+# Check for ImageMagick or GraphicsMagick
+if command -v convert &> /dev/null; then
+    CONVERTER="convert"
+elif command -v gm &> /dev/null; then
+    CONVERTER="gm convert"
+else
+    echo "Error: ImageMagick or GraphicsMagick is required"
+    echo "Install with: brew install imagemagick  (or)  apt-get install imagemagick"
+    exit 1
+fi
+
+echo "Image Resize Tool"
+echo "================="
+echo "Path: $PATH_TO_RESIZE"
+echo "Size: ${WIDTH}${HEIGHT:+x$HEIGHT}"
+echo ""
+
+# Find all images
+IMAGES=$(find "$PATH_TO_RESIZE" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" \) 2>/dev/null || true)
+
+if [ -z "$IMAGES" ]; then
+    echo "No images found."
+    exit 0
+fi
+
+COUNT=0
+
+for IMAGE in $IMAGES; do
+    if [ -f "$IMAGE" ]; then
+        # Determine output filename
+        BASE="${IMAGE%.*}"
+        EXT="${IMAGE##*.}"
+        
+        if [ -n "$FORMAT" ]; then
+            OUTPUT="${BASE}${SUFFIX}.${FORMAT}"
+        else
+            OUTPUT="${BASE}${SUFFIX}.${EXT}"
+        fi
+        
+        if [ $DRY_RUN -eq 1 ]; then
+            echo "[DRY RUN] Would resize: $IMAGE -> $OUTPUT"
+            COUNT=$((COUNT + 1))
+            continue
+        fi
+        
+        echo "Resizing: $IMAGE"
+        
+        # Build resize command
+        if [ -n "$HEIGHT" ]; then
+            SIZE="${WIDTH}x${HEIGHT}"
+        else
+            SIZE="${WIDTH}x"
+        fi
+        
+        # Resize image
+        if [ -n "$FORMAT" ] && { [ "$FORMAT" = "jpg" ] || [ "$FORMAT" = "jpeg" ] || [ "$FORMAT" = "webp" ]; }; then
+            $CONVERTER "$IMAGE" -resize "$SIZE" -quality "$QUALITY" "$OUTPUT" 2>/dev/null || true
+        else
+            $CONVERTER "$IMAGE" -resize "$SIZE" "$OUTPUT" 2>/dev/null || true
+        fi
+        
+        if [ -f "$OUTPUT" ]; then
+            ORIGINAL_SIZE=$(stat -f%z "$IMAGE" 2>/dev/null || stat -c%s "$IMAGE" 2>/dev/null)
+            NEW_SIZE=$(stat -f%z "$OUTPUT" 2>/dev/null || stat -c%s "$OUTPUT" 2>/dev/null)
+            echo "  ✓ Created $OUTPUT (${NEW_SIZE} bytes)"
+        else
+            echo "  ✗ Failed to resize"
+        fi
+        
+        COUNT=$((COUNT + 1))
+    fi
+done
+
+echo ""
+echo "Images processed: $COUNT"

@@ -1,0 +1,159 @@
+#!/bin/bash
+# git-image-diff - Visual diff for images
+# Usage: git image-diff <file> [commit]
+
+set -e
+
+USAGE="Usage: git image-diff <file> [commit]
+
+Show visual differences between image versions.
+
+Arguments:
+  file          Image file to compare
+  commit        Commit to compare with (default: HEAD)
+
+Options:
+  --tool        Comparison tool: compare, composite (default: compare)
+  --output      Output file for diff image (default: /tmp/image-diff.png)
+  -h, --help    Show this help message
+
+Examples:
+  git image-diff logo.png           # Compare with HEAD
+  git image-diff logo.png HEAD~1    # Compare with previous commit
+  git image-diff icon.png --output diff.png
+"
+
+# Parse arguments
+IMAGE_FILE=""
+COMMIT="HEAD"
+TOOL="compare"
+OUTPUT="/tmp/image-diff.png"
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -h|--help)
+            echo "$USAGE"
+            exit 0
+            ;;
+        --tool)
+            TOOL="$2"
+            shift 2
+            ;;
+        --output)
+            OUTPUT="$2"
+            shift 2
+            ;;
+        *)
+            if [ -z "$IMAGE_FILE" ]; then
+                IMAGE_FILE="$1"
+            else
+                COMMIT="$1"
+            fi
+            shift
+            ;;
+    esac
+done
+
+if [ -z "$IMAGE_FILE" ]; then
+    echo "Error: Image file is required"
+    echo "$USAGE"
+    exit 1
+fi
+
+if [ ! -f "$IMAGE_FILE" ]; then
+    echo "Error: File '$IMAGE_FILE' does not exist"
+    exit 1
+fi
+
+# Check for ImageMagick
+if ! command -v $TOOL &> /dev/null; then
+    echo "Error: ImageMagick is required for image diff"
+    echo "Install with: brew install imagemagick  (or)  apt-get install imagemagick"
+    exit 1
+fi
+
+echo "Image Diff Tool"
+echo "==============="
+echo "File: $IMAGE_FILE"
+echo "Commit: $COMMIT"
+echo ""
+
+# Get the old version of the image
+OLD_IMAGE="/tmp/git-image-old-$$.${IMAGE_FILE##*.}"
+
+# Extract old image from git
+if ! git show "${COMMIT}:${IMAGE_FILE}" > "$OLD_IMAGE" 2>/dev/null; then
+    echo "Error: Could not retrieve image from commit $COMMIT"
+    echo "The file may not exist in that commit"
+    exit 1
+fi
+
+# Get file sizes
+OLD_SIZE=$(stat -f%z "$OLD_IMAGE" 2>/dev/null || stat -c%s "$OLD_IMAGE" 2>/dev/null)
+NEW_SIZE=$(stat -f%z "$IMAGE_FILE" 2>/dev/null || stat -c%s "$IMAGE_FILE" 2>/dev/null)
+DIFF=$((NEW_SIZE - OLD_SIZE))
+
+echo "Old version: ${OLD_SIZE} bytes"
+echo "New version: ${NEW_SIZE} bytes"
+if [ $DIFF -gt 0 ]; then
+    PERCENT=$((DIFF * 100 / OLD_SIZE))
+    echo "Difference: +${DIFF} bytes (+${PERCENT}%)"
+elif [ $DIFF -lt 0 ]; then
+    ABS_DIFF=$((-DIFF))
+    PERCENT=$((ABS_DIFF * 100 / OLD_SIZE))
+    echo "Difference: -${ABS_DIFF} bytes (-${PERCENT}%)"
+else
+    echo "Difference: Same size"
+fi
+
+# Get dimensions
+OLD_DIMS=$(identify -format "%wx%h" "$OLD_IMAGE" 2>/dev/null || echo "unknown")
+NEW_DIMS=$(identify -format "%wx%h" "$IMAGE_FILE" 2>/dev/null || echo "unknown")
+
+echo ""
+echo "Old dimensions: $OLD_DIMS"
+echo "New dimensions: $NEW_DIMS"
+echo ""
+
+# Create visual diff
+if [ "$TOOL" = "compare" ]; then
+    # ImageMagick compare - shows differences in red
+    if compare "$OLD_IMAGE" "$IMAGE_FILE" -highlight-color red "$OUTPUT" 2>/dev/null; then
+        echo "✓ Visual diff created: $OUTPUT"
+        echo "  (Differences highlighted in red)"
+    else
+        # compare returns non-zero if images are different, which is expected
+        if [ -f "$OUTPUT" ]; then
+            echo "✓ Visual diff created: $OUTPUT"
+            echo "  (Differences highlighted in red)"
+        else
+            echo "✗ Failed to create diff"
+        fi
+    fi
+elif [ "$TOOL" = "composite" ]; then
+    # ImageMagick composite - blend images
+    composite "$OLD_IMAGE" "$IMAGE_FILE" -blend 50 "$OUTPUT" 2>/dev/null || true
+    if [ -f "$OUTPUT" ]; then
+        echo "✓ Composite blend created: $OUTPUT"
+        echo "  (50/50 blend of old and new versions)"
+    else
+        echo "✗ Failed to create composite"
+    fi
+fi
+
+# Calculate perceptual difference if compare-im6 is available
+if command -v compare &> /dev/null; then
+    METRIC=$(compare -metric RMSE "$OLD_IMAGE" "$IMAGE_FILE" /dev/null 2>&1 | awk '{print $1}' | sed 's/[()]//g' || echo "N/A")
+    if [ "$METRIC" != "N/A" ]; then
+        echo ""
+        echo "Perceptual difference (RMSE): $METRIC"
+    fi
+fi
+
+# Cleanup
+rm -f "$OLD_IMAGE"
+
+echo ""
+echo "Tip: View the diff image with your favorite image viewer:"
+echo "  open $OUTPUT  (macOS)"
+echo "  xdg-open $OUTPUT  (Linux)"
