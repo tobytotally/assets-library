@@ -1,0 +1,130 @@
+#!/bin/bash
+# git-image-optimize - Optimize images in the repository
+# Usage: git image-optimize [path] [options]
+
+set -e
+
+USAGE="Usage: git image-optimize [path] [--dry-run] [--aggressive]
+
+Optimize images in the repository to reduce file size.
+
+Options:
+  path          Path to optimize (default: current directory)
+  --dry-run     Show what would be optimized without making changes
+  --aggressive  Use more aggressive optimization (may take longer)
+  -h, --help    Show this help message
+"
+
+# Parse arguments
+PATH_TO_OPTIMIZE="."
+DRY_RUN=0
+AGGRESSIVE=0
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -h|--help)
+            echo "$USAGE"
+            exit 0
+            ;;
+        --dry-run)
+            DRY_RUN=1
+            shift
+            ;;
+        --aggressive)
+            AGGRESSIVE=1
+            shift
+            ;;
+        *)
+            PATH_TO_OPTIMIZE="$1"
+            shift
+            ;;
+    esac
+done
+
+echo "Image Optimization Tool"
+echo "======================"
+echo "Path: $PATH_TO_OPTIMIZE"
+echo ""
+
+# Find all images
+IMAGES=$(find "$PATH_TO_OPTIMIZE" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) 2>/dev/null || true)
+
+if [ -z "$IMAGES" ]; then
+    echo "No images found."
+    exit 0
+fi
+
+TOTAL_SAVED=0
+COUNT=0
+
+for IMAGE in $IMAGES; do
+    if [ -f "$IMAGE" ]; then
+        ORIGINAL_SIZE=$(stat -f%z "$IMAGE" 2>/dev/null || stat -c%s "$IMAGE" 2>/dev/null)
+        
+        if [ $DRY_RUN -eq 1 ]; then
+            echo "[DRY RUN] Would optimize: $IMAGE"
+            COUNT=$((COUNT + 1))
+            continue
+        fi
+        
+        echo "Optimizing: $IMAGE"
+        
+        # Optimize based on file type
+        case "${IMAGE,,}" in
+            *.png)
+                if command -v optipng &> /dev/null; then
+                    if [ $AGGRESSIVE -eq 1 ]; then
+                        optipng -quiet -o7 "$IMAGE" 2>/dev/null || true
+                    else
+                        optipng -quiet -o2 "$IMAGE" 2>/dev/null || true
+                    fi
+                elif command -v pngquant &> /dev/null; then
+                    pngquant --force --ext .png "$IMAGE" 2>/dev/null || true
+                else
+                    echo "  ⚠ optipng or pngquant not installed"
+                fi
+                ;;
+            *.jpg|*.jpeg)
+                if command -v jpegoptim &> /dev/null; then
+                    if [ $AGGRESSIVE -eq 1 ]; then
+                        jpegoptim --strip-all -m75 "$IMAGE" 2>/dev/null || true
+                    else
+                        jpegoptim --strip-all -m85 "$IMAGE" 2>/dev/null || true
+                    fi
+                elif command -v jpegtran &> /dev/null; then
+                    jpegtran -optimize -progressive -outfile "${IMAGE}.tmp" "$IMAGE" 2>/dev/null && mv "${IMAGE}.tmp" "$IMAGE" || true
+                else
+                    echo "  ⚠ jpegoptim or jpegtran not installed"
+                fi
+                ;;
+            *.gif)
+                if command -v gifsicle &> /dev/null; then
+                    gifsicle -O3 "$IMAGE" -o "$IMAGE" 2>/dev/null || true
+                else
+                    echo "  ⚠ gifsicle not installed"
+                fi
+                ;;
+        esac
+        
+        NEW_SIZE=$(stat -f%z "$IMAGE" 2>/dev/null || stat -c%s "$IMAGE" 2>/dev/null)
+        SAVED=$((ORIGINAL_SIZE - NEW_SIZE))
+        
+        if [ $SAVED -gt 0 ]; then
+            PERCENT=$((SAVED * 100 / ORIGINAL_SIZE))
+            echo "  ✓ Saved ${SAVED} bytes (${PERCENT}%)"
+            TOTAL_SAVED=$((TOTAL_SAVED + SAVED))
+        else
+            echo "  → Already optimized"
+        fi
+        
+        COUNT=$((COUNT + 1))
+    fi
+done
+
+echo ""
+echo "Summary:"
+echo "--------"
+echo "Images processed: $COUNT"
+if [ $DRY_RUN -eq 0 ]; then
+    echo "Total saved: $TOTAL_SAVED bytes"
+fi

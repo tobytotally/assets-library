@@ -1,131 +1,92 @@
-# Assets Library
+# assets-library
 
-A structured repository for hosting and managing static assets such as images, documents, videos, and icons that can be easily referenced in markdown files and HTML.
+A comprehensive collection of image processing and editing functions built into Git through custom hooks and commands.
 
-## 📁 Directory Structure
+## 📋 Overview
 
-```
-assets-library/
-├── assets/
-│   ├── images/       # Image files (PNG, JPG, GIF, SVG, etc.)
-│   ├── documents/    # Document files (PDF, DOCX, TXT, MD, etc.)
-│   ├── videos/       # Video files (MP4, WEBM, etc.)
-│   └── icons/        # Icon files (SVG, PNG favicons, etc.)
-├── examples/         # Example files demonstrating asset usage
-└── README.md         # This file
-```
+This repository demonstrates how to integrate powerful image processing capabilities directly into Git workflows. It includes:
+
+- **Git Hooks** for automatic image optimization and format conversion
+- **Custom Git Commands** for batch image processing
+- **Visual diff tools** for comparing image changes
 
 ## 🚀 Quick Start
 
-### Using Assets in Markdown
+### What Can Be Built Into Git?
 
-Reference assets using relative paths:
+Git can be extended with various image processing functions:
 
-```markdown
-# Example with image
-![Example Image](./assets/images/example.svg)
+1. **Automatic Image Optimization** (pre-commit hook)
+2. **Format Conversion** (post-checkout hook, custom commands)
+3. **Batch Resizing** (custom commands)
+4. **Visual Diff** (custom commands)
+5. **Quality Control** (CI/CD integration)
 
-# Example with icon
-![Checkmark](./assets/icons/checkmark.svg)
+See **[IMAGE_PROCESSING.md](IMAGE_PROCESSING.md)** for complete documentation.
 
-# Example with document link
-[Read the Sample Document](./assets/documents/sample.md)
+### Available Tools
+
+#### Git Hooks
+- `git-hooks/pre-commit` - Automatically optimize images before commit
+- `git-hooks/post-checkout` - Auto-convert images to WebP after checkout
+
+#### Custom Git Commands
+- `git image-optimize` - Optimize images to reduce file size
+- `git image-resize` - Batch resize images
+- `git image-convert` - Convert between image formats
+- `git image-diff` - Visual diff for images
+
+### Installation
+
+1. **Install dependencies:**
+   ```bash
+   # macOS
+   brew install imagemagick webp optipng jpegoptim gifsicle
+   
+   # Ubuntu/Debian
+   sudo apt-get install imagemagick webp optipng jpegoptim gifsicle
+   ```
+
+2. **Install hooks (optional):**
+   ```bash
+   cp git-hooks/pre-commit .git/hooks/
+   chmod +x .git/hooks/pre-commit
+   ```
+
+3. **Install commands (optional):**
+   ```bash
+   cp git-commands/* /usr/local/bin/
+   chmod +x /usr/local/bin/git-image-*
+   ```
+
+### Usage Examples
+
+```bash
+# Optimize all images in repository
+git image-optimize .
+
+# Resize images to 800px width
+git image-resize ./images 800
+
+# Convert all images to WebP
+git image-convert . webp
+
+# Compare image with previous version
+git image-diff logo.png HEAD~1
 ```
 
-### Using Assets in HTML
+## 📖 Documentation
 
-Use relative paths in your HTML files:
+For complete documentation on all image processing functions, see **[IMAGE_PROCESSING.md](IMAGE_PROCESSING.md)**.
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Asset Example</title>
-</head>
-<body>
-    <h1>Asset Examples</h1>
-    
-    <!-- Image -->
-    <img src="./assets/images/example.svg" alt="Example Image">
-    
-    <!-- Icon -->
-    <img src="./assets/icons/checkmark.svg" alt="Checkmark" width="24" height="24">
-    
-    <!-- Document Link -->
-    <a href="./assets/documents/sample.md">View Sample Document</a>
-</body>
-</html>
-```
+## 🎯 Use Cases
 
-## 📝 Examples
+- **Repository Size Management** - Automatically optimize images to keep repo size small
+- **Web Performance** - Convert images to modern formats like WebP
+- **Asset Generation** - Batch create thumbnails and different sizes
+- **Code Reviews** - Visual diff to review image changes
+- **CI/CD Integration** - Automated image processing in pipelines
 
-Check out the `examples/` directory for:
-- `example.md` - Markdown file with asset references
-- `example.html` - HTML file with asset references
+## 📝 License
 
-## 📋 Best Practices
-
-1. **Descriptive Naming**: Use clear, descriptive filenames (e.g., `user-profile-icon.svg` instead of `icon1.svg`)
-2. **Organize by Type**: Keep assets organized in their respective directories
-3. **Optimize Files**: 
-   - Compress images before uploading
-   - Use appropriate formats (SVG for scalable graphics, PNG for transparency, JPG for photos)
-4. **Accessibility**: Always include alt text for images
-5. **Documentation**: Document any special assets in the appropriate README files
-
-## 🔗 Referencing Assets
-
-### From Root Directory
-```markdown
-![Image](./assets/images/example.svg)
-```
-
-### From Subdirectories
-If your markdown/HTML file is in a subdirectory, adjust the path:
-```markdown
-![Image](../assets/images/example.svg)
-```
-
-### Absolute GitHub URLs
-For use in external sites or documentation:
-```markdown
-![Image](https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/example.svg)
-```
-
-## 📦 Asset Types
-
-### Images (`assets/images/`)
-- Photographs
-- Graphics
-- Diagrams
-- Screenshots
-
-### Documents (`assets/documents/`)
-- PDF files
-- Text documents
-- Markdown files
-- Templates
-
-### Videos (`assets/videos/`)
-- Tutorial videos
-- Demos
-- Presentations
-
-### Icons (`assets/icons/`)
-- UI icons
-- Logos
-- Favicons
-- SVG graphics
-
-## 🤝 Contributing
-
-To add new assets:
-
-1. Place files in the appropriate directory under `assets/`
-2. Use descriptive filenames
-3. Optimize files before committing
-4. Update documentation if needed
-
-## 📄 License
-
-This repository is for asset hosting and management.
+These tools are provided as examples and can be freely used and modified for your projects.
