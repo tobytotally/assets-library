@@ -18,7 +18,6 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  metadata: read
   actions: read
 
 concurrency:
