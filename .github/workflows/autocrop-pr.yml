@@ -89,5 +89,7 @@ jobs:
             This PR contains auto-cropped versions of images from assets/images/logos/charity.
             - Cropping is done automatically by scripts/autocrop.py
             - You can adjust the algorithm via workflow inputs or .github/auto-crop.yml
-          labels: automated, autocrop
+          labels: 
+            - automated
+            - autocrop
           path: cropped
