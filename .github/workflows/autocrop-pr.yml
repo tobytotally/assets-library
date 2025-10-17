@@ -1,94 +1,186 @@
-on:
+name: Auto-crop logos (PR-based)on:
+
   push:
-    paths:
-      - 'assets/images/logos/**'
-  workflow_dispatch:
-    inputs:
-      white_thresh:
-        description: 'White threshold for background detection (0-255)'
+
+on:    paths:
+
+  push:      - 'assets/images/logos/**'
+
+    paths:  workflow_dispatch:
+
+      - 'assets/images/logos/**'    inputs:
+
+  workflow_dispatch:      white_thresh:
+
+    inputs:        description: 'White threshold for background detection (0-255)'
+
+      white_thresh:        required: false
+
+        description: 'White threshold for background detection (0-255)'        default: '245'
+
+        required: false      pad:
+
+        default: '245'        description: 'Padding in pixels to add after cropping'
+
+      pad:        required: false
+
+        description: 'Padding in pixels to add after cropping'        default: '8'
+
         required: false
-        default: '245'
-      pad:
-        description: 'Padding in pixels to add after cropping'
-        required: false
-        default: '8'
 
-name: Auto-crop logos (PR-based)
+        default: '8'name: Auto-crop logos (PR-based)
 
-permissions:
-  contents: write
 
-concurrency:
-  group: autocrop-agent
-  cancel-in-progress: true
 
-jobs:
-  autocrop:
-    if: github.actor != 'github-actions[bot]'
-    runs-on: ubuntu-latest
+permissions:permissions:
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: true
+  contents: write  contents: write
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pillow numpy
 
-      - name: Run autocrop agent
-        env:
-          # set INPUT_DIR to where your images live
-          INPUT_DIR: assets/images/logos/charity
-          OUTPUT_DIR: cropped
-          CACHE_FILE: '.autocrop_cache.json'
-        run: |
-          # pick runtime inputs (or defaults)
-          WHITE_THRESH="${{ github.event.inputs.white_thresh || '245' }}"
-          PAD="${{ github.event.inputs.pad || '8' }}"
-          # ensure we run from repo root
-          cd "${{ github.workspace }}"
-          python scripts/autocrop.py \
-            --input-dir "${INPUT_DIR}" \
-            --output-dir "${OUTPUT_DIR}" \
-            --white-thresh "${WHITE_THRESH}" \
-            --pad "${PAD}" \
+concurrency:concurrency:
+
+  group: autocrop-agent  group: autocrop-agent
+
+  cancel-in-progress: true  cancel-in-progress: true
+
+
+
+jobs:jobs:
+
+  autocrop:  autocrop:
+
+    if: github.actor != 'github-actions[bot]'    if: github.actor != 'github-actions[bot]'
+
+    runs-on: ubuntu-latest    runs-on: ubuntu-latest
+
+
+
+    steps:    steps:
+
+      - name: Checkout repository      - name: Checkout repository
+
+        uses: actions/checkout@v4        uses: actions/checkout@v4
+
+        with:        with:
+
+          fetch-depth: 0          fetch-depth: 0
+
+          persist-credentials: true          persist-credentials: true
+
+
+
+      - name: Set up Python      - name: Set up Python
+
+        uses: actions/setup-python@v4        uses: actions/setup-python@v4
+
+        with:        with:
+
+          python-version: '3.11'          python-version: '3.11'
+
+
+
+      - name: Install dependencies      - name: Install dependencies
+
+        run: |        run: |
+
+          python -m pip install --upgrade pip          python -m pip install --upgrade pip
+
+          pip install pillow numpy          pip install pillow numpy
+
+
+
+      - name: Run autocrop agent      - name: Run autocrop agent
+
+        env:        env:
+
+          INPUT_DIR: assets/images/logos/charity          # set INPUT_DIR to where your images live
+
+          OUTPUT_DIR: cropped          INPUT_DIR: assets/images/logos/charity
+
+          CACHE_FILE: '.autocrop_cache.json'          OUTPUT_DIR: cropped
+
+        run: |          CACHE_FILE: '.autocrop_cache.json'
+
+          # pick runtime inputs (or defaults)        run: |
+
+          WHITE_THRESH="${{ github.event.inputs.white_thresh || '245' }}"          # pick runtime inputs (or defaults)
+
+          PAD="${{ github.event.inputs.pad || '8' }}"          WHITE_THRESH="${{ github.event.inputs.white_thresh || '245' }}"
+
+          # ensure we run from repo root          PAD="${{ github.event.inputs.pad || '8' }}"
+
+          cd "${{ github.workspace }}"          # ensure we run from repo root
+
+          python scripts/autocrop.py \          cd "${{ github.workspace }}"
+
+            --input-dir "${INPUT_DIR}" \          python scripts/autocrop.py \
+
+            --output-dir "${OUTPUT_DIR}" \            --input-dir "${INPUT_DIR}" \
+
+            --white-thresh "${WHITE_THRESH}" \            --output-dir "${OUTPUT_DIR}" \
+
+            --pad "${PAD}" \            --white-thresh "${WHITE_THRESH}" \
+
+            --cache-file "${CACHE_FILE}"            --pad "${PAD}" \
+
             --cache-file "${CACHE_FILE}"
 
       - name: Ensure no nested .git in output (prevents git errors)
-        run: |
-          cd "${{ github.workspace }}"
-          if [ -d "${{ github.workspace }}/cropped/.git" ]; then
-            echo "Removing nested .git in cropped/"
-            rm -rf "${{ github.workspace }}/cropped/.git"
-          else
-            echo "No nested .git in cropped/ found."
+
+        run: |      - name: Ensure no nested .git in output (prevents git errors)
+
+          cd "${{ github.workspace }}"        run: |
+
+          if [ -d "${{ github.workspace }}/cropped/.git" ]; then          cd "${{ github.workspace }}"
+
+            echo "Removing nested .git in cropped/"          if [ -d "${{ github.workspace }}/cropped/.git" ]; then
+
+            rm -rf "${{ github.workspace }}/cropped/.git"            echo "Removing nested .git in cropped/"
+
+          else            rm -rf "${{ github.workspace }}/cropped/.git"
+
+            echo "No nested .git in cropped/ found."          else
+
+          fi            echo "No nested .git in cropped/ found."
+
           fi
 
       - name: Debug: list cropped contents (for quick inspection)
-        run: |
-          cd "${{ github.workspace }}"
-          echo "Cropped directory contents:"
+
+        run: |      - name: Debug: list cropped contents (for quick inspection)
+
+          cd "${{ github.workspace }}"        run: |
+
+          echo "Cropped directory contents:"          cd "${{ github.workspace }}"
+
+          ls -la cropped || echo "cropped directory missing or empty"          echo "Cropped directory contents:"
+
           ls -la cropped || echo "cropped directory missing or empty"
 
       - name: Create pull request with cropped images (if any changes)
-        uses: peter-evans/create-pull-request@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Auto-crop logos: add/updated cropped images [skip ci]"
-          branch: "autocrop/changes"
-          title: "Auto-crop logos: processed images"
-          body: |
-            This PR contains auto-cropped versions of images from assets/images/logos/charity.
-            - Cropping is done automatically by scripts/autocrop.py
-            - You can adjust the algorithm via workflow inputs or .github/auto-crop.yml
-          labels: automated, autocrop
+
+        uses: peter-evans/create-pull-request@v4      - name: Create pull request with cropped images (if any changes)
+
+        with:        uses: peter-evans/create-pull-request@v4
+
+          token: ${{ secrets.GITHUB_TOKEN }}        with:
+
+          commit-message: "Auto-crop logos: add/updated cropped images [skip ci]"          token: ${{ secrets.GITHUB_TOKEN }}
+
+          branch: "autocrop/changes"          commit-message: "Auto-crop logos: add/updated cropped images [skip ci]"
+
+          title: "Auto-crop logos: processed images"          branch: "autocrop/changes"
+
+          body: |          title: "Auto-crop logos: processed images"
+
+            This PR contains auto-cropped versions of images from assets/images/logos/charity.          body: |
+
+            - Cropping is done automatically by scripts/autocrop.py            This PR contains auto-cropped versions of images from assets/images/logos/charity.
+
+            - You can adjust the algorithm via workflow inputs or .github/auto-crop.yml            - Cropping is done automatically by scripts/autocrop.py
+
+          labels: automated, autocrop            - You can adjust the algorithm via workflow inputs or .github/auto-crop.yml
+
+          path: cropped          labels: automated, autocrop
           path: cropped
