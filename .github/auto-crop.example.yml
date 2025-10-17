@@ -1,8 +1,0 @@
-```yaml
-# Example configuration for the auto-crop agent (optional)
-input_dir: logos
-output_dir: cropped
-white_thresh: 245   # pixels with all channels >= this are treated as background
-pad: 8               # pixels of padding added around the detected bounding box
-cache_file: .autocrop_cache.json
-```
