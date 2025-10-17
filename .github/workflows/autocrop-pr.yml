@@ -18,6 +18,8 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  metadata: read
+  actions: read
 
 concurrency:
   group: autocrop-agent
@@ -88,7 +90,7 @@ jobs:
           find cropped -type f 2>/dev/null || echo "No files in cropped directory"
 
       - name: Create pull request with cropped images (if any changes)
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Auto-crop logos: add/updated cropped images [skip ci]"
@@ -101,3 +103,4 @@ jobs:
           labels: "automated,autocrop"
           add-paths: |
             cropped/
+          delete-branch: true
