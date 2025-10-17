@@ -77,6 +77,15 @@ jobs:
           echo "Git status check:"
           git status --porcelain cropped/ || echo "No git status for cropped directory"
 
+      - name: Prepare for PR creation
+        run: |
+          cd "${{ github.workspace }}"
+          echo "Ensuring we're in repository root: $(pwd)"
+          echo "Repository git status:"
+          git status --short
+          echo "Files to be included in PR:"
+          find cropped -type f 2>/dev/null || echo "No files in cropped directory"
+
       - name: Create pull request with cropped images (if any changes)
         uses: peter-evans/create-pull-request@v4
         with:
@@ -89,6 +98,5 @@ jobs:
             - Cropping is done automatically by scripts/autocrop.py
             - You can adjust the algorithm via workflow inputs or .github/auto-crop.yml
           labels: "automated,autocrop"
-          path: cropped
           add-paths: |
-            cropped/**
+            cropped/
