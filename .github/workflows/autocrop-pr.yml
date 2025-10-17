@@ -91,7 +91,7 @@ jobs:
       - name: Create pull request with cropped images (if any changes)
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_PAT }}
           commit-message: "Auto-crop logos: add/updated cropped images [skip ci]"
           branch: "autocrop/changes"
           title: "Auto-crop logos: processed images"
