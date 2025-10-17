@@ -60,21 +60,22 @@ jobs:
             --pad "${PAD}" \
             --cache-file "${CACHE_FILE}"
 
-      - name: Ensure no nested .git in output (prevents git errors)
+      - name: Clean up any git artifacts in output directory
         run: |
           cd "${{ github.workspace }}"
-          if [ -d "${{ github.workspace }}/cropped/.git" ]; then
-            echo "Removing nested .git in cropped/"
-            rm -rf "${{ github.workspace }}/cropped/.git"
-          else
-            echo "No nested .git in cropped/ found."
-          fi
+          # Remove any nested .git directories or files
+          find cropped -name ".git*" -type d -exec rm -rf {} + 2>/dev/null || true
+          find cropped -name ".git*" -type f -exec rm -f {} + 2>/dev/null || true
+          echo "Cleaned up any git artifacts in cropped directory"
 
       - name: Debug list cropped contents for quick inspection
         run: |
           cd "${{ github.workspace }}"
           echo "Cropped directory contents:"
           ls -la cropped || echo "cropped directory missing or empty"
+          echo "Current working directory: $(pwd)"
+          echo "Git status check:"
+          git status --porcelain cropped/ || echo "No git status for cropped directory"
 
       - name: Create pull request with cropped images (if any changes)
         uses: peter-evans/create-pull-request@v4
@@ -89,3 +90,5 @@ jobs:
             - You can adjust the algorithm via workflow inputs or .github/auto-crop.yml
           labels: "automated,autocrop"
           path: cropped
+          add-paths: |
+            cropped/**
