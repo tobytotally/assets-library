@@ -579,6 +579,234 @@
             color: #ffffff;
             border-color: #4472c4;
         }
+
+        /* Tag Picker Modal */
+        .tag-picker-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .tag-picker-modal.active {
+            display: flex;
+        }
+
+        .tag-picker-content {
+            background: #ffffff;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            border-radius: 8pt;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tag-picker-header {
+            padding: 20pt;
+            border-bottom: 1pt solid #e0e0e0;
+            position: relative;
+        }
+
+        .tag-picker-title {
+            font-size: 16pt;
+            font-weight: 700;
+            margin: 0 0 10pt 0;
+        }
+
+        .tag-picker-search {
+            width: 100%;
+            padding: 8pt;
+            font-size: 11pt;
+            border: 1pt solid #d0d0d0;
+            border-radius: 3pt;
+            font-family: inherit;
+        }
+
+        .tag-picker-close {
+            position: absolute;
+            top: 15pt;
+            right: 15pt;
+            font-size: 24pt;
+            cursor: pointer;
+            color: #666666;
+            width: 30pt;
+            height: 30pt;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s;
+        }
+
+        .tag-picker-close:hover {
+            color: #2f2f2f;
+        }
+
+        .tag-picker-body {
+            padding: 20pt;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .tag-category-group {
+            margin-bottom: 20pt;
+        }
+
+        .tag-category-header {
+            display: flex;
+            align-items: center;
+            padding: 10pt;
+            background: #f5f5f5;
+            border-radius: 3pt;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+
+        .tag-category-header:hover {
+            background: #e8e8e8;
+        }
+
+        .tag-category-toggle {
+            width: 16pt;
+            height: 16pt;
+            margin-right: 8pt;
+            color: #666666;
+            transition: transform 0.2s;
+            font-size: 12pt;
+        }
+
+        .tag-category-header.expanded .tag-category-toggle {
+            transform: rotate(90deg);
+        }
+
+        .tag-category-name {
+            font-weight: 600;
+            font-size: 12pt;
+            color: #2f2f2f;
+            flex: 1;
+        }
+
+        .tag-category-count {
+            font-size: 10pt;
+            color: #666666;
+            background: #ffffff;
+            padding: 2pt 8pt;
+            border-radius: 10pt;
+        }
+
+        .tag-category-tags {
+            display: none;
+            padding: 10pt 10pt 0 10pt;
+            flex-wrap: wrap;
+            gap: 8pt;
+        }
+
+        .tag-category-tags.expanded {
+            display: flex;
+        }
+
+        .tag-picker-tag {
+            padding: 6pt 12pt;
+            background: #ffffff;
+            border: 1pt solid #d0d0d0;
+            border-radius: 3pt;
+            cursor: pointer;
+            font-size: 10pt;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .tag-picker-tag:hover {
+            background: #f5f5f5;
+            border-color: #4472c4;
+        }
+
+        .tag-picker-tag.selected {
+            background: #e0f2ff;
+            border-color: #4472c4;
+            color: #0c5460;
+            font-weight: 600;
+        }
+
+        .tag-picker-footer {
+            padding: 15pt 20pt;
+            border-top: 1pt solid #e0e0e0;
+            display: flex;
+            gap: 10pt;
+            justify-content: flex-end;
+        }
+
+        .tag-picker-btn {
+            padding: 8pt 20pt;
+            border: none;
+            border-radius: 3pt;
+            cursor: pointer;
+            font-size: 11pt;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .tag-picker-btn-save {
+            background: #44c477;
+            color: #ffffff;
+        }
+
+        .tag-picker-btn-save:hover {
+            background: #3aa863;
+        }
+
+        .tag-picker-btn-cancel {
+            background: #e0e0e0;
+            color: #2f2f2f;
+        }
+
+        .tag-picker-btn-cancel:hover {
+            background: #d0d0d0;
+        }
+
+        .tag-picker-no-results {
+            text-align: center;
+            padding: 30pt;
+            color: #999999;
+            font-size: 12pt;
+        }
+
+        /* Grouped Tag Filter Display */
+        .tag-filter-groups {
+            display: flex;
+            flex-direction: column;
+            gap: 10pt;
+        }
+
+        .tag-filter-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 8pt;
+            flex-wrap: wrap;
+        }
+
+        .tag-filter-group-label {
+            font-size: 9pt;
+            font-weight: 600;
+            color: #666666;
+            padding: 5pt 0;
+            min-width: 100pt;
+        }
+
+        .tag-filter-group-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5pt;
+            flex: 1;
+        }
     </style>
 </head>
 <body>
@@ -647,10 +875,47 @@
     </div>
 </div>
 
+<!-- Tag Picker Modal -->
+<div id="tagPickerModal" class="tag-picker-modal">
+    <div class="tag-picker-content">
+        <div class="tag-picker-header">
+            <h3 class="tag-picker-title" id="tagPickerClientName">Select Tags</h3>
+            <input type="text" class="tag-picker-search" id="tagPickerSearch" placeholder="🔍 Search tags...">
+            <span class="tag-picker-close" id="tagPickerClose">&times;</span>
+        </div>
+        <div class="tag-picker-body" id="tagPickerBody">
+            <!-- Tag categories will be inserted here -->
+        </div>
+        <div class="tag-picker-footer">
+            <button class="tag-picker-btn tag-picker-btn-cancel" id="tagPickerCancel">Cancel</button>
+            <button class="tag-picker-btn tag-picker-btn-save" id="tagPickerSave">Save Tags</button>
+        </div>
+    </div>
+</div>
+
 <script>
 // Configuration
 const BASE_URL = 'https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/';
 const LOGO_DATA_URL = 'https://raw.githubusercontent.com/tobytotally/assets-library/main/docs/logo-urls.json';
+
+// Tag Taxonomy
+const TAG_TAXONOMY = {
+    'Usage Context': ['clients', 'collaboration-tools', 'technology-partner', 'accreditation', 'featured', 'case-study'],
+    'Finance & Banking': ['finance', 'banking', 'fintech', 'investment', 'payments', 'financial-services'],
+    'Healthcare': ['healthcare', 'social-care', 'mental-health', 'reproductive-health', 'disability-support', 'health-wellness'],
+    'Technology': ['technology', 'saas', 'cybersecurity', 'cloud-provider', 'digital-platform', 'digital-services'],
+    'Charity & Social': ['charity', 'social-impact', 'conservation', 'social-services', 'youth-support', 'family-support', 'homelessness'],
+    'Professional Services': ['legal', 'consulting', 'professional-services', 'business-services', 'business-support'],
+    'Property & Construction': ['property', 'construction', 'residential', 'infrastructure'],
+    'Media & Creative': ['media', 'broadcasting', 'podcasting', 'marketing', 'advertising', 'creative-agency', 'design'],
+    'Retail & Consumer': ['retail', 'fitness', 'opticians', 'gambling', 'entertainment', 'sports', 'travel', 'leisure'],
+    'Heritage & Culture': ['heritage', 'museum', 'arts-culture', 'gardens', 'education'],
+    'Government & Public': ['government', 'public-sector', 'nhs', 'emergency-services', 'regulatory'],
+    'Services & Operations': ['project-management', 'time-tracking', 'communication', 'digital-marketing', 'risk-management', 'quality-improvement', 'referral-platform', 'hosting', 'smart-home', 'signage', 'manufacturing', 'workspace'],
+    'Attributes': ['high-profile', 'international', 'multilingual', 'mobile-app', 'wordpress', 'custom-app', 'cms-migration', 'website-redesign', 'active-client'],
+    'Compliance': ['compliance', 'certification', 'security', 'accessibility', 'diversity'],
+    'Other': ['needs-review', 'uncategorized']
+};
 
 // State
 let allClients = [];
@@ -660,6 +925,8 @@ let currentCategory = 'all';
 let currentView = 'list';
 let searchTerm = '';
 let activeTagFilters = new Set();
+let tagPickerClientName = null;
+let tagPickerSelectedTags = new Set();
 
 // Fetch logo data
 async function loadLogoData() {
@@ -915,71 +1182,135 @@ function renderTags(clientName) {
     `;
 }
 
-// Show add tag input
+// Show tag picker modal
 function showAddTagInput(event, clientName) {
     event.stopPropagation();
 
-    const btn = event.target;
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.className = 'tag-input';
-    input.placeholder = 'Tag name...';
+    tagPickerClientName = clientName;
+    const existingTags = clientTags[clientName] || [];
+    tagPickerSelectedTags = new Set(existingTags);
 
-    const saveBtn = document.createElement('button');
-    saveBtn.className = 'tag-save-btn';
-    saveBtn.textContent = '✓';
+    // Update modal title
+    const client = allClients.find(c => c.name === clientName);
+    document.getElementById('tagPickerClientName').textContent = `Select Tags for ${client ? client.displayName : clientName}`;
 
-    const cancelBtn = document.createElement('button');
-    cancelBtn.className = 'tag-cancel-btn';
-    cancelBtn.textContent = '×';
+    // Render tag picker
+    renderTagPicker('');
 
-    const container = btn.parentElement;
-    btn.style.display = 'none';
-    container.appendChild(input);
-    container.appendChild(saveBtn);
-    container.appendChild(cancelBtn);
-
-    input.focus();
-
-    const cancel = () => {
-        input.remove();
-        saveBtn.remove();
-        cancelBtn.remove();
-        btn.style.display = '';
-    };
-
-    const save = () => {
-        const tagName = input.value.trim();
-        if (tagName) {
-            addTag(clientName, tagName);
-        }
-        cancel();
-    };
-
-    saveBtn.onclick = (e) => {
-        e.stopPropagation();
-        save();
-    };
-
-    cancelBtn.onclick = (e) => {
-        e.stopPropagation();
-        cancel();
-    };
-
-    input.onkeydown = (e) => {
-        e.stopPropagation();
-        if (e.key === 'Enter') save();
-        if (e.key === 'Escape') cancel();
-    };
+    // Show modal
+    document.getElementById('tagPickerModal').classList.add('active');
 }
 
-// Add tag to client
+// Render tag picker with categories
+function renderTagPicker(searchQuery) {
+    const body = document.getElementById('tagPickerBody');
+    const search = searchQuery.toLowerCase();
+
+    let hasResults = false;
+
+    const categoriesHtml = Object.entries(TAG_TAXONOMY).map(([categoryName, tags]) => {
+        // Filter tags by search query
+        const filteredTags = search
+            ? tags.filter(tag => tag.toLowerCase().includes(search))
+            : tags;
+
+        if (filteredTags.length === 0) return '';
+
+        hasResults = true;
+
+        const tagsHtml = filteredTags.map(tag => {
+            const isSelected = tagPickerSelectedTags.has(tag);
+            return `<div class="tag-picker-tag ${isSelected ? 'selected' : ''}" data-tag="${tag}" onclick="togglePickerTag('${tag}')">${tag}</div>`;
+        }).join('');
+
+        const categoryId = categoryName.replace(/\s+/g, '-').toLowerCase();
+
+        return `
+            <div class="tag-category-group">
+                <div class="tag-category-header expanded" onclick="toggleTagCategory('${categoryId}')">
+                    <span class="tag-category-toggle">▶</span>
+                    <span class="tag-category-name">${categoryName}</span>
+                    <span class="tag-category-count">${filteredTags.length}</span>
+                </div>
+                <div class="tag-category-tags expanded" id="tag-category-${categoryId}">
+                    ${tagsHtml}
+                </div>
+            </div>
+        `;
+    }).filter(html => html !== '').join('');
+
+    if (!hasResults) {
+        body.innerHTML = '<div class="tag-picker-no-results">No tags found matching "' + searchQuery + '"</div>';
+    } else {
+        body.innerHTML = categoriesHtml;
+    }
+}
+
+// Toggle tag category expand/collapse
+function toggleTagCategory(categoryId) {
+    const header = event.currentTarget;
+    const tagsContainer = document.getElementById('tag-category-' + categoryId);
+
+    header.classList.toggle('expanded');
+    tagsContainer.classList.toggle('expanded');
+}
+
+// Toggle tag selection in picker
+function togglePickerTag(tagName) {
+    // Normalize tag name (case-insensitive, trim)
+    const normalizedTag = tagName.toLowerCase().trim();
+
+    // Check if any existing tag matches (case-insensitive)
+    const existingMatch = [...tagPickerSelectedTags].find(t => t.toLowerCase() === normalizedTag);
+
+    if (existingMatch) {
+        tagPickerSelectedTags.delete(existingMatch);
+    } else {
+        tagPickerSelectedTags.add(tagName);
+    }
+
+    // Re-render picker to update visual state
+    const searchQuery = document.getElementById('tagPickerSearch').value;
+    renderTagPicker(searchQuery);
+}
+
+// Save tags from picker
+function savePickerTags() {
+    if (!tagPickerClientName) return;
+
+    clientTags[tagPickerClientName] = [...tagPickerSelectedTags];
+
+    if (clientTags[tagPickerClientName].length === 0) {
+        delete clientTags[tagPickerClientName];
+    }
+
+    localStorage.setItem('clientTags', JSON.stringify(clientTags));
+    closeTagPicker();
+    renderClients();
+    updateTagFilters();
+}
+
+// Close tag picker
+function closeTagPicker() {
+    document.getElementById('tagPickerModal').classList.remove('active');
+    tagPickerClientName = null;
+    tagPickerSelectedTags.clear();
+    document.getElementById('tagPickerSearch').value = '';
+}
+
+// Add tag to client (legacy function for compatibility)
 function addTag(clientName, tagName) {
+    // Normalize tag name
+    const normalizedTag = tagName.toLowerCase().trim();
+
     if (!clientTags[clientName]) {
         clientTags[clientName] = [];
     }
 
-    if (!clientTags[clientName].includes(tagName)) {
+    // Check for duplicates (case-insensitive)
+    const exists = clientTags[clientName].some(t => t.toLowerCase() === normalizedTag);
+
+    if (!exists) {
         clientTags[clientName].push(tagName);
         localStorage.setItem('clientTags', JSON.stringify(clientTags));
         renderClients();
@@ -1011,7 +1342,7 @@ function getAllTags() {
     return [...tags].sort();
 }
 
-// Update tag filter chips
+// Update tag filter chips (grouped by category)
 function updateTagFilters() {
     const allTags = getAllTags();
     const container = document.getElementById('tagFilterContainer');
@@ -1022,11 +1353,44 @@ function updateTagFilters() {
         return;
     }
 
-    container.style.display = 'flex';
-    chipsContainer.innerHTML = allTags.map(tag => `
-        <span class="tag-filter-chip ${activeTagFilters.has(tag) ? 'active' : ''}"
-              onclick="toggleTagFilter('${tag}')">${tag}</span>
+    // Group tags by category
+    const tagsByCategory = {};
+
+    allTags.forEach(tag => {
+        let found = false;
+        for (const [categoryName, categoryTags] of Object.entries(TAG_TAXONOMY)) {
+            if (categoryTags.includes(tag)) {
+                if (!tagsByCategory[categoryName]) {
+                    tagsByCategory[categoryName] = [];
+                }
+                tagsByCategory[categoryName].push(tag);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            if (!tagsByCategory['Other']) {
+                tagsByCategory['Other'] = [];
+            }
+            tagsByCategory['Other'].push(tag);
+        }
+    });
+
+    // Render grouped tags
+    const groupsHtml = Object.entries(tagsByCategory).map(([categoryName, tags]) => `
+        <div class="tag-filter-group">
+            <div class="tag-filter-group-label">${categoryName}</div>
+            <div class="tag-filter-group-chips">
+                ${tags.map(tag => `
+                    <span class="tag-filter-chip ${activeTagFilters.has(tag) ? 'active' : ''}"
+                          onclick="toggleTagFilter('${tag}')">${tag}</span>
+                `).join('')}
+            </div>
+        </div>
     `).join('');
+
+    container.style.display = 'flex';
+    chipsContainer.innerHTML = `<div class="tag-filter-groups">${groupsHtml}</div>`;
 }
 
 // Toggle tag filter
@@ -1101,6 +1465,23 @@ async function loadInitialTags() {
         console.error('Load initial tags error:', error);
     }
 }
+
+// Tag picker event listeners
+document.getElementById('tagPickerClose').addEventListener('click', closeTagPicker);
+document.getElementById('tagPickerCancel').addEventListener('click', closeTagPicker);
+document.getElementById('tagPickerSave').addEventListener('click', savePickerTags);
+
+// Tag picker search
+document.getElementById('tagPickerSearch').addEventListener('input', (e) => {
+    renderTagPicker(e.target.value);
+});
+
+// Close tag picker on background click
+document.getElementById('tagPickerModal').addEventListener('click', (e) => {
+    if (e.target.id === 'tagPickerModal') {
+        closeTagPicker();
+    }
+});
 
 // Initialize
 loadLogoData();
