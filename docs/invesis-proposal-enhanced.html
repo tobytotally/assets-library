@@ -1,0 +1,2174 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invesis Website Refresh Proposal - Totally</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Fira Sans", Calibri, Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 20pt;
+        }
+
+        /* PAGE CONTAINER */
+        .page {
+            width: 595.3pt;
+            min-height: 842pt;
+            background: #ffffff;
+            margin: 0 auto 20pt auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER AREA */
+        .page-header {
+            height: 46.5pt;
+            background: #ffffff;
+            padding: 10pt 35.4pt 8pt 35.4pt;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .header-divider {
+            border-bottom: 1pt solid #e0e0e0;
+            margin: 0 35.4pt 15pt 35.4pt;
+        }
+
+        .header-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        .header-table td {
+            border: none;
+            padding: 0;
+            vertical-align: middle;
+        }
+
+        .header-table td:first-child {
+            width: 50%;
+            text-align: left;
+        }
+
+        .header-table td:last-child {
+            width: 50%;
+            text-align: right;
+        }
+
+        .header-text {
+            font-size: 10pt;
+            color: #666666;
+            font-weight: 400;
+        }
+
+        .header-logo {
+            height: 26px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        /* CONTENT AREA */
+        .page-content {
+            flex: 1;
+            padding: 0 35.4pt;
+            padding-bottom: 20pt;
+        }
+
+        /* FOOTER AREA */
+        .page-footer {
+            height: 35.4pt;
+            background: #ffffff;
+            padding: 10pt 35.4pt;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .footer-divider {
+            border-top: 1pt solid #e0e0e0;
+            margin: 15pt 35.4pt 0 35.4pt;
+        }
+
+        .footer-content {
+            font-size: 9pt;
+            color: #666666;
+            font-weight: 400;
+        }
+
+        /* TYPOGRAPHY */
+        h1 {
+            font-size: 35pt;
+            font-weight: 700;
+            color: #000000;
+            margin: 10pt 0 10pt 0;
+            padding-left: 9pt;
+            border-left: 6pt solid #ffbb00;
+            line-height: 1.0;
+        }
+
+        h2 {
+            font-size: 22pt;
+            font-weight: 700;
+            color: #000000;
+            margin: 24pt 0 12pt 0;
+            padding-left: 4pt;
+            border-left: 2.25pt solid #ffcd00;
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-size: 16pt;
+            font-weight: 700;
+            color: #2f2f2f;
+            margin: 18pt 0 10pt 0;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 18pt;
+            font-weight: 600;
+            color: #000000;
+            margin: 10pt 0 12pt 0;
+            text-align: left;
+            line-height: 1.1;
+        }
+
+        p {
+            font-size: 13pt;
+            font-weight: 400;
+            color: #2f2f2f;
+            margin: 12pt 0;
+            text-align: left;
+            line-height: 1.2;
+        }
+
+        strong {
+            font-weight: 600;
+            color: #000000;
+        }
+
+        ul {
+            margin-left: 20pt;
+            margin-bottom: 12pt;
+            margin-top: 12pt;
+        }
+
+        li {
+            margin-bottom: 6pt;
+            line-height: 1.5;
+        }
+
+        /* PLACEHOLDER SECTIONS */
+        .placeholder-section {
+            background: #f9f9f9;
+            border-left: 3pt solid #ffcd00;
+            padding: 15pt;
+            margin: 20pt 0;
+        }
+
+        .placeholder-section h3 {
+            margin-top: 0;
+            color: #666666;
+            font-size: 14pt;
+        }
+
+        .placeholder-section p {
+            color: #666666;
+            font-size: 11pt;
+            margin: 8pt 0;
+        }
+        /* COVER PAGE STYLES */
+        .cover-page {
+            width: 595.3pt;
+            height: 842pt;
+            background: #ffffff;
+            margin: 0 auto 20pt auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 42.5pt;
+            position: relative;
+        }
+
+        .cover-header-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40pt;
+            border-bottom: 2.2pt solid #000000;
+        }
+
+        .cover-header-table td {
+            padding: 0;
+            padding-bottom: 10pt;
+            border: none;
+            vertical-align: middle;
+        }
+
+        .cover-logo-cell {
+            text-align: right;
+            width: 52%;
+        }
+
+        .cover-empty-cell {
+            width: 48%;
+        }
+
+        .cover-logo {
+            height: 36.5px;
+            width: auto;
+        }
+
+        .cover-date {
+            font-size: 18pt;
+            font-weight: 700;
+            color: #434343;
+            margin-top: 40pt;
+            margin-bottom: 40pt;
+        }
+
+        .cover-title {
+            font-size: 46pt;
+            font-weight: 800;
+            color: #000000;
+            line-height: 1.0;
+            margin-bottom: 10pt;
+            padding-left: 6pt;
+            border-left: 4.5pt solid #ffbb00;
+        }
+
+        .cover-subtitle {
+            font-size: 46pt;
+            font-weight: 800;
+            color: #434343;
+            line-height: 1.0;
+            margin-bottom: 40pt;
+            padding-left: 6pt;
+            border-left: 4.5pt solid #ffbb00;
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 280pt;
+            background-color: #f5f5f5;
+            border: 1pt dashed #cccccc;
+            text-align: center;
+            line-height: 280pt;
+            color: #999999;
+            font-size: 14pt;
+            margin: 40pt 0;
+        }
+
+        .prepared-by-table {
+            width: 100%;
+            border-collapse: collapse;
+            position: absolute;
+            bottom: 42.5pt;
+            left: 42.5pt;
+            right: 42.5pt;
+            width: calc(100% - 85pt);
+        }
+
+        .prepared-by-table th {
+            background-color: #ffcd00;
+            padding: 8pt;
+            border: 1pt solid #d9d9d9;
+            text-align: left;
+            font-weight: 700;
+            font-size: 16pt;
+        }
+
+        .prepared-by-table td {
+            padding: 8pt;
+            border: 1pt solid #d9d9d9;
+            font-size: 13pt;
+        }
+
+        /* LOGO GRID TABLE */
+        .logo-grid-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20pt 0;
+            background-color: #f9f9f9;
+        }
+
+        .logo-grid-table td {
+            width: 25%;
+            padding: 20pt;
+            border: 1pt solid #e0e0e0;
+            text-align: center;
+            vertical-align: middle;
+            background-color: #ffffff;
+            height: 80pt;
+        }
+
+        .logo-grid-table td img {
+            max-width: 100%;
+            max-height: 60pt;
+            width: auto;
+            height: auto;
+        }
+
+        .logo-placeholder {
+            font-size: 9pt;
+            color: #cccccc;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        /* CASE STUDY BOX */
+        .case-study-box {
+            background: #f5f5f5;
+            border-left: 4pt solid #ffcd00;
+            padding: 20pt;
+            margin: 20pt 0;
+        }
+
+        .case-study-box h4 {
+            font-size: 14pt;
+            font-weight: 700;
+            color: #000000;
+            margin: 0 0 10pt 0;
+        }
+
+        .case-study-box p {
+            font-size: 12pt;
+            margin: 8pt 0;
+            color: #2f2f2f;
+        }
+
+        .case-study-box .case-study-meta {
+            font-size: 11pt;
+            color: #666666;
+            font-style: italic;
+            margin-top: 10pt;
+        }
+
+        /* COMPARISON TABLE */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20pt 0;
+        }
+
+        .comparison-table th {
+            background-color: #ffcd00;
+            padding: 12pt;
+            border: 1pt solid #d9d9d9;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14pt;
+        }
+
+        .comparison-table td {
+            padding: 10pt 12pt;
+            border: 1pt solid #e0e0e0;
+            font-size: 12pt;
+            vertical-align: top;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* TIMELINE TABLE */
+        .timeline-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20pt 0;
+        }
+
+        .timeline-table th {
+            background-color: #ffcd00;
+            padding: 10pt;
+            border: 1pt solid #d9d9d9;
+            text-align: left;
+            font-weight: 700;
+            font-size: 13pt;
+        }
+
+        .timeline-table td {
+            padding: 8pt 10pt;
+            border: 1pt solid #e0e0e0;
+            font-size: 12pt;
+            vertical-align: top;
+        }
+
+        .timeline-table .phase-col {
+            width: 25%;
+            font-weight: 600;
+        }
+
+        .timeline-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* PRICING TABLE */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20pt 0;
+        }
+
+        .pricing-table th {
+            background-color: #2f2f2f;
+            color: #ffffff;
+            padding: 12pt;
+            border: 1pt solid #2f2f2f;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14pt;
+        }
+
+        .pricing-table td {
+            padding: 10pt 12pt;
+            border: 1pt solid #e0e0e0;
+            font-size: 12pt;
+            vertical-align: top;
+        }
+
+        .pricing-table .item-col {
+            width: 60%;
+        }
+
+        .pricing-table .amount-col {
+            width: 40%;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .pricing-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .pricing-table .total-row {
+            background-color: #ffcd00 !important;
+            font-weight: 700;
+            font-size: 14pt;
+        }
+
+        /* CALLOUT / HIGHLIGHT BOXES */
+        .callout-box {
+            background-color: #fffbf0;
+            border: 2pt solid #ffcd00;
+            padding: 15pt;
+            margin: 15pt 0;
+        }
+
+        .callout-box p {
+            margin: 8pt 0;
+            font-size: 13pt;
+        }
+
+        .callout-box strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* INFO BOX (BLUE) */
+        .info-box {
+            background-color: #f0f5ff;
+            border-left: 4pt solid #4472c4;
+            padding: 15pt;
+            margin: 15pt 0;
+        }
+
+        .info-box p {
+            margin: 8pt 0;
+            font-size: 12pt;
+            color: #2f2f2f;
+        }
+
+        /* WARNING/IMPORTANT BOX */
+        .warning-box {
+            background-color: #fff4f4;
+            border-left: 4pt solid #c44444;
+            padding: 15pt;
+            margin: 15pt 0;
+        }
+
+        .warning-box p {
+            margin: 8pt 0;
+            font-size: 12pt;
+            color: #2f2f2f;
+        }
+
+        /* PULL QUOTE */
+        .pull-quote {
+            border-left: 4pt solid #ffcd00;
+            padding-left: 20pt;
+            margin: 20pt 0 20pt 20pt;
+            font-style: italic;
+            font-size: 15pt;
+            color: #434343;
+            line-height: 1.4;
+        }
+
+        /* KEY POINTS LIST */
+        .key-points {
+            background-color: #f9f9f9;
+            border: 1pt solid #e0e0e0;
+            padding: 15pt 15pt 15pt 35pt;
+            margin: 15pt 0;
+        }
+
+        .key-points li {
+            margin-bottom: 8pt;
+            font-weight: 600;
+        }
+
+        /* NUMBERED PROCESS STEPS */
+        .process-steps {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        .process-steps li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 40pt;
+            margin-bottom: 15pt;
+        }
+
+        .process-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 28pt;
+            height: 28pt;
+            background-color: #ffcd00;
+            color: #000000;
+            font-weight: 700;
+            font-size: 14pt;
+            text-align: center;
+            line-height: 28pt;
+            border-radius: 50%;
+        }
+
+        /* ICON BULLETS (using unicode symbols) */
+        .check-list {
+            list-style: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        .check-list li {
+            padding-left: 25pt;
+            position: relative;
+            margin-bottom: 8pt;
+        }
+
+        .check-list li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: #44c477;
+            font-weight: 700;
+            font-size: 14pt;
+        }
+
+        .arrow-list {
+            list-style: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        .arrow-list li {
+            padding-left: 25pt;
+            position: relative;
+            margin-bottom: 8pt;
+        }
+
+        .arrow-list li::before {
+            content: "\25B6";
+            position: absolute;
+            left: 0;
+            color: #ffcd00;
+            font-size: 10pt;
+        }
+
+        /* STAT/NUMBER HIGHLIGHT */
+        .stat-highlight {
+            display: inline-block;
+            background-color: #ffcd00;
+            padding: 4pt 10pt;
+            font-weight: 700;
+            font-size: 16pt;
+            margin: 0 4pt;
+        }
+
+        /* SECTION DIVIDER */
+        .section-divider {
+            border-bottom: 2pt solid #ffcd00;
+            margin: 25pt 0;
+            padding-bottom: 5pt;
+        }
+
+        /* TWO COLUMN LAYOUT (using table for compatibility) */
+        .two-column-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15pt 0;
+        }
+
+        .two-column-table td {
+            width: 50%;
+            padding: 10pt;
+            vertical-align: top;
+            border: none;
+        }
+
+        /* BENEFIT/FEATURE GRID */
+        .benefit-grid-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20pt 0;
+        }
+
+        .benefit-grid-table td {
+            width: 50%;
+            padding: 15pt;
+            border: 1pt solid #e0e0e0;
+            vertical-align: top;
+        }
+
+        .benefit-grid-table h4 {
+            font-size: 14pt;
+            font-weight: 700;
+            color: #000000;
+            margin: 0 0 8pt 0;
+        }
+
+        .benefit-grid-table p {
+            font-size: 12pt;
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover-page">
+    <!-- LOGO HEADER WITH BLACK LINE -->
+    <table class="cover-header-table">
+        <tr>
+            <td class="cover-empty-cell"></td>
+            <td class="cover-logo-cell">
+                <img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="cover-logo" alt="Totally">
+            </td>
+        </tr>
+    </table>
+
+    <!-- DATE -->
+    <p class="cover-date">October 2025</p>
+
+    <!-- MAIN TITLE -->
+    <h1 class="cover-title">Invesis</h1>
+
+    <!-- SUBTITLE/PROJECT NAME -->
+    <h1 class="cover-subtitle">Website Refresh Proposal</h1>
+
+    <!-- HERO IMAGE PLACEHOLDER -->
+    <div class="hero-image-placeholder">
+        Hero Image (510pt × 280pt)
+    </div>
+
+    <!-- PREPARED BY TABLE -->
+    <table class="prepared-by-table">
+        <thead>
+            <tr>
+                <th colspan="3">Prepared by:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="width: 30%;">Toby Mason</td>
+                <td style="width: 40%;">Totally.Tech | Totally.Digital</td>
+                <td style="width: 30%;">toby@totally.group</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- PAGE 1: EXECUTIVE SUMMARY -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h1>Executive Summary</h1>
+
+        <p class="subtitle">Totally is pleased to propose a website refresh programme for Invesis—a leading infrastructure investment partner operating across UK, Ireland, European, and Australian markets.</p>
+
+        <p>This document outlines our technical approach, delivery methodology, and commercial framework for creating a professional digital platform that showcases portfolio excellence and builds stakeholder confidence. The website will communicate institutional credibility to government bodies, investors, and infrastructure partners.</p>
+
+        <p>The proposed strategy combines user experience design, WordPress development, and comprehensive content services including copywriting and video production. Built using proven techniques with bespoke functionality, it delivers multilingual architecture and enhanced content management tailored for infrastructure sector requirements.</p>
+
+        <p>Operating across diverse markets with expansion into new territories, Invesis requires a platform that demonstrates transparency and professionalism expected by long-term infrastructure partners. The website will articulate ESG credentials whilst maintaining flexibility for evolving market communications.</p>
+
+        <p>Totally brings 24 years' experience delivering enterprise platforms for organisations requiring institutional-grade quality. We understand infrastructure investment communications—demonstrating portfolio value and building stakeholder confidence across diverse regulatory environments.</p>
+
+        <p>The programme commences with Discovery and Strategy to validate requirements and establish frameworks. Following validation, we deliver fixed-price implementation encompassing design, content services, development, and quality assurance—providing transparent costs and defined deliverables.</p>
+
+        <p>This website refresh represents strategic investment supporting Invesis's growth objectives and establishing the operational foundation for sustained stakeholder engagement.</p>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 2 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 3: WHY TOTALLY -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h1>Why Totally?</h1>
+
+        <p class="subtitle">Totally is a software and web development agency with over 24 years of proven expertise delivering enterprise-level digital platforms for organisations requiring institutional-grade quality and reliability.</p>
+
+        <p>We combine consultancy, bespoke software development, and design expertise to create digital propositions that drive measurable business outcomes. From enterprise WordPress implementations to custom application development and CRM integrations, Totally delivers comprehensive technical solutions that enable organisational growth.</p>
+
+        <div class="pull-quote">
+            "We combine <span class="stat-highlight">24 years</span> of proven expertise with forward-thinking digital strategy to deliver platforms that enable long-term organisational growth."
+        </div>
+
+        <h2>Core Capabilities</h2>
+
+        <table class="benefit-grid-table">
+            <tr>
+                <td>
+                    <h4>Digital Strategy & Consultancy</h4>
+                    <p>Long-term planning, digital transformation roadmaps, and technical architecture design for sustainable growth.</p>
+                </td>
+                <td>
+                    <h4>Enterprise WordPress Development</h4>
+                    <p>Scalable platforms with custom functionality, designed for operational autonomy and content management efficiency.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4>Bespoke Software Development</h4>
+                    <p>Custom applications, platform integrations, and proprietary systems tailored to specific business requirements.</p>
+                </td>
+                <td>
+                    <h4>System Integration & CRM</h4>
+                    <p>Direct API integrations, Salesforce implementations, and unified data architecture.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4>User Experience & Interface Design</h4>
+                    <p>Accessible and responsive design systems, from multilingual interfaces to complex enterprise portals.</p>
+                </td>
+                <td>
+                    <h4>Performance, Accessibility & Security</h4>
+                    <p>Robust infrastructure, WCAG compliance implementation, and continuous optimisation.</p>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Infrastructure Sector Understanding</h2>
+
+        <p>Twenty-four years working across professional services, financial institutions, membership organisations, and government bodies provides deep knowledge of complex stakeholder requirements. This cross-sector expertise allows Totally to anticipate needs, navigate regulatory environments, and deliver platforms that meet institutional standards.</p>
+
+        <p>We understand infrastructure investment communications—demonstrating portfolio value, building stakeholder confidence, and maintaining credibility across diverse regulatory and governance frameworks.</p>
+
+        <h2>Selected Clients</h2>
+
+        <table class="logo-grid-table">
+            <tr>
+                <td><span class="logo-placeholder">[Client Logo 1]</span></td>
+                <td><span class="logo-placeholder">[Client Logo 2]</span></td>
+                <td><span class="logo-placeholder">[Client Logo 3]</span></td>
+                <td><span class="logo-placeholder">[Client Logo 4]</span></td>
+            </tr>
+            <tr>
+                <td><span class="logo-placeholder">[Client Logo 5]</span></td>
+                <td><span class="logo-placeholder">[Client Logo 6]</span></td>
+                <td><span class="logo-placeholder">[Client Logo 7]</span></td>
+                <td><span class="logo-placeholder">[Client Logo 8]</span></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 3 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 3: PROJECT SCOPE - PART 1 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h1>Project Scope & Deliverables</h1>
+
+        <p class="subtitle">Invesis has built a strong foundation over the past 3-4 years, with relevant, valuable content that serves the business well. This proposal focuses on modernising the platform—bringing fresh design, updated messaging, and enhanced capabilities that reflect the organisation's evolved positioning and support European expansion.</p>
+
+        <p>Rather than starting from scratch, we propose to build upon what works whilst addressing the areas that need refreshing.</p>
+
+        <h2>Proposed Scope</h2>
+
+        <h3>Website Redesign & User Experience</h3>
+
+        <p>We recommend a comprehensive redesign that gives the Invesis marketing team the flexibility and control they need, whilst creating clearer pathways for diverse audiences—from public sector clients exploring partnerships to existing clients seeking project information.</p>
+
+        <p>The approach would reassess the current information architecture, exploring opportunities to improve navigation, enhance content presentation, and potentially introduce distinct areas for different stakeholder groups.</p>
+
+        <h3>Content Strategy & Copywriting</h3>
+
+        <p>Invesis content tells important stories about infrastructure that serves communities. We propose working with specialist copywriters who understand B2B infrastructure investment, helping to refresh messaging across the site whilst maintaining the substance and credibility already established.</p>
+
+        <p>This would include reviewing tone of voice, updating positioning to reflect market evolution, and ensuring content works effectively across the multiple European jurisdictions where Invesis operates.</p>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 3 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 4: PROJECT SCOPE - PART 2 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h3>Visual Identity & Photography</h3>
+
+        <p>We propose developing a consistent approach to image styling and treatment that creates a cohesive visual language. This might include exploring overlays, filters, or framing techniques that tie imagery to the Invesis brand whilst keeping people and community impact at the forefront.</p>
+
+        <p>The approach would reduce reliance on finding "perfect" photography whilst maintaining the human connection that differentiates Invesis—showing infrastructure in use by the communities it serves.</p>
+
+        <h3>Multilingual Capabilities</h3>
+
+        <p>As Invesis expands into new European markets, the website needs to work as effectively in Czech Republic as it does in established territories. We recommend implementing robust multilingual infrastructure with intelligent fallback systems—ensuring visitors always see relevant content in their preferred language, or the next best option.</p>
+
+        <p>This would include proper technical implementation for regional SEO, helping each market find Invesis through their local search engines.</p>
+
+        <h3>WordPress CMS Enhancement</h3>
+
+        <p>The Invesis marketing team of 2-3 people manages content well within current constraints. We propose optimising the WordPress implementation to remove those constraints—making it easier to publish news, update pages, and manage assets without requiring technical assistance.</p>
+
+        <p>The goal would be empowering the team with intuitive tools and flexible templates that grow with organisational needs.</p>
+
+        <h3>Video Integration</h3>
+
+        <p>With plans for new management board and "who we are" video content, we propose ensuring the website is optimised to showcase this media effectively—with strategic placement, performance optimisation, and accessibility considerations built in.</p>
+
+        <h2>What This Scope Excludes</h2>
+
+        <p>To maintain clarity, the following would remain outside this project scope:</p>
+
+        <ul>
+            <li><strong>Video Production</strong> – Invesis will be producing video content separately</li>
+            <li><strong>Translation Services</strong> – The Invesis team will continue managing translations in-house</li>
+            <li><strong>Ongoing Hosting & Maintenance</strong> – Covered under separate support arrangements</li>
+            <li><strong>Post-Launch Content Updates</strong> – Day-to-day content management remains with the Invesis team</li>
+        </ul>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 4 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 5: OUR APPROACH - PART 1 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h1>Our Approach to Project Delivery</h1>
+
+        <p class="subtitle">We propose a structured two-phase approach that ensures clarity, minimises risk, and delivers exactly what Invesis needs.</p>
+
+        <h2>Phase 1: Discovery & UX (Fixed Cost)</h2>
+
+        <div class="info-box">
+            <p><strong>Why Discovery First?</strong> Discovery validates assumptions before significant investment in design and development. Without this phase, estimates remain approximate. With discovery complete, the delivery phase has fixed pricing and clear scope—removing uncertainty.</p>
+        </div>
+
+        <p>The discovery phase provides the foundation for successful delivery. Rather than making assumptions, we invest time upfront to understand Invesis's requirements, validate our proposals, and create a comprehensive specification.</p>
+
+        <h3>Requirements Gathering & Validation</h3>
+
+        <p>Working closely with the Invesis team, we would explore current challenges, future ambitions, and the specific needs of the marketing team who will manage the platform day-to-day. This collaborative process ensures we're solving the right problems.</p>
+
+        <h3>User Journey Mapping</h3>
+
+        <p>Understanding how different audiences interact with the Invesis website is crucial. We would map journeys for key stakeholder groups:</p>
+
+        <ul>
+            <li>Public sector clients exploring partnership opportunities</li>
+            <li>Existing clients seeking project information and documentation</li>
+            <li>Contractors and partners evaluating consortium opportunities</li>
+            <li>Investors understanding portfolio and approach</li>
+        </ul>
+
+        <p>This mapping informs everything from navigation structure to content strategy.</p>
+
+        <h3>Information Architecture</h3>
+
+        <p>With user journeys defined, we would propose a refreshed information architecture that creates intuitive pathways through the site. This reassessment might identify opportunities to restructure content, introduce new sections, or simplify navigation.</p>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 5 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 6: OUR APPROACH - PART 2 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h3>UX Design & Wireframing</h3>
+
+        <p>Translating the information architecture into tangible wireframes and user flows demonstrates how the proposed structure would work in practice. This visual representation allows the Invesis team to validate the approach before design and development begin.</p>
+
+        <h3>Accurate Delivery Specification</h3>
+
+        <p>The discovery phase culminates in a comprehensive specification document that details exactly what will be built, how it will work, and what it will cost. This provides an accurate, fixed-cost proposal for the delivery phase—removing uncertainty and ensuring alignment.</p>
+
+        <p><strong>Discovery Phase Deliverables:</strong></p>
+        <ul>
+            <li>Requirements documentation</li>
+            <li>User journey maps for key audiences</li>
+            <li>Proposed information architecture</li>
+            <li>Wireframes and user flows</li>
+            <li>Fixed-cost delivery specification</li>
+        </ul>
+
+        <h2>Phase 2: Delivery (Estimated, Validated in Discovery)</h2>
+
+        <p>Following approval of the discovery specification, the delivery phase brings the vision to life. Costs for this phase are estimated in this proposal but will be validated and fixed following discovery.</p>
+
+        <h3>UI Design & Digital Branding</h3>
+
+        <p>Building on the wireframes and user flows, the design phase creates the visual identity for the new Invesis website. This includes:</p>
+
+        <ul>
+            <li><strong>Task-based design approach</strong> – Designing components and templates that support specific user tasks</li>
+            <li><strong>Component library development</strong> – Creating reusable design elements for consistency and efficiency</li>
+            <li><strong>Image styling process</strong> – Developing the visual treatment approach for photography and imagery</li>
+            <li><strong>Brand alignment</strong> – Working within the Barkley brand guidelines whilst evolving the digital expression</li>
+        </ul>
+
+        <p>The result is a design system that feels fresh and modern whilst remaining authentically Invesis.</p>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 6 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 7: OUR APPROACH - PART 3 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h3>Content Strategy & Copywriting</h3>
+
+        <p>Parallel to design development, content work would begin. This involves:</p>
+
+        <ul>
+            <li><strong>Content audit</strong> – Reviewing existing content to identify what to keep, refresh, or retire</li>
+            <li><strong>Copywriting</strong> – Creating new content and refreshing existing pages with updated messaging</li>
+            <li><strong>Tone of voice alignment</strong> – Ensuring consistency with brand guidelines</li>
+            <li><strong>SEO optimisation</strong> – Structuring content for search engine visibility</li>
+            <li><strong>Multi-jurisdiction considerations</strong> – Ensuring content works across European markets</li>
+        </ul>
+
+        <p>Working with specialist copywriters from our network who understand B2B infrastructure investment ensures the content maintains credibility whilst becoming more engaging.</p>
+
+        <h3>WordPress Development & Implementation</h3>
+
+        <p>With design and content progressing, technical build would commence:</p>
+
+        <ul>
+            <li><strong>WordPress theme development</strong> – Building the CMS framework</li>
+            <li><strong>Component implementation</strong> – Translating the design system into functional components</li>
+            <li><strong>Multilingual infrastructure</strong> – Implementing the cascading fallback system and regional SEO configuration</li>
+            <li><strong>CMS optimisation</strong> – Removing current constraints and empowering the marketing team</li>
+            <li><strong>Video integration</strong> – Preparing the platform for management board and explainer content</li>
+            <li><strong>Performance optimisation</strong> – Ensuring fast load times across all markets</li>
+        </ul>
+
+        <h3>Testing & Launch</h3>
+
+        <p>Comprehensive testing ensures everything works as intended:</p>
+
+        <ul>
+            <li><strong>Functional testing</strong> – All features and interactions work correctly</li>
+            <li><strong>Content review</strong> – All pages reviewed and approved</li>
+            <li><strong>Browser and device testing</strong> – Consistent experience across platforms</li>
+            <li><strong>Accessibility testing</strong> – Meeting WCAG standards</li>
+            <li><strong>Performance testing</strong> – Load times and optimisation verified</li>
+            <li><strong>Multilingual testing</strong> – Language fallback and regional SEO validated</li>
+        </ul>
+
+        <p>Following testing approval, the new Invesis website launches with full documentation and handover to the marketing team.</p>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 7 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 8: OUR APPROACH - PART 4 & WHY THIS WORKS -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <p><strong>Delivery Phase Outcomes:</strong></p>
+        <ul>
+            <li>Fully redesigned, mobile-responsive WordPress website</li>
+            <li>Refreshed content across all pages</li>
+            <li>Multilingual technical implementation</li>
+            <li>Image styling guidelines and visual treatment approach</li>
+            <li>Component-based design system</li>
+            <li>CMS documentation and guidance</li>
+            <li>Tested, launched platform ready for the Invesis team to manage</li>
+        </ul>
+
+        <h2>Why This Approach Works</h2>
+
+        <p><strong>Reduces Risk</strong> – Discovery validates assumptions before significant investment in design and development.</p>
+
+        <p><strong>Provides Certainty</strong> – Fixed-cost discovery phase leads to fixed-cost delivery specification.</p>
+
+        <p><strong>Ensures Alignment</strong> – Regular touchpoints and approvals keep Invesis involved and informed throughout.</p>
+
+        <p><strong>Delivers Quality</strong> – Structured approach with clear phases ensures nothing is overlooked.</p>
+
+        <p><strong>Empowers the Team</strong> – Focus on CMS optimisation and documentation ensures long-term success.</p>
+
+        <h2>Two-Phase Comparison</h2>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Phase 1: Discovery</th>
+                    <th>Phase 2: Delivery</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Duration:</strong> 4 weeks</td>
+                    <td><strong>Duration:</strong> 8-10 weeks</td>
+                </tr>
+                <tr>
+                    <td><strong>Investment:</strong> Fixed cost</td>
+                    <td><strong>Investment:</strong> Estimated (fixed after discovery)</td>
+                </tr>
+                <tr>
+                    <td><strong>Deliverables:</strong> Requirements, wireframes, user journeys, fixed-cost specification</td>
+                    <td><strong>Deliverables:</strong> Complete website, design system, content, CMS documentation</td>
+                </tr>
+                <tr>
+                    <td><strong>Purpose:</strong> Validate requirements and remove uncertainty</td>
+                    <td><strong>Purpose:</strong> Build and launch the platform</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 8 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 9: TECHNICAL APPROACH - PLACEHOLDER -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h1>Technical Approach</h1>
+
+        <p class="subtitle">We propose optimising the WordPress implementation to remove current limitations whilst maintaining the stability and security required for an institutional-grade platform.</p>
+
+        <p>The Invesis marketing team currently manages content within existing constraints. This would involve building a custom WordPress theme with component-based architecture—creating flexible, reusable building blocks that make content management intuitive. Rather than rigid page templates, the team would have modular components they can arrange and configure without technical assistance.</p>
+
+        <p>The CMS would be configured to simplify common tasks: publishing news updates, adding project case studies, updating team information, and managing media assets. Clear content workflows and editorial guidelines would ensure consistency whilst empowering the marketing team with operational autonomy.</p>
+
+        <h2>WordPress Architecture & CMS Optimisation</h2>
+
+        <h2>Multilingual Implementation</h2>
+
+        <p>As Invesis operates across multiple European markets, the website requires robust multilingual infrastructure that goes beyond simple translation management.</p>
+
+        <h3>Cascading Language Fallback</h3>
+
+        <p>We recommend implementing an intelligent fallback system that ensures visitors always see relevant content. If a page isn't available in Czech, it falls back to English. If a specific news article hasn't been translated to Dutch, it shows in the original language rather than creating broken experiences.</p>
+
+        <p>This approach recognises the reality of managing multilingual content with a small team—not everything needs translating immediately, but the website should never feel incomplete.</p>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 9 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 10: TECHNICAL APPROACH - PART 2 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h3>URL Structure & Regional SEO</h3>
+
+        <p>Proper technical implementation ensures each language version is discoverable by regional search engines. This includes:</p>
+
+        <ul>
+            <li><strong>Clean URL structure</strong> for language versions (`invesis.com/nl/`, `invesis.com/de/`)</li>
+            <li><strong>Hreflang tags</strong> telling search engines which language serves which market</li>
+            <li><strong>Regional meta data</strong> optimised for local search behaviour</li>
+            <li><strong>Language switching</strong> that maintains context (switching from Dutch "About" page goes to German "About" page, not homepage)</li>
+        </ul>
+
+        <p>The goal is ensuring prospects in Belgium, Germany, or Czech Republic find Invesis through their local Google, Bing, or regional search platforms.</p>
+
+        <h2>Performance Optimisation</h2>
+
+        <p>Infrastructure investment websites need to convey credibility and professionalism. Slow load times undermine that perception. We propose implementing comprehensive performance optimisation:</p>
+
+        <ul>
+            <li><strong>Image optimisation</strong> with responsive delivery (serving appropriately sized images for each device)</li>
+            <li><strong>Lazy loading</strong> for below-the-fold content</li>
+            <li><strong>Caching strategies</strong> reducing server load</li>
+            <li><strong>Content delivery network</strong> considerations for international audiences</li>
+            <li><strong>Code optimisation</strong> ensuring lean, efficient delivery</li>
+        </ul>
+
+        <p>The target would be achieving consistently fast load times across all markets, regardless of connection quality.</p>
+
+        <h2>Video Integration & Optimisation</h2>
+
+        <p>With plans for management board and "who we are" video content, the technical implementation needs to support professional video delivery:</p>
+
+        <ul>
+            <li><strong>Responsive video embedding</strong> that works across devices</li>
+            <li><strong>Accessibility considerations</strong> including captions and transcripts</li>
+            <li><strong>Performance optimisation</strong> with adaptive streaming where appropriate</li>
+            <li><strong>Analytics integration</strong> understanding how video content performs</li>
+            <li><strong>Fallback strategies</strong> for users on limited bandwidth</li>
+        </ul>
+
+        <p>We recommend evaluating hosting options—self-hosted versus platforms like Vimeo or YouTube—based on privacy requirements, brand control preferences, and budget considerations.</p>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 10 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 11: CONTENT & COPYWRITING / BRAND ALIGNMENT -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h1>Content & Copywriting / Brand Alignment</h1>
+
+        <p class="subtitle">Content sits at the heart of the Invesis website—telling stories about infrastructure that serves communities, demonstrating portfolio value, and building stakeholder confidence.</p>
+
+        <h2>Comprehensive Content Services</h2>
+
+        <p>We propose working with specialist copywriters from our network who understand B2B infrastructure investment, helping to refresh messaging whilst maintaining the substance and credibility already established.</p>
+
+        <h3>Content Audit & Strategy</h3>
+
+        <p>Before writing begins, we would conduct a comprehensive content audit—reviewing what exists, what works, what needs refreshing, and what might be retired. This audit informs the content strategy, identifying priorities and opportunities.</p>
+
+        <p>The strategy would address different audience needs: public sector clients need different content than existing clients or potential consortium partners. Clear content pathways would guide each stakeholder group to relevant information efficiently.</p>
+
+        <h3>Copywriting & Tone of Voice</h3>
+
+        <p>Working within the Barkley brand guidelines, copywriters would refresh content across all website pages. This involves more than updating facts—it's about transforming tone where appropriate, making complex infrastructure investment concepts accessible without losing credibility.</p>
+
+        <p>The tone would remain professional and knowledgeable whilst becoming warmer and more engaging. Infrastructure investment needn't feel dry—Invesis demonstrates genuine impact on communities, and the content should convey that human dimension.</p>
+
+        <h3>Multi-Jurisdiction Considerations</h3>
+
+        <p>Content must work effectively across the European markets where Invesis operates. This means:</p>
+
+        <ul>
+            <li><strong>Avoiding jurisdiction-specific assumptions</strong> that only apply in one market</li>
+            <li><strong>Using examples and case studies</strong> that resonate internationally</li>
+            <li><strong>Structuring content</strong> so translations maintain meaning and impact</li>
+            <li><strong>Considering cultural nuances</strong> in how infrastructure investment is perceived</li>
+        </ul>
+
+        <p>Whilst Invesis manages translations in-house, the source content would be written with international audiences in mind from the outset.</p>
+
+        <h2>Brand Alignment</h2>
+
+        <h3>Working with the Barkley Brand Book</h3>
+
+        <p>The existing Barkley brand guidelines provide the foundation. Rather than reinventing the visual identity, we propose evolving the digital expression—bringing the brand to life online whilst respecting established guidelines.</p>
+
+        <p>This involves understanding the brand positioning, values, and visual language, then translating those into web-appropriate applications. Some brand elements designed for print or presentation may need adapting for digital contexts whilst maintaining the core identity.</p>
+
+        <h3>Photography Styling & Visual Treatment</h3>
+
+        <p>Infrastructure photography presents unique challenges. Roads, railways, and hospitals can feel abstract unless shown in use. The Barkley brand book already recognises the importance of humanising these assets—showing people using the facilities that serve their communities.</p>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 11 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 12: CONTENT & COPYWRITING - PART 2 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <p>We propose developing a consistent visual treatment approach that creates cohesive imagery across the website:</p>
+
+        <ul>
+            <li><strong>Image filters and overlays</strong> using Invesis brand colours (dark blue, plum) to create visual consistency</li>
+            <li><strong>Framing techniques</strong> that draw attention to the human element within infrastructure contexts</li>
+            <li><strong>Composition guidelines</strong> helping select or commission photography that aligns with brand values</li>
+            <li><strong>Treatment templates</strong> the marketing team can apply to new imagery, reducing reliance on finding "perfect" photos</li>
+        </ul>
+
+        <p>This approach acknowledges a practical reality: sourcing ideal infrastructure photography with proper permissions is challenging. A consistent visual treatment transforms good photography into branded content that feels cohesive and professional.</p>
+
+        <h3>Image Styling Process</h3>
+
+        <p>Rather than requiring perfect source photography, the styling process would work with available imagery:</p>
+
+        <ul>
+            <li><strong>Source photography</strong> from Adobe Stock, project consortiums, or Invesis archives</li>
+            <li><strong>Apply brand treatment</strong> using filters, overlays, and framing techniques</li>
+            <li><strong>Ensure consistency</strong> across the website through systematic application</li>
+            <li><strong>Document guidelines</strong> so the marketing team can maintain the approach</li>
+        </ul>
+
+        <p>The result: a distinctive visual language that differentiates Invesis whilst remaining flexible enough for ongoing content management.</p>
+
+        <h2>SEO Content Optimisation</h2>
+
+        <p>Content would be structured for search engine visibility whilst remaining readable and valuable for human audiences:</p>
+
+        <ul>
+            <li><strong>Keyword research</strong> understanding how prospects search for infrastructure investment partners</li>
+            <li><strong>On-page optimisation</strong> with appropriate headings, meta descriptions, and content structure</li>
+            <li><strong>Regional SEO considerations</strong> recognising search behaviour varies across markets</li>
+            <li><strong>Content hierarchy</strong> that helps search engines understand site structure and priorities</li>
+        </ul>
+
+        <p>The goal is ensuring Invesis appears in relevant searches across all operating markets, attracting qualified prospects exploring infrastructure investment partnerships.</p>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 12 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 13: PROJECT TIMELINE & PHASES - PART 1 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h1>Project Timeline & Phases</h1>
+
+        <p class="subtitle">We propose a 12-14 week programme structured in two distinct phases. This timeline provides realistic expectations whilst maintaining momentum and clear milestones.</p>
+
+        <h2>Indicative Timeline: 12-14 Weeks</h2>
+
+        <table class="timeline-table">
+            <thead>
+                <tr>
+                    <th>Phase</th>
+                    <th>Duration</th>
+                    <th>Key Activities</th>
+                    <th>Deliverables</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="phase-col">Phase 1: Discovery</td>
+                    <td>4 weeks</td>
+                    <td>Requirements, research, IA, wireframes</td>
+                    <td>Specification & fixed-cost proposal</td>
+                </tr>
+                <tr>
+                    <td class="phase-col">Phase 2: Delivery</td>
+                    <td>8-10 weeks</td>
+                    <td>Design, content, development, testing</td>
+                    <td>Launched website with documentation</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Phase 1: Discovery & UX Strategy (4 Weeks)</h2>
+
+        <p>The discovery phase establishes the foundation for everything that follows. Four weeks allows thorough exploration without unnecessary delay.</p>
+
+        <h3>Week 1-2: Requirements & Research</h3>
+
+        <ul>
+            <li>Stakeholder interviews with the Invesis team</li>
+            <li>Current website audit and analytics review</li>
+            <li>Competitor and market analysis</li>
+            <li>User research and audience insights</li>
+            <li>Content audit of existing materials</li>
+        </ul>
+
+        <h3>Week 3: Information Architecture & User Journeys</h3>
+
+        <ul>
+            <li>User journey mapping for key stakeholder groups</li>
+            <li>Proposed information architecture</li>
+            <li>Navigation structure recommendations</li>
+            <li>Content strategy development</li>
+            <li>Initial wireframe concepts</li>
+        </ul>
+
+        <h3>Week 4: Validation & Specification</h3>
+
+        <ul>
+            <li>Wireframe refinement based on feedback</li>
+            <li>User flow documentation</li>
+            <li>Comprehensive delivery specification</li>
+            <li>Fixed-cost delivery proposal</li>
+            <li>Discovery phase review and approval</li>
+        </ul>
+
+        <p><strong>Deliverable:</strong> Complete specification document with accurate, fixed-cost delivery proposal.</p>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 13 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 14: PROJECT TIMELINE & PHASES - PART 2 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h2>Phase 2: Design, Content & Development (8-10 Weeks)</h2>
+
+        <p>Following discovery approval, the delivery phase brings the vision to life. The 8-10 week range accommodates varying complexity discovered during the discovery phase.</p>
+
+        <h3>Weeks 5-7: Design & Content Development</h3>
+
+        <p>Parallel workstreams to maintain momentum:</p>
+
+        <p><strong>Design Track:</strong></p>
+        <ul>
+            <li>Component-based design system development</li>
+            <li>Visual identity for digital application</li>
+            <li>Photography treatment and styling approach</li>
+            <li>Responsive design across devices</li>
+            <li>Brand alignment with Barkley guidelines</li>
+        </ul>
+
+        <p><strong>Content Track:</strong></p>
+        <ul>
+            <li>Copywriting for core pages</li>
+            <li>Content refresh for existing pages</li>
+            <li>Tone of voice implementation</li>
+            <li>SEO optimisation</li>
+            <li>Multi-jurisdiction content considerations</li>
+        </ul>
+
+        <h3>Weeks 8-11: WordPress Development</h3>
+
+        <p>With design and content progressing, technical build commences:</p>
+
+        <ul>
+            <li>Custom WordPress theme development</li>
+            <li>Component implementation</li>
+            <li>Multilingual infrastructure setup</li>
+            <li>CMS optimisation and configuration</li>
+            <li>Video integration preparation</li>
+            <li>Performance optimisation</li>
+        </ul>
+
+        <h3>Weeks 12-13: Testing & Refinement</h3>
+
+        <p>Comprehensive quality assurance before launch:</p>
+
+        <ul>
+            <li>Functional testing across all features</li>
+            <li>Browser and device compatibility testing</li>
+            <li>Accessibility testing (WCAG compliance)</li>
+            <li>Performance testing and optimisation</li>
+            <li>Multilingual testing and SEO validation</li>
+            <li>Content review and approval</li>
+            <li>User acceptance testing with Invesis team</li>
+        </ul>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 14 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 15: PROJECT TIMELINE & PHASES - PART 3 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h3>Week 14: Launch & Handover</h3>
+
+        <p>Final preparations and go-live:</p>
+
+        <ul>
+            <li>Final content population</li>
+            <li>DNS and hosting configuration</li>
+            <li>Launch</li>
+            <li>CMS documentation and guidance</li>
+            <li>Team training and handover</li>
+            <li>Post-launch monitoring</li>
+        </ul>
+
+        <h2>Key Milestones</h2>
+
+        <p><strong>Discovery Approval</strong> (Week 4): Specification and fixed-cost delivery proposal approved</p>
+
+        <p><strong>Design Approval</strong> (Week 7): Visual design system and content approach confirmed</p>
+
+        <p><strong>Development Milestone</strong> (Week 11): Complete build ready for testing</p>
+
+        <p><strong>Launch</strong> (Week 14): Website live and operational</p>
+
+        <h2>Dependencies & Client Touchpoints</h2>
+
+        <p>Success requires collaboration at key points:</p>
+
+        <p><strong>Discovery Phase:</strong></p>
+        <ul>
+            <li>Stakeholder availability for interviews (Weeks 1-2)</li>
+            <li>Feedback on wireframes and IA (Week 3)</li>
+            <li>Specification approval (Week 4)</li>
+        </ul>
+
+        <p><strong>Delivery Phase:</strong></p>
+        <ul>
+            <li>Design concept review and approval (Week 7)</li>
+            <li>Content review and approval (ongoing)</li>
+            <li>User acceptance testing participation (Week 12)</li>
+            <li>Final approval for launch (Week 13)</li>
+        </ul>
+
+        <h2>Flexibility & Contingency</h2>
+
+        <p>The 12-14 week estimate accommodates normal project complexities. Factors that might extend timeline:</p>
+
+        <ul>
+            <li><strong>Content dependencies</strong> - if Invesis-provided content (video, photography, specific messaging) isn't available when needed</li>
+            <li><strong>Approval cycles</strong> - extended review periods at key milestones</li>
+            <li><strong>Scope discoveries</strong> - technical complexities identified during development</li>
+            <li><strong>External dependencies</strong> - hosting transitions or third-party integrations</li>
+        </ul>
+
+        <p>We maintain buffer time within the estimate to absorb typical project variations without delaying launch.</p>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 15 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 16: TIMELINE CONCLUSION & INVESTMENT START -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h2>Launch Timing Considerations</h2>
+
+        <p>The timeline can be scheduled to align with Invesis business priorities:</p>
+
+        <ul>
+            <li><strong>Avoiding critical periods</strong> when marketing team attention is elsewhere</li>
+            <li><strong>Coordinating with announcements</strong> if launch should coincide with company news</li>
+            <li><strong>Market considerations</strong> if certain periods better serve European audience engagement</li>
+        </ul>
+
+        <p>We would work with the Invesis team to identify optimal launch timing during the planning phase.</p>
+
+        <h1>Investment & Costs</h1>
+
+        <p class="subtitle">This proposal presents investment across two distinct phases, providing clarity on fixed costs and estimated delivery investment.</p>
+
+        <h2>Two-Phase Investment Model</h2>
+
+        <h2>Phase 1: Discovery & UX Strategy</h2>
+
+        <p><strong>Fixed Investment: £[AMOUNT]</strong></p>
+
+        <p>The discovery phase provides certainty before significant investment. This fixed-cost engagement delivers comprehensive specification and accurate delivery pricing.</p>
+
+        <h3>What's Included</h3>
+
+        <p><strong>Requirements & Planning</strong></p>
+        <ul>
+            <li>Stakeholder interviews and requirements gathering</li>
+            <li>Current website audit and analytics review</li>
+            <li>Competitor and market analysis</li>
+            <li>Technical feasibility assessment</li>
+        </ul>
+
+        <p><strong>UX Research & Strategy</strong></p>
+        <ul>
+            <li>User research and audience insights</li>
+            <li>User journey mapping for key stakeholder groups</li>
+            <li>Information architecture development</li>
+            <li>Content strategy and audit</li>
+        </ul>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 16 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 17: INVESTMENT & COSTS - PART 2 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <p><strong>Design & Documentation</strong></p>
+        <ul>
+            <li>Wireframes and user flows</li>
+            <li>Component identification and specification</li>
+            <li>Technical architecture documentation</li>
+            <li>Comprehensive delivery specification</li>
+        </ul>
+
+        <p><strong>Deliverable Outcomes</strong></p>
+        <ul>
+            <li>Complete project specification</li>
+            <li>Validated technical approach</li>
+            <li>Accurate, fixed-cost delivery proposal</li>
+            <li>Clear understanding of scope, timeline, and investment</li>
+        </ul>
+
+        <h3>Why Discovery First?</h3>
+
+        <p>Discovery validates assumptions before significant investment in design and development. Without this phase, estimates remain approximate. With discovery complete, the delivery phase has fixed pricing and clear scope—removing uncertainty.</p>
+
+        <h2>Phase 2: Delivery Implementation</h2>
+
+        <p><strong>Estimated Investment: £[AMOUNT]</strong></p>
+
+        <p><em>(Final investment confirmed following Discovery Phase approval)</em></p>
+
+        <p>This estimate covers comprehensive website redevelopment based on current understanding of requirements. The discovery phase will validate this estimate and provide fixed-cost delivery pricing.</p>
+
+        <h3>Investment Breakdown</h3>
+
+        <p><strong>UI Design & Digital Branding: £[AMOUNT]</strong></p>
+        <ul>
+            <li>Component-based design system</li>
+            <li>Visual identity for digital application</li>
+            <li>Photography treatment and styling approach</li>
+            <li>Responsive design across all devices</li>
+            <li>Brand alignment within Barkley guidelines</li>
+        </ul>
+
+        <p><strong>Content Strategy & Copywriting: £[AMOUNT]</strong></p>
+        <ul>
+            <li>Comprehensive copywriting for all website pages</li>
+            <li>Content refresh and optimisation</li>
+            <li>Tone of voice implementation</li>
+            <li>SEO content structure</li>
+            <li>Multi-jurisdiction content adaptation</li>
+            <li>Working with specialist infrastructure copywriters</li>
+        </ul>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 17 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 18: INVESTMENT & COSTS - PART 3 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <p><strong>WordPress Development: £[AMOUNT]</strong></p>
+        <ul>
+            <li>Custom WordPress theme development</li>
+            <li>Component implementation</li>
+            <li>CMS optimisation and configuration</li>
+            <li>Content management training and documentation</li>
+        </ul>
+
+        <p><strong>Multilingual Implementation: £[AMOUNT]</strong></p>
+        <ul>
+            <li>Cascading language fallback system</li>
+            <li>Regional SEO configuration</li>
+            <li>URL structure for language versions</li>
+            <li>Multilingual testing and validation</li>
+        </ul>
+
+        <p><strong>Testing & Quality Assurance: £[AMOUNT]</strong></p>
+        <ul>
+            <li>Functional testing across all features</li>
+            <li>Browser and device compatibility</li>
+            <li>Accessibility compliance (WCAG)</li>
+            <li>Performance testing and optimisation</li>
+            <li>User acceptance testing support</li>
+        </ul>
+
+        <p><strong>Project Management: £[AMOUNT]</strong></p>
+        <ul>
+            <li>Project coordination and governance</li>
+            <li>Stakeholder communication</li>
+            <li>Timeline management</li>
+            <li>Risk mitigation</li>
+            <li>Launch planning and execution</li>
+        </ul>
+
+        <p><strong>Total Estimated Delivery Investment: £[AMOUNT]</strong></p>
+
+        <h2>Total Programme Investment</h2>
+
+        <table class="pricing-table">
+            <thead>
+                <tr>
+                    <th colspan="2">Investment Summary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="item-col">Phase 1: Discovery & UX Strategy (Fixed Cost)</td>
+                    <td class="amount-col">£[AMOUNT]</td>
+                </tr>
+                <tr>
+                    <td class="item-col">Phase 2: Delivery Implementation (Estimated)</td>
+                    <td class="amount-col">£[AMOUNT]</td>
+                </tr>
+                <tr class="total-row">
+                    <td class="item-col">Total Programme Investment</td>
+                    <td class="amount-col">£[AMOUNT]</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Payment Structure</h2>
+
+        <h3>Discovery Phase</h3>
+        <ul>
+            <li>50% upon contract signature</li>
+            <li>50% upon delivery of specification document</li>
+        </ul>
+
+        <h3>Delivery Phase</h3>
+        <p>Payment structure to be confirmed following discovery approval. Typical structure:</p>
+        <ul>
+            <li>[X]% upon delivery phase contract signature</li>
+            <li>[X]% upon design approval</li>
+            <li>[X]% upon development completion</li>
+            <li>[X]% upon successful launch</li>
+        </ul>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 18 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 19: INVESTMENT & COSTS - PART 4 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h2>What's Not Included</h2>
+
+        <p>To maintain clarity, the following sit outside this proposal scope:</p>
+
+        <p><strong>Video Production</strong></p>
+        <ul>
+            <li>Invesis will produce video content separately</li>
+            <li>We provide integration and optimisation only</li>
+        </ul>
+
+        <p><strong>Translation Services</strong></p>
+        <ul>
+            <li>Invesis team manages translations in-house</li>
+            <li>We provide technical multilingual infrastructure</li>
+        </ul>
+
+        <p><strong>Ongoing Hosting & Support</strong></p>
+        <ul>
+            <li>Covered under separate support arrangements</li>
+            <li>Reference previous hosting proposal</li>
+        </ul>
+
+        <p><strong>Post-Launch Content Management</strong></p>
+        <ul>
+            <li>Day-to-day content updates remain with Invesis team</li>
+            <li>Training and documentation provided to enable independence</li>
+        </ul>
+
+        <h2>Post-Launch Support</h2>
+
+        <p>Ongoing website hosting, maintenance, and support sit outside this project scope but are covered under our separate support proposal submitted [DATE].</p>
+
+        <p>That proposal includes:</p>
+        <ul>
+            <li><strong>Managed WordPress hosting</strong> with performance optimisation</li>
+            <li><strong>Security monitoring</strong> and updates</li>
+            <li><strong>Regular backups</strong> and disaster recovery</li>
+            <li><strong>Technical support</strong> for the marketing team</li>
+            <li><strong>Content assistance</strong> when needed</li>
+        </ul>
+
+        <p>We recommend reviewing both proposals together to understand the complete investment in the Invesis digital platform—project delivery and ongoing operational support.</p>
+
+        <h2>Investment Summary</h2>
+
+        <p>This website refresh represents strategic investment in the Invesis digital presence. The two-phase approach provides:</p>
+
+        <p><strong>Certainty</strong> - Fixed-cost discovery eliminates uncertainty before major investment</p>
+
+        <p><strong>Transparency</strong> - Clear breakdown of where investment goes and what it delivers</p>
+
+        <p><strong>Quality</strong> - Appropriate resource allocation across all project disciplines</p>
+
+        <p><strong>Value</strong> - Comprehensive solution addressing all identified requirements</p>
+
+        <p><strong>Flexibility</strong> - Discovery phase validates scope before commitment to full delivery</p>
+
+        <p>The investment supports Invesis's growth objectives across European markets, providing a platform that serves diverse stakeholder needs whilst empowering the marketing team with operational autonomy.</p>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 19 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 20: ABOUT TOTALLY - PART 1 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h1>About Totally</h1>
+
+        <p class="subtitle">Totally is a software and web development agency with over 24 years of proven expertise delivering enterprise-level digital platforms for organisations requiring institutional-grade quality and reliability.</p>
+
+        <h2>Who We Are</h2>
+
+        <p>We combine consultancy, bespoke software development, and design expertise to create digital propositions that drive measurable business outcomes. Operating from offices in Liverpool and London, we serve clients across the UK and internationally, delivering comprehensive technical solutions that enable organisational growth.</p>
+
+        <h2>Our Approach</h2>
+
+        <p>We don't simply build websites—we solve business challenges through considered digital strategy and expert technical delivery. This means understanding organisational objectives, stakeholder needs, and operational constraints before proposing solutions.</p>
+
+        <p>Our approach centres on:</p>
+
+        <ul>
+            <li><strong>Strategic thinking</strong> that aligns digital platforms with business objectives</li>
+            <li><strong>User-centred design</strong> creating experiences that serve diverse audiences effectively</li>
+            <li><strong>Technical excellence</strong> delivering robust, scalable, maintainable solutions</li>
+            <li><strong>Operational empowerment</strong> ensuring clients can manage platforms independently</li>
+            <li><strong>Long-term partnership</strong> supporting growth beyond initial delivery</li>
+        </ul>
+
+        <h2>Totally.Tech & Totally.Digital</h2>
+
+        <p>We operate as two complementary businesses under the Totally brand:</p>
+
+        <h3>Totally.Tech</h3>
+        <p>Our technology and development practice specialising in:</p>
+        <ul>
+            <li>Enterprise WordPress development</li>
+            <li>Bespoke software and application development</li>
+            <li>System integration and CRM implementation</li>
+            <li>Technical architecture and infrastructure</li>
+            <li>User experience and interface design</li>
+        </ul>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 20 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 21: ABOUT TOTALLY - PART 2 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h3>Totally.Digital</h3>
+        <p>Our digital marketing and performance practice delivering:</p>
+        <ul>
+            <li>Digital strategy and transformation</li>
+            <li>Search engine optimisation (SEO)</li>
+            <li>Paid advertising and performance marketing</li>
+            <li>Content marketing and strategy</li>
+            <li>Analytics and conversion optimisation</li>
+            <li>Digital visibility programmes</li>
+        </ul>
+
+        <p>This dual capability means we understand both sides of the digital equation—building platforms that perform technically whilst driving business results through strategic visibility and engagement.</p>
+
+        <h2>Core Capabilities</h2>
+
+        <p><strong>Digital Strategy & Consultancy</strong></p>
+        <p>Long-term planning, digital transformation roadmaps, and technical architecture design. We help organisations navigate complex digital landscapes and make informed technology decisions.</p>
+
+        <p><strong>Enterprise WordPress Development</strong></p>
+        <p>Scalable WordPress platforms with custom functionality, designed for operational autonomy and content management efficiency. We've delivered hundreds of WordPress projects across sectors.</p>
+
+        <p><strong>Bespoke Software Development</strong></p>
+        <p>Custom applications, platform integrations, and proprietary systems tailored to specific business requirements. From member portals to workflow automation tools.</p>
+
+        <p><strong>System Integration & CRM</strong></p>
+        <p>Direct API integrations, Salesforce implementations, and unified data architecture. Connecting disparate systems to create seamless operational workflows.</p>
+
+        <p><strong>User Experience & Interface Design</strong></p>
+        <p>Accessible and responsive design systems, from multilingual interfaces to complex enterprise portals. Design that serves user needs whilst reflecting brand identity.</p>
+
+        <p><strong>Performance, Accessibility & Security</strong></p>
+        <p>Robust infrastructure, WCAG compliance implementation, and continuous optimisation. Digital platforms that meet institutional standards.</p>
+
+        <p><strong>SEO & Digital Visibility</strong></p>
+        <p>Strategic search optimisation driving organic visibility. Technical SEO, content strategy, and ongoing performance improvement for long-term results.</p>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 21 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 22: ABOUT TOTALLY - PART 3 -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h2>Sector Experience</h2>
+
+        <p>Twenty-four years working across professional services, financial institutions, membership organisations, government bodies, and infrastructure sectors provides deep knowledge of complex stakeholder requirements.</p>
+
+        <h3>Relevant Experience Highlights</h3>
+
+        <p><strong>B2B & Professional Services</strong></p>
+        <p>We understand institutional communications requirements—demonstrating credibility, building stakeholder confidence, and maintaining professionalism across digital touchpoints.</p>
+
+        <p><strong>Infrastructure & Investment</strong></p>
+
+        <div class="case-study-box">
+            <h4>[Infrastructure Client Name]</h4>
+            <p>[Brief description of project scope - e.g., "Complete website redevelopment for [sector] infrastructure investment firm operating across [markets]."]</p>
+            <p>[Key outcomes and technologies used]</p>
+            <p class="case-study-meta">Sector: Infrastructure | Location: [Country] | Technology: WordPress, Multilingual</p>
+        </div>
+
+        <p><strong>Multilingual & International Platforms</strong></p>
+        <p>Experience delivering websites serving multiple markets with proper multilingual implementation, regional SEO, and cultural considerations.</p>
+
+        <div class="case-study-box">
+            <h4>[Multilingual Client Name]</h4>
+            <p>[Brief description of multilingual platform scope - e.g., "Multilingual platform serving [X] European markets with cascading language fallback and regional SEO."]</p>
+            <p>[Key outcomes and technical highlights]</p>
+            <p class="case-study-meta">Sector: [Sector] | Markets: [Countries] | Languages: [X] languages</p>
+        </div>
+
+        <p><strong>WordPress Redevelopment Projects</strong></p>
+
+        <div class="case-study-box">
+            <h4>[WordPress Client Name]</h4>
+            <p>[Brief description of WordPress redevelopment - e.g., "Complete WordPress rebuild for [organisation type] with component-based architecture and enhanced CMS capabilities."]</p>
+            <p>[Key outcomes and improvements delivered]</p>
+            <p class="case-study-meta">Sector: [Sector] | Type: WordPress Redevelopment | Features: [Key Features]</p>
+        </div>
+
+        <p><strong>Content Strategy & Transformation</strong></p>
+        <p>Working with specialist copywriters to refresh messaging whilst maintaining substance and credibility.</p>
+
+        <h2>Our Team & Network</h2>
+
+        <p>Our core team brings expertise across strategy, design, development, and digital marketing. For specialist requirements—such as infrastructure sector copywriting—we engage proven partners from our extensive network.</p>
+
+        <p>This network approach ensures the right expertise for each project whilst maintaining consistent Totally quality standards and project governance.</p>
+
+        <p><strong>Key Team Capabilities:</strong></p>
+        <ul>
+            <li>WordPress development and architecture</li>
+            <li>Multilingual site implementation</li>
+            <li>SEO and technical search optimisation</li>
+            <li>UI/UX design and user research</li>
+            <li>Project management and delivery</li>
+            <li>Digital strategy and consultancy</li>
+        </ul>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 22 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 23: ABOUT TOTALLY - PART 4 / CLOSING -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td><span class="header-text">Proposal for Invesis Ltd</span></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h2>Why Clients Choose Totally</h2>
+
+        <p><strong>Experience That Matters</strong></p>
+        <p>24 years delivering digital platforms means we've encountered most challenges before. We bring proven approaches rather than experimental solutions.</p>
+
+        <p><strong>Technical Excellence</strong></p>
+        <p>Robust, scalable, maintainable platforms built using best practices. We don't cut corners—institutional-grade quality requires proper technical implementation.</p>
+
+        <p><strong>Strategic Thinking</strong></p>
+        <p>Understanding business objectives and translating them into effective digital solutions. Technology serves strategy, not the other way around.</p>
+
+        <p><strong>Clear Communication</strong></p>
+        <p>Complex technical projects explained in accessible language. Regular updates, transparent timelines, and honest conversations about challenges and opportunities.</p>
+
+        <p><strong>Long-term Partnership</strong></p>
+        <p>Many clients work with us across multiple projects over years. We're invested in long-term success, not just initial delivery.</p>
+
+        <p><strong>Empowering Independence</strong></p>
+        <p>Platforms designed for client teams to manage independently. We provide training, documentation, and support—but clients shouldn't depend on us for routine operations.</p>
+
+        <h2>Our Commitment to Invesis</h2>
+
+        <p>This proposal represents more than technical capability—it represents commitment to understanding Invesis's unique position in infrastructure investment and delivering a platform that serves stakeholder needs whilst empowering the marketing team.</p>
+
+        <p>We propose working collaboratively through discovery to validate requirements, then delivering a website that modernises the Invesis digital presence whilst maintaining the credibility and professionalism the sector demands.</p>
+
+        <h2>Get in Touch</h2>
+
+        <p><strong>Totally</strong></p>
+
+        <p><strong>Web:</strong> totally.tech | totally.digital<br>
+        <strong>Email:</strong> hello@totally.group<br>
+        <strong>Phone:</strong> [Contact number]</p>
+
+        <p><em>This proposal remains valid for 30 days from the date of issue. We look forward to discussing how Totally can support Invesis's digital objectives.</em></p>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 23 | Confidential</div>
+    </div>
+</div>
+
+</body>
+</html>
