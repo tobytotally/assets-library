@@ -46,3 +46,12 @@ env/
 # Backup files
 *.bak
 *.backup
+
+# Logo processing - keep only client-centric structure
+assets/images/logos/variations/
+assets/images/logos/charity/
+assets/images/logos/commercial/
+assets/images/logos/technology/
+assets/images/logos/tools/
+assets/images/logos/accreditations/
+assets/images/logos/uncategorized/

@@ -1,0 +1,1502 @@
+{
+  "activecollab": {
+    "name": "Activecollab",
+    "category": "tools",
+    "source_category": "tools",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "against-breast-cancer": {
+    "name": "Against Breast Cancer",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "artwork-logo-1": {
+    "name": "Artwork Logo 1",
+    "category": "uncategorized",
+    "source_category": "uncategorized",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "aws": {
+    "name": "Aws",
+    "category": "technology",
+    "source_category": "accreditations",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "barbarians": {
+    "name": "Barbarians",
+    "category": "tools",
+    "source_category": "tools",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "bbc": {
+    "name": "Bbc",
+    "category": "technology",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "betway-group": {
+    "name": "Betway Group",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "biosynergy": {
+    "name": "Biosynergy",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "british-business-bank": {
+    "name": "British Business Bank",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "business-disability-forum": {
+    "name": "Business Disability Forum",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "catch22": {
+    "name": "Catch22",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "click": {
+    "name": "Click",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "clikd": {
+    "name": "Clikd",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "communication-trust": {
+    "name": "Communication Trust",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "crisis": {
+    "name": "Crisis",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "cyber-essentials-plus": {
+    "name": "Cyber Essentials Plus",
+    "category": "accreditations",
+    "source_category": "accreditations",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "enra": {
+    "name": "Enra",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "enra-group": {
+    "name": "Enra Group",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "enragroup": {
+    "name": "Enragroup",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "enterprise-finance": {
+    "name": "Enterprise Finance",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "enterprisefinance": {
+    "name": "Enterprisefinance",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "extracted-logo-1": {
+    "name": "Extracted Logo 1",
+    "category": "uncategorized",
+    "source_category": "uncategorized",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "extracted-logo-2": {
+    "name": "Extracted Logo 2",
+    "category": "uncategorized",
+    "source_category": "uncategorized",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "extracted-logo-3": {
+    "name": "Extracted Logo 3",
+    "category": "uncategorized",
+    "source_category": "uncategorized",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "family-lives": {
+    "name": "Family Lives",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "figma": {
+    "name": "Figma",
+    "category": "tools",
+    "source_category": "tools",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "firefighters-charity": {
+    "name": "Firefighters Charity",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "fis": {
+    "name": "Fis",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "furness": {
+    "name": "Furness",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "galliard-homes": {
+    "name": "Galliard Homes",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "galliardhomes": {
+    "name": "Galliardhomes",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "gamcare": {
+    "name": "Gamcare",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "genpact": {
+    "name": "Genpact",
+    "category": "technology",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "google-partner": {
+    "name": "Google Partner",
+    "category": "accreditations",
+    "source_category": "accreditations",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "hive": {
+    "name": "Hive",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "hm-government-g-cloud-supplier": {
+    "name": "Hm Government G Cloud Supplier",
+    "category": "accreditations",
+    "source_category": "accreditations",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "holocaustexplained": {
+    "name": "Holocaustexplained",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "hqip": {
+    "name": "Hqip",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "hta": {
+    "name": "Hta",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "ifac": {
+    "name": "Ifac",
+    "category": "accreditations",
+    "source_category": "accreditations",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "image1": {
+    "name": "Image1",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "image10": {
+    "name": "Image10",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "image14": {
+    "name": "Image14",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "image2": {
+    "name": "Image2",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "portrait",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "portrait"
+    ]
+  },
+  "image5": {
+    "name": "Image5",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "inclusive-tech-alliance-member": {
+    "name": "Inclusive Tech Alliance Member",
+    "category": "accreditations",
+    "source_category": "accreditations",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "instagantt": {
+    "name": "Instagantt",
+    "category": "tools",
+    "source_category": "tools",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "instapay": {
+    "name": "Instapay",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "jira-software": {
+    "name": "Jira Software",
+    "category": "tools",
+    "source_category": "tools",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "jp-morgan": {
+    "name": "Jp Morgan",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "jpmorgan": {
+    "name": "Jpmorgan",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "leonard-cheshire": {
+    "name": "Leonard Cheshire",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "leonardcheshire": {
+    "name": "Leonardcheshire",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "marie-stopes": {
+    "name": "Marie Stopes",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "mc-saatchi": {
+    "name": "Mc Saatchi",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "mc-saatchi-performance": {
+    "name": "Mc Saatchi Performance",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "msi-reproductive-choices": {
+    "name": "Msi Reproductive Choices",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "national-garden-scheme": {
+    "name": "National Garden Scheme",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "national-open-garden-scheme": {
+    "name": "National Open Garden Scheme",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "nelson-mandela-cf": {
+    "name": "Nelson Mandela Cf",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "nelson-mandela-childrens-fund": {
+    "name": "Nelson Mandela Childrens Fund",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "nhs": {
+    "name": "Nhs",
+    "category": "technology",
+    "source_category": "technology",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "pogo": {
+    "name": "Pogo",
+    "category": "technology",
+    "source_category": "technology",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "premier-explore": {
+    "name": "Premier Explore",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "resolution-foundation": {
+    "name": "Resolution Foundation",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "riskhub": {
+    "name": "Riskhub",
+    "category": "technology",
+    "source_category": "technology",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "save-the-rhino": {
+    "name": "Save The Rhino",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "share-to-buy": {
+    "name": "Share To Buy",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "share-to-buy-logo": {
+    "name": "Share To Buy Logo",
+    "category": "uncategorized",
+    "source_category": "uncategorized",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "share-to-buy-logo-extracted-alt1": {
+    "name": "Share To Buy Logo Extracted Alt1",
+    "category": "uncategorized",
+    "source_category": "uncategorized",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "share-to-buy-logo-extracted-alt2": {
+    "name": "Share To Buy Logo Extracted Alt2",
+    "category": "uncategorized",
+    "source_category": "uncategorized",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "share-to-buy-logo-extracted-primary": {
+    "name": "Share To Buy Logo Extracted Primary",
+    "category": "uncategorized",
+    "source_category": "uncategorized",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "slack": {
+    "name": "Slack",
+    "category": "tools",
+    "source_category": "tools",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "sonhaus": {
+    "name": "Sonhaus",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "specsavers": {
+    "name": "Specsavers",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "start-up-loans": {
+    "name": "Start Up Loans",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "stewart-signs": {
+    "name": "Stewart Signs",
+    "category": "technology",
+    "source_category": "technology",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "stewartsigns": {
+    "name": "Stewartsigns",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "stowe-family-law": {
+    "name": "Stowe Family Law",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "stowefamilylaw": {
+    "name": "Stowefamilylaw",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "the-communication-trust": {
+    "name": "The Communication Trust",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "the-hive-london": {
+    "name": "The Hive London",
+    "category": "technology",
+    "source_category": "technology",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "the-holocaust-explained": {
+    "name": "The Holocaust Explained",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "the-totally-football-show": {
+    "name": "The Totally Football Show",
+    "category": "commercial",
+    "source_category": "technology",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "the-us": {
+    "name": "The Us",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "portrait",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "portrait"
+    ]
+  },
+  "the-wallace-collection": {
+    "name": "The Wallace Collection",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "toggl-track": {
+    "name": "Toggl Track",
+    "category": "tools",
+    "source_category": "tools",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "tsp": {
+    "name": "Tsp",
+    "category": "technology",
+    "source_category": "technology",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "ttfs": {
+    "name": "Ttfs",
+    "category": "commercial",
+    "source_category": "uncategorized",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "txone": {
+    "name": "Txone",
+    "category": "technology",
+    "source_category": "technology",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "txone-networks": {
+    "name": "Txone Networks",
+    "category": "technology",
+    "source_category": "technology",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "vicone": {
+    "name": "Vicone",
+    "category": "technology",
+    "source_category": "commercial",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "wallacecollection": {
+    "name": "Wallacecollection",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "war-memorials-trust": {
+    "name": "War Memorials Trust",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "warmemorialstrust": {
+    "name": "Warmemorialstrust",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "wecaregroup": {
+    "name": "Wecaregroup",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "square",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "square"
+    ]
+  },
+  "westone": {
+    "name": "Westone",
+    "category": "commercial",
+    "source_category": "commercial",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "yesref": {
+    "name": "Yesref",
+    "category": "technology",
+    "source_category": "technology",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "youth-ink": {
+    "name": "Youth Ink",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  },
+  "youthink": {
+    "name": "Youthink",
+    "category": "charity",
+    "source_category": "charity",
+    "layout_type": "landscape",
+    "variations": [
+      "original",
+      "trimmed",
+      "white",
+      "black",
+      "icon-512",
+      "icon-1024",
+      "landscape"
+    ]
+  }
+}
