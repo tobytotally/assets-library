@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Library - Logo Assets</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Fira Sans", Calibri, Arial, sans-serif;
+            padding: 20pt;
+            background: #f0f0f0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 35.4pt;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 32pt;
+            border-left: 6pt solid #ffcd00;
+            padding-left: 12pt;
+            margin-bottom: 20pt;
+            margin-top: 0;
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 15pt;
+            margin-bottom: 20pt;
+            padding: 15pt;
+            background: #f9f9f9;
+            border: 1pt solid #e0e0e0;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10pt;
+            font-size: 12pt;
+            border: 1pt solid #d0d0d0;
+            border-radius: 3pt;
+            font-family: inherit;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 8pt;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8pt 15pt;
+            background: #ffffff;
+            border: 1pt solid #d0d0d0;
+            cursor: pointer;
+            font-size: 11pt;
+            border-radius: 3pt;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: #f5f5f5;
+        }
+
+        .filter-btn.active {
+            background: #ffcd00;
+            border-color: #ffcd00;
+            font-weight: 700;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 5pt;
+        }
+
+        .view-btn {
+            padding: 8pt 12pt;
+            background: #ffffff;
+            border: 1pt solid #d0d0d0;
+            cursor: pointer;
+            font-size: 11pt;
+            transition: all 0.2s;
+        }
+
+        .view-btn.active {
+            background: #4472c4;
+            color: #ffffff;
+            border-color: #4472c4;
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 20pt;
+            margin-bottom: 20pt;
+            padding: 12pt;
+            background: #fffbf0;
+            border-left: 4pt solid #ffcd00;
+            font-size: 11pt;
+        }
+
+        .stat {
+            font-weight: 700;
+        }
+
+        .clients-container {
+            border: 1pt solid #e0e0e0;
+        }
+
+        /* Folder Explorer View */
+        .client-folder {
+            border-bottom: 1pt solid #e0e0e0;
+        }
+
+        .client-folder:last-child {
+            border-bottom: none;
+        }
+
+        .folder-header {
+            display: flex;
+            align-items: center;
+            padding: 12pt 15pt;
+            cursor: pointer;
+            background: #ffffff;
+            transition: background 0.2s;
+            user-select: none;
+        }
+
+        .folder-header:hover {
+            background: #f9f9f9;
+        }
+
+        .folder-toggle {
+            width: 20pt;
+            height: 20pt;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10pt;
+            font-size: 10pt;
+            color: #666666;
+            transition: transform 0.2s;
+        }
+
+        .folder-header.expanded .folder-toggle {
+            transform: rotate(90deg);
+        }
+
+        .folder-icon {
+            width: 18pt;
+            height: 18pt;
+            margin-right: 10pt;
+            color: #ffcd00;
+            font-size: 16pt;
+        }
+
+        .folder-name {
+            flex: 1;
+            font-weight: 500;
+            font-size: 13pt;
+            color: #2f2f2f;
+        }
+
+        .folder-category {
+            padding: 3pt 8pt;
+            background: #e0e0e0;
+            font-size: 9pt;
+            border-radius: 3pt;
+            margin-right: 10pt;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .folder-category.charity { background: #d4edda; color: #155724; }
+        .folder-category.commercial { background: #d1ecf1; color: #0c5460; }
+        .folder-category.technology { background: #d6d8db; color: #383d41; }
+        .folder-category.accreditations { background: #fff3cd; color: #856404; }
+        .folder-category.tools { background: #f8d7da; color: #721c24; }
+        .folder-category.uncategorized { background: #e2e3e5; color: #383d41; }
+
+        .favorite-btn {
+            width: 30pt;
+            height: 30pt;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16pt;
+            color: #d0d0d0;
+            transition: color 0.2s;
+        }
+
+        .favorite-btn:hover {
+            color: #ffcd00;
+        }
+
+        .favorite-btn.favorited {
+            color: #ffcd00;
+        }
+
+        .folder-content {
+            display: none;
+            padding: 20pt;
+            background: #fafafa;
+        }
+
+        .folder-content.expanded {
+            display: block;
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150pt, 1fr));
+            gap: 15pt;
+        }
+
+        .logo-item {
+            background: #f5f5f5;
+            border: 1pt solid #e0e0e0;
+            padding: 15pt;
+            text-align: center;
+            transition: all 0.2s;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-item:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-color: #ffcd00;
+        }
+
+        .logo-preview {
+            width: 100%;
+            height: 100pt;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10pt;
+            background: #f5f5f5;
+            padding: 10pt;
+        }
+
+        .logo-preview img {
+            display: block;
+            max-width: calc(100% - 20pt);
+            max-height: calc(100% - 20pt);
+            background: #ffffff;
+            padding: 2pt;
+        }
+
+        /* Black background for white logo variations */
+        .logo-item[data-variant="white"] .logo-preview img {
+            background: #000000;
+        }
+
+        .logo-label {
+            font-size: 9pt;
+            color: #666666;
+            margin-bottom: 5pt;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .copy-btn {
+            display: inline-block;
+            padding: 5pt 10pt;
+            background: #4472c4;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-size: 9pt;
+            border-radius: 3pt;
+            margin-top: 5pt;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #2f5496;
+        }
+
+        .copy-btn.copied {
+            background: #44c477;
+        }
+
+        /* Grid View */
+        .grid-view .clients-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200pt, 1fr));
+            gap: 15pt;
+            border: none;
+        }
+
+        .grid-view .client-folder {
+            border: 1pt solid #e0e0e0;
+            background: #f5f5f5;
+            transition: all 0.2s;
+        }
+
+        .grid-view .client-folder:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .grid-view .folder-header {
+            flex-direction: column;
+            text-align: center;
+            padding: 15pt;
+        }
+
+        .grid-view .folder-header .logo-preview {
+            background: #f5f5f5;
+        }
+
+        .grid-view .folder-toggle {
+            display: none;
+        }
+
+        .grid-view .folder-name {
+            margin-top: 8pt;
+            font-size: 11pt;
+        }
+
+        .grid-view .folder-category {
+            position: absolute;
+            top: 8pt;
+            right: 8pt;
+            margin: 0;
+        }
+
+        .grid-view .favorite-btn {
+            position: absolute;
+            top: 5pt;
+            left: 5pt;
+        }
+
+        .grid-view .folder-content {
+            padding: 15pt;
+        }
+
+        .grid-view .logo-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 8pt;
+        }
+
+        .grid-view .logo-preview {
+            height: 80pt;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            padding: 30pt;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15pt;
+            right: 15pt;
+            font-size: 24pt;
+            cursor: pointer;
+            color: #666666;
+            width: 30pt;
+            height: 30pt;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            color: #2f2f2f;
+        }
+
+        .modal-title {
+            font-size: 18pt;
+            font-weight: 700;
+            margin-bottom: 15pt;
+            padding-right: 40pt;
+        }
+
+        .modal-variations {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200pt, 1fr));
+            gap: 15pt;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40pt;
+            color: #666666;
+            font-size: 14pt;
+        }
+
+        .error {
+            text-align: center;
+            padding: 40pt;
+            color: #c44444;
+            font-size: 14pt;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40pt;
+            color: #666666;
+            font-size: 14pt;
+        }
+
+        .info-box {
+            background-color: #f0f5ff;
+            border-left: 4pt solid #4472c4;
+            padding: 15pt;
+            margin-bottom: 20pt;
+            font-size: 11pt;
+        }
+
+        .info-box p {
+            margin: 5pt 0;
+        }
+
+        .info-box strong {
+            color: #2f2f2f;
+        }
+
+        /* Tags */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5pt;
+            margin-right: 10pt;
+            align-items: center;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 3pt 8pt;
+            background: #e0f2ff;
+            color: #0c5460;
+            font-size: 9pt;
+            border-radius: 3pt;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .tag-edit {
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .tag-edit:hover {
+            background: #b3d9ff;
+        }
+
+        .tag-remove {
+            margin-left: 5pt;
+            color: #c44444;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .add-tag-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20pt;
+            height: 20pt;
+            background: #4472c4;
+            color: #ffffff;
+            border-radius: 3pt;
+            cursor: pointer;
+            font-size: 14pt;
+            line-height: 1;
+            transition: background 0.2s;
+        }
+
+        .add-tag-btn:hover {
+            background: #2f5496;
+        }
+
+        .tag-input {
+            padding: 5pt 8pt;
+            font-size: 9pt;
+            border: 1pt solid #d0d0d0;
+            border-radius: 3pt;
+            font-family: inherit;
+            width: 100pt;
+        }
+
+        .tag-save-btn {
+            padding: 5pt 10pt;
+            background: #44c477;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-size: 9pt;
+            border-radius: 3pt;
+            margin-left: 5pt;
+        }
+
+        .tag-cancel-btn {
+            padding: 5pt 10pt;
+            background: #c44444;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-size: 9pt;
+            border-radius: 3pt;
+            margin-left: 3pt;
+        }
+
+        /* Tag filter in toolbar */
+        .tag-filter-container {
+            display: flex;
+            align-items: center;
+            gap: 8pt;
+            padding: 8pt;
+            background: #f0f5ff;
+            border-radius: 3pt;
+            flex-wrap: wrap;
+        }
+
+        .tag-filter-label {
+            font-size: 10pt;
+            font-weight: 600;
+            color: #2f2f2f;
+        }
+
+        .tag-filter-chip {
+            padding: 5pt 10pt;
+            background: #ffffff;
+            border: 1pt solid #d0d0d0;
+            cursor: pointer;
+            font-size: 10pt;
+            border-radius: 3pt;
+            transition: all 0.2s;
+        }
+
+        .tag-filter-chip:hover {
+            background: #f5f5f5;
+        }
+
+        .tag-filter-chip.active {
+            background: #4472c4;
+            color: #ffffff;
+            border-color: #4472c4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📁 Image Library</h1>
+
+    <div class="info-box">
+        <p><strong>Client Logo Assets</strong> – All logos are hosted on GitHub CDN and accessible via direct URLs.</p>
+        <p><strong>Variations:</strong> Each client has 7 logo variations: original, trimmed, white, black, icon-512, icon-1024, and layout (landscape/portrait/square).</p>
+        <p><strong>Usage:</strong> Click on any logo to view all variations and copy the GitHub CDN URL.</p>
+        <p><strong>Tagging:</strong> Click the <strong>+</strong> button next to any client to add tags. Tags help with proposal automation and filtering.
+        <button onclick="loadInitialTags()" style="padding: 5pt 10pt; margin-left: 10pt; background: #4472c4; color: white; border: none; cursor: pointer; border-radius: 3pt; font-size: 10pt;">Load Initial Tags</button>
+        <button onclick="exportTags()" style="padding: 5pt 10pt; margin-left: 5pt; background: #44c477; color: white; border: none; cursor: pointer; border-radius: 3pt; font-size: 10pt;">Export Tags</button>
+        </p>
+    </div>
+
+    <div class="toolbar">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search clients by name...">
+        </div>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="charity">Charity</button>
+            <button class="filter-btn" data-category="commercial">Commercial</button>
+            <button class="filter-btn" data-category="technology">Technology</button>
+            <button class="filter-btn" data-category="accreditations">Accreditations</button>
+            <button class="filter-btn" data-category="tools">Tools</button>
+            <button class="filter-btn" data-category="uncategorized">Uncategorized</button>
+            <button class="filter-btn" data-category="favorites">⭐ Favorites</button>
+        </div>
+
+        <div class="view-toggle">
+            <button class="view-btn active" data-view="list">📋 List</button>
+            <button class="view-btn" data-view="grid">📊 Grid</button>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div><span class="stat" id="totalClients">0</span> Clients</div>
+        <div><span class="stat" id="filteredClients">0</span> Showing</div>
+        <div><span class="stat" id="favoritesCount">0</span> Favorites</div>
+    </div>
+
+    <div id="tagFilterContainer" class="tag-filter-container" style="display: none;">
+        <span class="tag-filter-label">Filter by Tags:</span>
+        <div id="tagFilterChips"></div>
+    </div>
+
+    <div id="clientsContainer" class="clients-container">
+        <div class="loading">Loading client logos...</div>
+    </div>
+
+</div>
+
+<!-- Modal for Logo Variations -->
+<div id="logoModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <div class="modal-title" id="modalTitle">Client Name</div>
+        <div class="modal-variations" id="modalVariations">
+            <!-- Variations will be inserted here -->
+        </div>
+    </div>
+</div>
+
+<script>
+// Configuration
+const BASE_URL = 'https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/';
+const LOGO_DATA_URL = 'https://raw.githubusercontent.com/tobytotally/assets-library/main/docs/logo-urls.json';
+
+// State
+let allClients = [];
+let favorites = new Set(JSON.parse(localStorage.getItem('logoFavorites') || '[]'));
+let clientTags = JSON.parse(localStorage.getItem('clientTags') || '{}');
+let currentCategory = 'all';
+let currentView = 'list';
+let searchTerm = '';
+let activeTagFilters = new Set();
+
+// Fetch logo data
+async function loadLogoData() {
+    try {
+        const response = await fetch(LOGO_DATA_URL);
+        if (!response.ok) throw new Error('Failed to fetch logo data');
+        const data = await response.json();
+
+        // Transform data into flat array
+        allClients = Object.entries(data.clients).map(([name, client]) => ({
+            name: name,
+            displayName: client.name,
+            category: client.category,
+            urls: client.urls
+        }));
+
+        // Sort alphabetically
+        allClients.sort((a, b) => a.displayName.localeCompare(b.displayName));
+
+        renderClients();
+        updateStats();
+    } catch (error) {
+        document.getElementById('clientsContainer').innerHTML = `
+            <div class="error">
+                <p>Failed to load logo library.</p>
+                <p style="font-size: 11pt; margin-top: 10pt;">Error: ${error.message}</p>
+            </div>
+        `;
+    }
+}
+
+// Filter clients
+function getFilteredClients() {
+    return allClients.filter(client => {
+        // Category filter
+        if (currentCategory === 'favorites') {
+            if (!favorites.has(client.name)) return false;
+        } else if (currentCategory !== 'all') {
+            if (client.category !== currentCategory) return false;
+        }
+
+        // Tag filter
+        if (activeTagFilters.size > 0) {
+            const clientTagList = clientTags[client.name] || [];
+            const hasMatchingTag = [...activeTagFilters].some(tag => clientTagList.includes(tag));
+            if (!hasMatchingTag) return false;
+        }
+
+        // Search filter
+        if (searchTerm) {
+            const search = searchTerm.toLowerCase();
+            const clientTagList = clientTags[client.name] || [];
+            return client.displayName.toLowerCase().includes(search) ||
+                   client.name.toLowerCase().includes(search) ||
+                   client.category.toLowerCase().includes(search) ||
+                   clientTagList.some(tag => tag.toLowerCase().includes(search));
+        }
+
+        return true;
+    });
+}
+
+// Render clients
+function renderClients() {
+    const container = document.getElementById('clientsContainer');
+    const filteredClients = getFilteredClients();
+
+    if (filteredClients.length === 0) {
+        container.innerHTML = '<div class="no-results">No clients found matching your criteria.</div>';
+        return;
+    }
+
+    if (currentView === 'list') {
+        renderListView(container, filteredClients);
+    } else {
+        renderGridView(container, filteredClients);
+    }
+
+    updateStats();
+}
+
+// Render list view
+function renderListView(container, clients) {
+    container.className = 'clients-container';
+    container.innerHTML = clients.map(client => `
+        <div class="client-folder" data-client="${client.name}">
+            <div class="folder-header" onclick="toggleFolder('${client.name}')">
+                <div class="folder-toggle">▶</div>
+                <div class="folder-icon">📁</div>
+                <div class="folder-name">${client.displayName}</div>
+                ${renderTags(client.name)}
+                <div class="folder-category ${client.category}">${client.category}</div>
+                <div class="favorite-btn ${favorites.has(client.name) ? 'favorited' : ''}"
+                     onclick="toggleFavorite(event, '${client.name}')">★</div>
+            </div>
+            <div class="folder-content">
+                <div class="logo-grid">
+                    ${renderLogoVariations(client)}
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Render grid view
+function renderGridView(container, clients) {
+    container.className = 'clients-container grid-view';
+    container.innerHTML = clients.map(client => `
+        <div class="client-folder" data-client="${client.name}">
+            <div class="folder-header" onclick="openModal('${client.name}')">
+                <div class="folder-category ${client.category}">${client.category}</div>
+                <div class="favorite-btn ${favorites.has(client.name) ? 'favorited' : ''}"
+                     onclick="toggleFavorite(event, '${client.name}')">★</div>
+                <div class="logo-preview">
+                    <img src="${client.urls.original}" alt="${client.displayName}" loading="lazy">
+                </div>
+                <div class="folder-name">${client.displayName}</div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Render logo variations
+function renderLogoVariations(client) {
+    const variations = [
+        { key: 'original', label: 'Original' },
+        { key: 'trimmed', label: 'Trimmed' },
+        { key: 'white', label: 'White' },
+        { key: 'black', label: 'Black' },
+        { key: 'icon512', label: 'Icon 512' },
+        { key: 'icon1024', label: 'Icon 1024' },
+        { key: 'layout', label: 'Layout' }
+    ];
+
+    return variations.map(variant => `
+        <div class="logo-item" data-variant="${variant.key}" onclick="copyUrl('${client.urls[variant.key]}', event)">
+            <div class="logo-preview">
+                <img src="${client.urls[variant.key]}" alt="${client.displayName} - ${variant.label}" loading="lazy">
+            </div>
+            <div class="logo-label">${variant.label}</div>
+            <button class="copy-btn" onclick="copyUrl('${client.urls[variant.key]}', event)">Copy URL</button>
+        </div>
+    `).join('');
+}
+
+// Toggle folder expand/collapse
+function toggleFolder(clientName) {
+    const folder = document.querySelector(`.client-folder[data-client="${clientName}"]`);
+    const header = folder.querySelector('.folder-header');
+    const content = folder.querySelector('.folder-content');
+
+    header.classList.toggle('expanded');
+    content.classList.toggle('expanded');
+}
+
+// Toggle favorite
+function toggleFavorite(event, clientName) {
+    event.stopPropagation();
+
+    if (favorites.has(clientName)) {
+        favorites.delete(clientName);
+    } else {
+        favorites.add(clientName);
+    }
+
+    localStorage.setItem('logoFavorites', JSON.stringify([...favorites]));
+    renderClients();
+}
+
+// Copy URL to clipboard
+function copyUrl(url, event) {
+    event.stopPropagation();
+
+    navigator.clipboard.writeText(url).then(() => {
+        const btn = event.target.closest('.copy-btn');
+        if (btn) {
+            btn.textContent = '✓ Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copy URL';
+                btn.classList.remove('copied');
+            }, 2000);
+        }
+    });
+}
+
+// Open modal
+function openModal(clientName) {
+    const client = allClients.find(c => c.name === clientName);
+    if (!client) return;
+
+    document.getElementById('modalTitle').textContent = client.displayName;
+    document.getElementById('modalVariations').innerHTML = renderLogoVariations(client);
+    document.getElementById('logoModal').classList.add('active');
+}
+
+// Close modal
+document.getElementById('modalClose').addEventListener('click', () => {
+    document.getElementById('logoModal').classList.remove('active');
+});
+
+document.getElementById('logoModal').addEventListener('click', (e) => {
+    if (e.target.id === 'logoModal') {
+        document.getElementById('logoModal').classList.remove('active');
+    }
+});
+
+// Update stats
+function updateStats() {
+    document.getElementById('totalClients').textContent = allClients.length;
+    document.getElementById('filteredClients').textContent = getFilteredClients().length;
+    document.getElementById('favoritesCount').textContent = favorites.size;
+}
+
+// Search handler
+document.getElementById('searchInput').addEventListener('input', (e) => {
+    searchTerm = e.target.value;
+    renderClients();
+});
+
+// Category filter handlers
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCategory = btn.dataset.category;
+        renderClients();
+    });
+});
+
+// View toggle handlers
+document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentView = btn.dataset.view;
+        renderClients();
+    });
+});
+
+// Render tags for a client
+function renderTags(clientName) {
+    const tags = clientTags[clientName] || [];
+    const tagsHtml = tags.map(tag => `
+        <span class="tag tag-edit" onclick="removeTag(event, '${clientName}', '${tag}')">${tag} <span class="tag-remove">×</span></span>
+    `).join('');
+
+    return `
+        <div class="tags-container">
+            ${tagsHtml}
+            <span class="add-tag-btn" onclick="showAddTagInput(event, '${clientName}')">+</span>
+        </div>
+    `;
+}
+
+// Show add tag input
+function showAddTagInput(event, clientName) {
+    event.stopPropagation();
+
+    const btn = event.target;
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'tag-input';
+    input.placeholder = 'Tag name...';
+
+    const saveBtn = document.createElement('button');
+    saveBtn.className = 'tag-save-btn';
+    saveBtn.textContent = '✓';
+
+    const cancelBtn = document.createElement('button');
+    cancelBtn.className = 'tag-cancel-btn';
+    cancelBtn.textContent = '×';
+
+    const container = btn.parentElement;
+    btn.style.display = 'none';
+    container.appendChild(input);
+    container.appendChild(saveBtn);
+    container.appendChild(cancelBtn);
+
+    input.focus();
+
+    const cancel = () => {
+        input.remove();
+        saveBtn.remove();
+        cancelBtn.remove();
+        btn.style.display = '';
+    };
+
+    const save = () => {
+        const tagName = input.value.trim();
+        if (tagName) {
+            addTag(clientName, tagName);
+        }
+        cancel();
+    };
+
+    saveBtn.onclick = (e) => {
+        e.stopPropagation();
+        save();
+    };
+
+    cancelBtn.onclick = (e) => {
+        e.stopPropagation();
+        cancel();
+    };
+
+    input.onkeydown = (e) => {
+        e.stopPropagation();
+        if (e.key === 'Enter') save();
+        if (e.key === 'Escape') cancel();
+    };
+}
+
+// Add tag to client
+function addTag(clientName, tagName) {
+    if (!clientTags[clientName]) {
+        clientTags[clientName] = [];
+    }
+
+    if (!clientTags[clientName].includes(tagName)) {
+        clientTags[clientName].push(tagName);
+        localStorage.setItem('clientTags', JSON.stringify(clientTags));
+        renderClients();
+        updateTagFilters();
+    }
+}
+
+// Remove tag from client
+function removeTag(event, clientName, tagName) {
+    event.stopPropagation();
+
+    if (clientTags[clientName]) {
+        clientTags[clientName] = clientTags[clientName].filter(t => t !== tagName);
+        if (clientTags[clientName].length === 0) {
+            delete clientTags[clientName];
+        }
+        localStorage.setItem('clientTags', JSON.stringify(clientTags));
+        renderClients();
+        updateTagFilters();
+    }
+}
+
+// Get all unique tags
+function getAllTags() {
+    const tags = new Set();
+    Object.values(clientTags).forEach(clientTagList => {
+        clientTagList.forEach(tag => tags.add(tag));
+    });
+    return [...tags].sort();
+}
+
+// Update tag filter chips
+function updateTagFilters() {
+    const allTags = getAllTags();
+    const container = document.getElementById('tagFilterContainer');
+    const chipsContainer = document.getElementById('tagFilterChips');
+
+    if (allTags.length === 0) {
+        container.style.display = 'none';
+        return;
+    }
+
+    container.style.display = 'flex';
+    chipsContainer.innerHTML = allTags.map(tag => `
+        <span class="tag-filter-chip ${activeTagFilters.has(tag) ? 'active' : ''}"
+              onclick="toggleTagFilter('${tag}')">${tag}</span>
+    `).join('');
+}
+
+// Toggle tag filter
+function toggleTagFilter(tagName) {
+    if (activeTagFilters.has(tagName)) {
+        activeTagFilters.delete(tagName);
+    } else {
+        activeTagFilters.add(tagName);
+    }
+    renderClients();
+    updateTagFilters();
+}
+
+// Export tags as JSON
+function exportTags() {
+    const dataStr = JSON.stringify(clientTags, null, 2);
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'client-tags-export.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+// Import tags from JSON
+function importTags(jsonData) {
+    try {
+        const imported = JSON.parse(jsonData);
+        clientTags = { ...clientTags, ...imported };
+        localStorage.setItem('clientTags', JSON.stringify(clientTags));
+        renderClients();
+        updateTagFilters();
+        return true;
+    } catch (e) {
+        console.error('Failed to import tags:', e);
+        return false;
+    }
+}
+
+// Load initial tags from GitHub
+async function loadInitialTags() {
+    const confirm = window.confirm('Load initial tag set? This will merge with your existing tags (not replace them).');
+    if (!confirm) return;
+
+    try {
+        const response = await fetch('https://raw.githubusercontent.com/tobytotally/assets-library/main/initial-client-tags.json');
+        if (!response.ok) throw new Error('Failed to fetch initial tags');
+        const data = await response.json();
+
+        // Merge with existing tags
+        Object.entries(data).forEach(([clientName, tags]) => {
+            if (!clientTags[clientName]) {
+                clientTags[clientName] = [];
+            }
+            // Add new tags, avoiding duplicates
+            tags.forEach(tag => {
+                if (!clientTags[clientName].includes(tag)) {
+                    clientTags[clientName].push(tag);
+                }
+            });
+        });
+
+        localStorage.setItem('clientTags', JSON.stringify(clientTags));
+        renderClients();
+        updateTagFilters();
+        alert('Initial tags loaded successfully!');
+    } catch (error) {
+        alert('Failed to load initial tags: ' + error.message);
+        console.error('Load initial tags error:', error);
+    }
+}
+
+// Initialize
+loadLogoData();
+</script>
+
+</body>
+</html>
