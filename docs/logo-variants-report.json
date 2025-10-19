@@ -1,0 +1,206 @@
+{
+  "clients_with_multiple": [
+    {
+      "client": "globalcom",
+      "source_files": 2,
+      "svg_files": 0,
+      "variants_found": [
+        {
+          "path": "C:\\Users\\toby\\Documents\\document-cloud\\totally-assets\\assets-library\\assets\\images\\logos\\clients\\globalcom\\GlobalPR.png",
+          "filename": "GlobalPR.png",
+          "width": 800,
+          "height": 800,
+          "ratio": 1.0,
+          "layout": "square",
+          "colors": 2040,
+          "has_transparency": true,
+          "file_size": 152501,
+          "megapixels": 0.64
+        },
+        {
+          "path": "C:\\Users\\toby\\Documents\\document-cloud\\totally-assets\\assets-library\\assets\\images\\logos\\clients\\globalcom\\Logo_GlobalComPR_Network_two_lines_RGB_300x332px_orange.png",
+          "filename": "Logo_GlobalComPR_Network_two_lines_RGB_300x332px_orange.png",
+          "width": 300,
+          "height": 332,
+          "ratio": 0.9,
+          "layout": "square",
+          "colors": 16,
+          "has_transparency": true,
+          "file_size": 11609,
+          "megapixels": 0.1
+        }
+      ],
+      "layouts_available": [
+        "square"
+      ],
+      "recommendations": {
+        "landscape": {
+          "use": "GlobalPR.png",
+          "reason": "800\u00d7800 (square layout, 0.64MP)"
+        },
+        "portrait": {
+          "use": "Logo_GlobalComPR_Network_two_lines_RGB_300x332px_orange.png",
+          "reason": "300\u00d7332 (square layout, 0.1MP)"
+        },
+        "square": {
+          "use": "GlobalPR.png",
+          "reason": "800\u00d7800 (square layout, 0.64MP)"
+        }
+      },
+      "has_multiple_variants": true,
+      "primary_recommendation": "GlobalPR.png"
+    },
+    {
+      "client": "nikon",
+      "source_files": 2,
+      "svg_files": 1,
+      "variants_found": [
+        {
+          "path": "C:\\Users\\toby\\Documents\\document-cloud\\totally-assets\\assets-library\\assets\\images\\logos\\clients\\nikon\\image57.png",
+          "filename": "image57.png",
+          "width": 130,
+          "height": 107,
+          "ratio": 1.21,
+          "layout": "square",
+          "colors": 1693,
+          "has_transparency": true,
+          "file_size": 7986,
+          "megapixels": 0.01
+        },
+        {
+          "path": "C:\\Users\\toby\\Documents\\document-cloud\\totally-assets\\assets-library\\assets\\images\\logos\\clients\\nikon\\Nikon.png",
+          "filename": "Nikon.png",
+          "width": 800,
+          "height": 800,
+          "ratio": 1.0,
+          "layout": "square",
+          "colors": 1152,
+          "has_transparency": true,
+          "file_size": 57099,
+          "megapixels": 0.64
+        }
+      ],
+      "layouts_available": [
+        "square"
+      ],
+      "recommendations": {
+        "landscape": {
+          "use": "image57.png",
+          "reason": "130\u00d7107 (square layout, 0.01MP)"
+        },
+        "portrait": {
+          "use": "Nikon.png",
+          "reason": "800\u00d7800 (square layout, 0.64MP)"
+        },
+        "square": {
+          "use": "Nikon.png",
+          "reason": "800\u00d7800 (square layout, 0.64MP)"
+        }
+      },
+      "has_multiple_variants": true,
+      "primary_recommendation": "Nikon.png"
+    }
+  ],
+  "clients_missing_layouts": [
+    {
+      "client": "globalcom",
+      "source_files": 2,
+      "svg_files": 0,
+      "variants_found": [
+        {
+          "path": "C:\\Users\\toby\\Documents\\document-cloud\\totally-assets\\assets-library\\assets\\images\\logos\\clients\\globalcom\\GlobalPR.png",
+          "filename": "GlobalPR.png",
+          "width": 800,
+          "height": 800,
+          "ratio": 1.0,
+          "layout": "square",
+          "colors": 2040,
+          "has_transparency": true,
+          "file_size": 152501,
+          "megapixels": 0.64
+        },
+        {
+          "path": "C:\\Users\\toby\\Documents\\document-cloud\\totally-assets\\assets-library\\assets\\images\\logos\\clients\\globalcom\\Logo_GlobalComPR_Network_two_lines_RGB_300x332px_orange.png",
+          "filename": "Logo_GlobalComPR_Network_two_lines_RGB_300x332px_orange.png",
+          "width": 300,
+          "height": 332,
+          "ratio": 0.9,
+          "layout": "square",
+          "colors": 16,
+          "has_transparency": true,
+          "file_size": 11609,
+          "megapixels": 0.1
+        }
+      ],
+      "layouts_available": [
+        "square"
+      ],
+      "recommendations": {
+        "landscape": {
+          "use": "GlobalPR.png",
+          "reason": "800\u00d7800 (square layout, 0.64MP)"
+        },
+        "portrait": {
+          "use": "Logo_GlobalComPR_Network_two_lines_RGB_300x332px_orange.png",
+          "reason": "300\u00d7332 (square layout, 0.1MP)"
+        },
+        "square": {
+          "use": "GlobalPR.png",
+          "reason": "800\u00d7800 (square layout, 0.64MP)"
+        }
+      },
+      "has_multiple_variants": true,
+      "primary_recommendation": "GlobalPR.png"
+    },
+    {
+      "client": "nikon",
+      "source_files": 2,
+      "svg_files": 1,
+      "variants_found": [
+        {
+          "path": "C:\\Users\\toby\\Documents\\document-cloud\\totally-assets\\assets-library\\assets\\images\\logos\\clients\\nikon\\image57.png",
+          "filename": "image57.png",
+          "width": 130,
+          "height": 107,
+          "ratio": 1.21,
+          "layout": "square",
+          "colors": 1693,
+          "has_transparency": true,
+          "file_size": 7986,
+          "megapixels": 0.01
+        },
+        {
+          "path": "C:\\Users\\toby\\Documents\\document-cloud\\totally-assets\\assets-library\\assets\\images\\logos\\clients\\nikon\\Nikon.png",
+          "filename": "Nikon.png",
+          "width": 800,
+          "height": 800,
+          "ratio": 1.0,
+          "layout": "square",
+          "colors": 1152,
+          "has_transparency": true,
+          "file_size": 57099,
+          "megapixels": 0.64
+        }
+      ],
+      "layouts_available": [
+        "square"
+      ],
+      "recommendations": {
+        "landscape": {
+          "use": "image57.png",
+          "reason": "130\u00d7107 (square layout, 0.01MP)"
+        },
+        "portrait": {
+          "use": "Nikon.png",
+          "reason": "800\u00d7800 (square layout, 0.64MP)"
+        },
+        "square": {
+          "use": "Nikon.png",
+          "reason": "800\u00d7800 (square layout, 0.64MP)"
+        }
+      },
+      "has_multiple_variants": true,
+      "primary_recommendation": "Nikon.png"
+    }
+  ]
+}

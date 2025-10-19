@@ -844,6 +844,11 @@
         <button onclick="loadInitialTags()" style="padding: 5pt 10pt; margin-left: 10pt; background: #4472c4; color: white; border: none; cursor: pointer; border-radius: 3pt; font-size: 10pt;">Load Initial Tags</button>
         <button onclick="exportTags()" style="padding: 5pt 10pt; margin-left: 5pt; background: #44c477; color: white; border: none; cursor: pointer; border-radius: 3pt; font-size: 10pt;">Export Tags</button>
         </p>
+        <p><strong>🔧 Logo Management:</strong> Add new client logos to generate variations and update documentation.
+        <button onclick="runLogoVariations()" style="padding: 5pt 10pt; margin-left: 10pt; background: #ff8c00; color: white; border: none; cursor: pointer; border-radius: 3pt; font-size: 10pt; font-weight: 600;">▶ Generate Logo Variations</button>
+        <button onclick="runDocGeneration()" style="padding: 5pt 10pt; margin-left: 5pt; background: #9370db; color: white; border: none; cursor: pointer; border-radius: 3pt; font-size: 10pt; font-weight: 600;">📄 Update Documentation</button>
+        <a href="PROCESS-NEW-LOGO.md" target="_blank" style="padding: 5pt 10pt; margin-left: 5pt; background: #6c757d; color: white; border: none; cursor: pointer; border-radius: 3pt; font-size: 10pt; text-decoration: none; display: inline-block;">📖 View Process Guide</a>
+        </p>
     </div>
 
     <div class="toolbar">
@@ -1509,6 +1514,144 @@ document.getElementById('tagPickerModal').addEventListener('click', (e) => {
         closeTagPicker();
     }
 });
+
+// Logo Management Functions
+async function runLogoVariations() {
+    const confirmMsg = `This will:
+1. Scan for new client logos in assets/images/logos/clients/
+2. Generate 7 variations for each new client
+3. Update index.json and by-category.json
+
+Continue?`;
+
+    if (!confirm(confirmMsg)) return;
+
+    const statusDiv = createStatusOverlay('Generating Logo Variations', 'Running reorganize_client_centric.py...');
+
+    try {
+        // In a real implementation, this would call a backend API or Electron IPC
+        // For now, show instructions
+        const instructions = `
+To generate logo variations, run this command in your terminal:
+
+<strong>Command:</strong>
+<code style="background: #2f2f2f; color: #44c477; padding: 10pt; display: block; margin: 10pt 0; border-radius: 3pt;">
+cd C:\\Users\\toby\\Documents\\document-cloud\\totally-assets\\assets-library\\assets\\images\\logos
+python reorganize_client_centric.py
+</code>
+
+<strong>What it does:</strong>
+• Scans clients/ folder for new logos
+• Generates 7 variations per client
+• Updates metadata files
+
+After running the command, click "Reload Library" to see new clients.`;
+
+        updateStatusOverlay(statusDiv, 'Manual Step Required', instructions, true);
+
+    } catch (error) {
+        updateStatusOverlay(statusDiv, 'Error', `Failed: ${error.message}`, true, true);
+    }
+}
+
+async function runDocGeneration() {
+    const confirmMsg = `This will:
+1. Regenerate LOGO-REFERENCE.md
+2. Regenerate logo-urls.json
+3. Update all documentation
+
+Continue?`;
+
+    if (!confirm(confirmMsg)) return;
+
+    const statusDiv = createStatusOverlay('Updating Documentation', 'Running generate_docs.py...');
+
+    try {
+        const instructions = `
+To update documentation, run this command in your terminal:
+
+<strong>Command:</strong>
+<code style="background: #2f2f2f; color: #9370db; padding: 10pt; display: block; margin: 10pt 0; border-radius: 3pt;">
+cd C:\\Users\\toby\\Documents\\document-cloud\\totally-assets\\assets-library
+python scripts\\generate_docs.py
+</code>
+
+<strong>What it does:</strong>
+• Regenerates LOGO-REFERENCE.md
+• Updates logo-urls.json
+• Syncs all client metadata
+
+After running the command, the documentation will be updated.`;
+
+        updateStatusOverlay(statusDiv, 'Manual Step Required', instructions, true);
+
+    } catch (error) {
+        updateStatusOverlay(statusDiv, 'Error', `Failed: ${error.message}`, true, true);
+    }
+}
+
+// Helper: Create status overlay
+function createStatusOverlay(title, message) {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    `;
+
+    const content = document.createElement('div');
+    content.style.cssText = `
+        background: white;
+        padding: 30pt;
+        border-radius: 8pt;
+        max-width: 600px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    `;
+
+    content.innerHTML = `
+        <h2 style="margin: 0 0 15pt 0; font-size: 18pt; color: #2f2f2f;">${title}</h2>
+        <div id="statusMessage" style="font-size: 12pt; color: #666666; line-height: 1.6;">${message}</div>
+        <div id="statusActions" style="margin-top: 20pt; display: none;">
+            <button onclick="this.closest('[style*=fixed]').remove(); location.reload();"
+                    style="padding: 10pt 20pt; background: #4472c4; color: white; border: none; cursor: pointer; border-radius: 3pt; font-size: 11pt; margin-right: 10pt;">
+                Reload Library
+            </button>
+            <button onclick="this.closest('[style*=fixed]').remove();"
+                    style="padding: 10pt 20pt; background: #6c757d; color: white; border: none; cursor: pointer; border-radius: 3pt; font-size: 11pt;">
+                Close
+            </button>
+        </div>
+    `;
+
+    overlay.appendChild(content);
+    document.body.appendChild(overlay);
+    return overlay;
+}
+
+// Helper: Update status overlay
+function updateStatusOverlay(overlay, title, message, showActions = false, isError = false) {
+    const h2 = overlay.querySelector('h2');
+    const messageDiv = overlay.querySelector('#statusMessage');
+    const actionsDiv = overlay.querySelector('#statusActions');
+
+    if (h2) h2.textContent = title;
+    if (messageDiv) messageDiv.innerHTML = message;
+
+    if (isError && messageDiv) {
+        messageDiv.style.color = '#c44444';
+    }
+
+    if (showActions && actionsDiv) {
+        actionsDiv.style.display = 'block';
+    }
+}
 
 // Initialize
 loadLogoData();
