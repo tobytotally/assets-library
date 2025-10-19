@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 1: Executive Summary & Why Totally - Invesis Proposal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Fira Sans", Calibri, Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 0;
+            display: flex;
+        }
+
+        /* NAVIGATION SIDEBAR */
+        .nav-sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: #2f2f2f;
+            color: #ffffff;
+            padding: 30px 20px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .nav-sidebar h2 {
+            font-size: 16px;
+            color: #ffcd00;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-sidebar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-sidebar li {
+            margin-bottom: 15px;
+        }
+
+        .nav-sidebar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 1.4;
+            display: block;
+            padding: 8px 12px;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-sidebar a:hover {
+            background: rgba(255, 205, 0, 0.1);
+            border-left-color: #ffcd00;
+        }
+
+
+
+        .nav-sidebar .nav-meta {
+            display: block;
+            font-size: 11px;
+            color: #999999;
+            margin-top: 3px;
+            font-weight: 400;
+        }
+
+        .nav-sidebar .nav-section {
+            margin-bottom: 25px;
+        }
+
+        .nav-sidebar h3 {
+            font-size: 11px;
+            color: #999999;
+            margin-bottom: 8px;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .nav-sidebar a.active {
+            background: rgba(255, 205, 0, 0.15);
+            border-left-color: #ffcd00;
+            font-weight: 600;
+        }
+
+        /* CONTENT AREA */
+        .content-wrapper {
+            margin-left: 280px;
+            padding: 20pt;
+            flex: 1;
+        }
+
+        /* PAGE CONTAINER */
+        .page {
+            width: 595.3pt;
+            min-height: 842pt;
+            background: #ffffff;
+            margin: 0 auto 20pt auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER AREA */
+        .page-header {
+            height: 46.5pt;
+            background: #ffffff;
+            padding: 10pt 35.4pt 8pt 35.4pt;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .header-divider {
+            border-bottom: 1pt solid #e0e0e0;
+            margin: 0 35.4pt 15pt 35.4pt;
+        }
+
+        .header-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        .header-table td {
+            border: none;
+            padding: 0;
+            vertical-align: middle;
+        }
+
+        .header-table td:last-child {
+            text-align: right;
+        }
+
+        .header-logo {
+            height: 26px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        /* CONTENT AREA */
+        .page-content {
+            flex: 1;
+            padding: 0 35.4pt;
+            padding-bottom: 20pt;
+        }
+
+        /* FOOTER AREA */
+        .page-footer {
+            height: 35.4pt;
+            background: #ffffff;
+            padding: 10pt 35.4pt;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .footer-divider {
+            border-top: 1pt solid #e0e0e0;
+            margin: 15pt 35.4pt 0 35.4pt;
+        }
+
+        .footer-content {
+            font-size: 9pt;
+            color: #999999;
+            font-weight: 400;
+        }
+
+        /* TYPOGRAPHY */
+        h1 {
+            font-size: 35pt;
+            font-weight: 700;
+            color: #000000;
+            margin: 10pt 0 10pt -12pt;
+            padding-left: 6pt;
+            border-left: 6pt solid #ffbb00;
+            line-height: 1.0;
+        }
+
+        h2 {
+            font-size: 20pt;
+            font-weight: 700;
+            color: #000000;
+            margin: 20pt 0 10pt 0;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 18pt;
+            font-weight: 600;
+            color: #000000;
+            margin: 10pt 0 12pt 0;
+            line-height: 1.1;
+        }
+
+        p {
+            font-size: 13pt;
+            font-weight: 400;
+            color: #2f2f2f;
+            margin: 12pt 0;
+            line-height: 1.2;
+        }
+
+        strong {
+            font-weight: 600;
+            color: #000000;
+        }
+
+        /* PULL QUOTE */
+        .pull-quote {
+            border-left: 4pt solid #ffcd00;
+            padding-left: 20pt;
+            margin: 20pt 0 20pt 20pt;
+            font-style: italic;
+            font-size: 15pt;
+            color: #434343;
+            line-height: 1.4;
+        }
+
+        .stat-highlight {
+            display: inline;
+            background-color: #ffcd00;
+            padding: 2pt 8pt;
+            font-weight: 700;
+            font-size: inherit;
+        }
+
+        /* BENEFIT GRID TABLE */
+        .benefit-grid-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20pt 0;
+        }
+
+        .benefit-grid-table td {
+            width: 50%;
+            padding: 15pt;
+            border: 1pt solid #e0e0e0;
+            vertical-align: top;
+        }
+
+        .benefit-grid-table h4 {
+            font-size: 14pt;
+            font-weight: 700;
+            color: #000000;
+            margin: 0 0 8pt 0;
+        }
+
+        .benefit-grid-table p {
+            font-size: 12pt;
+            margin: 0;
+        }
+
+        /* LOGO GRID TABLE */
+        .logo-grid-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20pt 0;
+        }
+
+        .logo-grid-table td {
+            padding: 8pt;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        h6 {
+            font-size: 10pt;
+            font-weight: 600;
+            color: #999999;
+            margin: 15pt 0 8pt 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5pt;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION SIDEBAR -->
+<div class="nav-sidebar">
+    <h2>Invesis Proposal</h2>
+
+    <div class="nav-section">
+        <h3>Introduction</h3>
+        <ul>
+            <li><a href="#cover">Cover Page</a></li>
+            <li><a href="#executive-summary">Executive Summary <span class="nav-meta">1p, ~250w</span></a></li>
+            <li><a href="#why-totally">Why Totally <span class="nav-meta">1p, ~220w</span></a></li>
+        </ul>
+    </div>
+    
+    <div class="nav-section">
+        <h3>Scope</h3>
+        <ul>
+            <li><a href="#scope">Project Scope & Deliverables <span class="nav-meta">2p, ~545w</span></a></li>
+        </ul>
+    </div>
+    
+    <div class="nav-section">
+        <h3>Delivery Approach</h3>
+        <ul>
+            <li><a href="#approach">Our Approach to Delivery <span class="nav-meta">1p, ~280w</span></a></li>
+        </ul>
+    </div>
+    
+    <div class="nav-section">
+        <h3>Technical & Content</h3>
+        <ul>
+            <li><a href="#technical">Technical Approach <span class="nav-meta">2p, ~550w</span></a></li>
+            <li><a href="#content">Content & Copywriting <span class="nav-meta">2p, ~550w</span></a></li>
+        </ul>
+    </div>
+    
+    <div class="nav-section">
+        <h3>Commercial</h3>
+        <ul>
+            <li><a href="#timeline">Project Timeline & Phases <span class="nav-meta">1p, ~200w</span></a></li>
+            <li><a href="#investment">Investment & Costs <span class="nav-meta">1p, ~100w</span></a></li>
+            <li><a href="#support">Support & Continual Improvement <span class="nav-meta">2p, ~450w</span></a></li>
+        </ul>
+    </div>
+    
+    <div class="nav-section">
+        <h3>Company</h3>
+        <ul>
+            <li><a href="#totally">About Totally <span class="nav-meta">4p, ~920w</span></a></li>
+            <li><a href="#studies">Case Studies <span class="nav-meta">3p, ~780w</span></a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- CONTENT AREA -->
+<div class="content-wrapper">
+<div class="content-wrapper">
+
+
+<!-- SECTION: invesis-section-01-executive-summary -->
+<!-- PAGE 1: EXECUTIVE SUMMARY -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h1 id="executive-summary">Executive Summary</h1>
+
+        <p class="subtitle">Invesis approached Totally for website redesign following strategic expansion into Czech Republic and other European markets, requiring multilingual capabilities and content architecture to support international operations.</p>
+
+        <p>This proposal outlines WordPress redevelopment with enhanced content management, professional design, and comprehensive copywriting services. The platform enables the marketing team to manage content, publish updates, and maintain the website independently—built specifically for operational autonomy.</p>
+
+        <p>The proposed strategy combines user experience design, WordPress development, and comprehensive content services including copywriting and video production. Built using proven techniques with bespoke functionality, it delivers multilingual architecture and enhanced content management tailored for infrastructure sector requirements.</p>
+
+        <p>Operating across diverse markets with expansion into new territories, Invesis requires a platform that demonstrates transparency and professionalism expected by long-term infrastructure partners. The website will articulate ESG credentials whilst maintaining flexibility for evolving market communications.</p>
+
+        <p>Totally brings 24 years' experience delivering enterprise platforms for organisations requiring institutional-grade quality. We understand infrastructure investment communications—demonstrating portfolio value and building stakeholder confidence across diverse regulatory environments.</p>
+
+        <p>The programme commences with Discovery and Strategy to validate requirements and establish frameworks. Following validation, we deliver fixed-price implementation encompassing design, content services, development, and quality assurance—providing transparent costs and defined deliverables.</p>
+
+        <p>This website redesign and redevelopment represents strategic investment supporting Invesis's growth objectives and establishing the operational foundation for sustained stakeholder engagement.</p>
+
+        <div style="margin-top: auto; padding-top: 30pt;">
+            <p style="font-size: 9pt; color: #999999; margin-bottom: 5pt;">Accreditations & Partnerships</p>
+            <table class="logo-grid-table" style="margin: 0;">
+                <tr>
+                    <td style="padding: 2pt; border: none;"><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/cyber-essentials-plus/cyber-essentials-plus-trimmed.png" alt="Cyber Essentials Plus" style="max-height: 35pt;"></td>
+                    <td style="padding: 2pt; border: none;"><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/google-partner/google-partner-trimmed.png" alt="Google Partner" style="max-height: 35pt;"></td>
+                    <td style="padding: 2pt; border: none;"><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/hm-government-g-cloud-supplier/hm-government-g-cloud-supplier-trimmed.png" alt="Digital Marketplace" style="max-height: 35pt;"></td>
+                    <td style="padding: 2pt; border: none;"><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/inclusive-tech-alliance-member/inclusive-tech-alliance-member-trimmed.png" alt="Inclusive Tech Alliance Member" style="max-height: 35pt;"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 2 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 2: WHY TOTALLY -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h1 id="why-totally">Why Totally?</h1>
+
+        <p class="subtitle">Totally is a software and web development agency with over 24 years of proven expertise delivering enterprise-level digital platforms for organisations requiring institutional-grade quality and reliability.</p>
+
+        <p>We combine consultancy, bespoke software development, and design expertise to create digital propositions that drive measurable business outcomes. From enterprise WordPress implementations to custom application development and CRM integrations, Totally delivers comprehensive technical solutions that enable organisational growth.</p>
+
+        <div class="pull-quote">
+            "We combine <span class="stat-highlight">24 years</span> of proven expertise with forward-thinking digital strategy to deliver platforms that enable long-term organisational growth."
+        </div>
+
+        <h2>Core Capabilities</h2>
+
+        <table class="benefit-grid-table">
+            <tr>
+                <td>
+                    <h4><span style="color: #ffcd00; margin-right: 8pt;">▶</span>Digital Strategy & Consultancy</h4>
+                    <p>Long-term planning, digital transformation roadmaps, and technical architecture design for sustainable growth.</p>
+                </td>
+                <td>
+                    <h4><span style="color: #ffcd00; margin-right: 8pt;">▶</span>Enterprise Website Development</h4>
+                    <p>Scalable platforms with custom functionality, designed for operational autonomy and content management efficiency.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4><span style="color: #ffcd00; margin-right: 8pt;">▶</span>Bespoke Software Applications</h4>
+                    <p>Custom applications, platform integrations, and proprietary systems tailored to specific business requirements.</p>
+                </td>
+                <td>
+                    <h4><span style="color: #ffcd00; margin-right: 8pt;">▶</span>System Integration & API</h4>
+                    <p>Direct API integrations, Salesforce implementations, and unified data architecture.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4><span style="color: #ffcd00; margin-right: 8pt;">▶</span>UX & UI Design</h4>
+                    <p>Accessible and responsive design systems, from multilingual interfaces to complex enterprise portals.</p>
+                </td>
+                <td>
+                    <h4><span style="color: #ffcd00; margin-right: 8pt;">▶</span>Performance & Security</h4>
+                    <p>Robust infrastructure, WCAG compliance implementation, and continuous optimisation.</p>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Sector and B2B Experience</h2>
+
+        <p>Twenty-four years working across professional services, financial institutions, membership organisations, and government bodies provides deep knowledge of complex stakeholder requirements. This cross-sector expertise allows Totally to anticipate needs, navigate regulatory environments, and deliver platforms that meet institutional standards.</p>
+
+        <h6>Selected Clients</h6>
+
+        <table class="logo-grid-table" style="margin: 10pt 0;">
+            <tr>
+                <td style="height: 60pt; padding: 16pt;"><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/nhs/nhs-trimmed.png" alt="NHS" style="max-height: 28pt;"></td>
+                <td style="height: 60pt; padding: 16pt;"><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/bbc/bbc-trimmed.png" alt="BBC" style="max-height: 28pt;"></td>
+                <td style="height: 60pt; padding: 16pt;"><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/british-business-bank/british-business-bank-trimmed.png" alt="British Business Bank" style="max-height: 28pt;"></td>
+                <td style="height: 60pt; padding: 16pt;"><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/galliard-homes/galliard-homes-trimmed.png" alt="Galliard Homes" style="max-height: 28pt;"></td>
+            </tr>
+            <tr>
+                <td style="height: 60pt; padding: 16pt;"><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/nikon/nikon-trimmed.png" alt="Nikon" style="max-height: 28pt;"></td>
+                <td style="height: 60pt; padding: 16pt;"><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/crisis/crisis-trimmed.png" alt="Crisis" style="max-height: 28pt;"></td>
+                <td style="height: 60pt; padding: 16pt;"><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/enra/enra-trimmed.png" alt="Enra" style="max-height: 28pt;"></td>
+                <td style="height: 60pt; padding: 16pt;"><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/stewart-signs/stewart-signs-trimmed.png" alt="Stewart Signs" style="max-height: 28pt;"></td>
+            </tr>
+        </table>
+
+        <p><strong>GlobalCom Membership:</strong> As members of GlobalCom PR Network, Totally extends international reach through a trusted network of independent agencies across 100+ countries. This partnership provides access to local market expertise, multilingual capabilities, and on-the-ground support for organisations operating across multiple territories—particularly valuable for infrastructure projects requiring coordinated international communications.</p>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 3 | Confidential</div>
+    </div>
+</div>
+
+
+<!-- SECTION: invesis-section-02-project-scope -->
+<!-- PAGE 3: PROJECT SCOPE - PART 1 -->
+<div class="page">
+<div class="page-header">
+<table class="header-table">
+<tr>
+<td></td>
+<td><img alt="Totally" class="header-logo" src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099"/></td>
+</tr>
+</table>
+</div>
+<div class="header-divider"></div>
+<div class="page-content">
+<h1>Project Scope &amp; Deliverables</h1>
+<p class="subtitle">Invesis has built a strong foundation over the past 3-4 years, with relevant, valuable content that serves the business well. This proposal focuses on modernising the platform—bringing fresh design, updated messaging, and enhanced capabilities that reflect the organisation's evolved positioning and support European expansion.</p>
+<p>Rather than starting from scratch, Totally proposes to build upon what works whilst addressing the areas that need refreshing.</p>
+<h2>Proposed Scope</h2>
+
+<table class="comparison-table" style="margin-top: 20pt;">
+<thead>
+<tr>
+<th style="width: 25%;">Area</th>
+<th style="width: 35%;">Current Situation</th>
+<th style="width: 40%;">Totally's Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight: 700; background-color: #f9f9f9;">Website Redesign &amp; User Experience</td>
+<td>Limited content management flexibility and single-pathway navigation that doesn't serve diverse stakeholder needs</td>
+<td>Redesign for marketing team autonomy and clearer audience pathways—reassess information architecture to create distinct areas for public sector clients, existing clients, and partners</td>
+</tr>
+<tr>
+<td style="font-weight: 700; background-color: #f9f9f9;">Content Strategy &amp; Copywriting</td>
+<td>Content needs updating to reflect evolved positioning and communicate value propositions more effectively across stakeholder groups</td>
+<td>Work with specialist infrastructure investment copywriters to refresh messaging whilst maintaining Invesis credibility—review tone of voice, update positioning, ensure content works across European jurisdictions</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="footer-divider"></div>
+<div class="page-footer">
+<div class="footer-content">Page 3 | Confidential</div>
+</div>
+</div>
+<!-- PAGE 4: PROJECT SCOPE - PART 2 -->
+<div class="page">
+<div class="page-header">
+<table class="header-table">
+<tr>
+<td></td>
+<td><img alt="Totally" class="header-logo" src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099"/></td>
+</tr>
+</table>
+</div>
+<div class="header-divider"></div>
+<div class="page-content">
+
+<table class="comparison-table">
+<thead>
+<tr>
+<th style="width: 25%;">Area</th>
+<th style="width: 35%;">Current Situation</th>
+<th style="width: 40%;">Totally's Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight: 700; background-color: #f9f9f9;">Visual Identity &amp; Photography</td>
+<td>Difficult to source licensed infrastructure photography; inconsistent styling fragments the brand experience</td>
+<td>Develop consistent image styling (overlays, filters, framing) that creates cohesive brand language whilst maintaining human connection—showing infrastructure in use by communities it serves</td>
+</tr>
+<tr>
+<td style="font-weight: 700; background-color: #f9f9f9;">WordPress CMS &amp; Multilingual Enhancement</td>
+<td>Marketing team of 2-3 people manages content well within current constraints. European expansion requires multilingual capability. Planned video content needs optimized embedding</td>
+<td>Optimise WordPress implementation to remove constraints—making it easier to publish news, update pages, manage assets, and embed video content. Implement robust multilingual infrastructure with intelligent fallback systems and regional SEO, ensuring visitors see relevant content in their preferred language</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="footer-divider"></div>
+<div class="page-footer">
+<div class="footer-content">Page 4 | Confidential</div>
+</div>
+</div>
+
+
+<!-- SECTION: invesis-section-03-approach -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h1>Our Approach to Project Delivery</h1>
+
+        <p class="subtitle">Totally proposes a structured two-phase approach that ensures clarity, minimises risk, and delivers exactly what Invesis needs.</p>
+
+        <div class="info-box">
+            <p><strong>Why Discovery First?</strong> Discovery validates assumptions before significant investment in design and development. Without this phase, estimates remain approximate. With discovery complete, the delivery phase has fixed pricing and clear scope—removing uncertainty.</p>
+        </div>
+
+        <h2>Collaborative Discovery</h2>
+
+        <p>Totally's approach begins with understanding before building. Rather than making assumptions about requirements, the discovery phase works closely with the Invesis team to understand current challenges, future ambitions, and how different stakeholders use the website.</p>
+
+        <p>This isn't a lengthy requirements-gathering exercise—it's a focused 4-week engagement that maps user needs, validates technical approaches, and creates certainty about what will be built and what it will cost. Discovery removes the guesswork from digital projects.</p>
+
+        <p>The outcome is a comprehensive specification that both parties can commit to—detailed enough to provide accurate pricing, flexible enough to accommodate insights discovered during the process.</p>
+
+        <h2>Parallel Workstreams</h2>
+
+        <p>Following discovery approval, Totally works across design, content, and development simultaneously. This parallel approach means the visual design evolves while content is being refreshed and technical foundations are being built—reducing overall timeline without compromising quality.</p>
+
+        <p>Regular touchpoints ensure the Invesis team sees progress, provides feedback, and maintains control over direction. This isn't a black-box process where everything is revealed at the end.</p>
+
+        <h2>Built to Empower</h2>
+
+        <p>Every Totally project focuses on client autonomy. The WordPress platform is configured so the Invesis marketing team can manage content, update pages, and publish news without technical assistance. Training and documentation ensure confidence in using the tools.</p>
+
+        <p>This approach stems from 25 years of building platforms that clients actually use and enjoy maintaining—not systems that require ongoing developer support for simple updates.</p>
+
+        <h2>Two-Phase Comparison</h2>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Phase 1: Discovery</th>
+                    <th>Phase 2: Delivery</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Duration:</strong> 4 weeks</td>
+                    <td><strong>Duration:</strong> 8-10 weeks</td>
+                </tr>
+                <tr>
+                    <td><strong>Investment:</strong> Fixed cost</td>
+                    <td><strong>Investment:</strong> Estimated (fixed after discovery)</td>
+                </tr>
+                <tr>
+                    <td><strong>Purpose:</strong> Validate requirements and remove uncertainty</td>
+                    <td><strong>Purpose:</strong> Build and launch the platform</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 5 | Confidential</div>
+    </div>
+</div>
+
+
+<!-- SECTION: invesis-section-04-technical-content -->
+<!-- PAGE 9: TECHNICAL APPROACH - PLACEHOLDER -->
+<div class="page">
+<div class="page-header">
+<table class="header-table">
+<tr>
+<td></td>
+<td><img alt="Totally" class="header-logo" src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099"/></td>
+</tr>
+</table>
+</div>
+<div class="header-divider"></div>
+<div class="page-content">
+<h1 id="technical">Technical Approach</h1>
+<p class="subtitle">Totally proposes optimising the WordPress implementation to remove current limitations whilst maintaining the stability and security required for an institutional-grade platform.</p>
+<p>The Invesis marketing team currently manages content within existing constraints. This would involve building a custom WordPress theme with component-based architecture—creating flexible, reusable building blocks that make content management intuitive. Rather than rigid page templates, the team would have modular components they can arrange and configure without technical assistance.</p>
+<p>The CMS would be configured to simplify common tasks: publishing news updates, adding project case studies, updating team information, and managing media assets. Clear content workflows and editorial guidelines would ensure consistency whilst empowering the marketing team with operational autonomy.</p>
+<h2>WordPress Architecture &amp; CMS Optimisation</h2>
+<h2>Multilingual Implementation</h2>
+<p>As Invesis operates across multiple European markets, the website requires efficient multilingual infrastructure built on reusable components and intelligent content management.</p>
+<h3>Component-Based Content Architecture</h3>
+<p>Totally proposes building flexible content blocks and page templates that make multilingual management efficient. Marketing teams can assemble pages from pre-built components (hero sections, feature grids, case study blocks, team profiles) rather than managing monolithic page templates. Each component translates independently—update the "Our Approach" block once, and it updates across all pages where it's used.</p>
+<p>This modular approach dramatically reduces translation workload. An intelligent language fallback system ensures visitors always see relevant content: if a page isn't available in Czech, it falls back to English gracefully. The marketing team maintains fewer unique elements whilst delivering comprehensive multilingual experiences.</p>
+</div>
+<div class="footer-divider"></div>
+<div class="page-footer">
+<div class="footer-content">Page 9 | Confidential</div>
+</div>
+</div>
+<!-- PAGE 10: TECHNICAL APPROACH - PART 2 -->
+<div class="page">
+<div class="page-header">
+<table class="header-table">
+<tr>
+<td></td>
+<td><img alt="Totally" class="header-logo" src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099"/></td>
+</tr>
+</table>
+</div>
+<div class="header-divider"></div>
+<div class="page-content">
+<h3>URL Structure &amp; Regional SEO</h3>
+<p>Proper technical implementation ensures each language version is discoverable by regional search engines. This includes:</p>
+<ul>
+<li><strong>Clean URL structure</strong> for language versions (`invesis.com/nl/`, `invesis.com/de/`)</li>
+<li><strong>Hreflang tags</strong> telling search engines which language serves which market</li>
+<li><strong>Regional meta data</strong> optimised for local search behaviour</li>
+<li><strong>Language switching</strong> that maintains context (switching from Dutch "About" page goes to German "About" page, not homepage)</li>
+</ul>
+<p>The goal is ensuring prospects in Belgium, Germany, or Czech Republic find Invesis through their local Google, Bing, or regional search platforms.</p>
+<h2>Performance Optimisation</h2>
+<p>Infrastructure investment websites need to convey credibility and professionalism. Slow load times undermine that perception. Totally proposes implementing comprehensive performance optimisation:</p>
+<ul>
+<li><strong>Image optimisation</strong> with responsive delivery (serving appropriately sized images for each device)</li>
+<li><strong>Lazy loading</strong> for below-the-fold content</li>
+<li><strong>Caching strategies</strong> reducing server load</li>
+<li><strong>Content delivery network</strong> considerations for international audiences</li>
+<li><strong>Code optimisation</strong> ensuring lean, efficient delivery</li>
+</ul>
+<p>The target would be achieving consistently fast load times across all markets, regardless of connection quality.</p>
+<h2>Video Integration &amp; Optimisation</h2>
+<p>With plans for management board and "who we are" video content, the technical implementation needs to support professional video delivery:</p>
+<ul>
+<li><strong>Responsive video embedding</strong> that works across devices</li>
+<li><strong>Accessibility considerations</strong> including captions and transcripts</li>
+<li><strong>Performance optimisation</strong> with adaptive streaming where appropriate</li>
+<li><strong>Analytics integration</strong> understanding how video content performs</li>
+<li><strong>Fallback strategies</strong> for users on limited bandwidth</li>
+</ul>
+<p>Totally recommends evaluating hosting options—self-hosted versus platforms like Vimeo or YouTube—based on privacy requirements, brand control preferences, and budget considerations.</p>
+</div>
+<div class="footer-divider"></div>
+<div class="page-footer">
+<div class="footer-content">Page 10 | Confidential</div>
+</div>
+</div>
+<!-- PAGE 11: CONTENT & COPYWRITING / BRAND ALIGNMENT -->
+<div class="page">
+<div class="page-header">
+<table class="header-table">
+<tr>
+<td></td>
+<td><img alt="Totally" class="header-logo" src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099"/></td>
+</tr>
+</table>
+</div>
+<div class="header-divider"></div>
+<div class="page-content">
+<h1 id="content">Content &amp; Copywriting / Brand Alignment</h1>
+<p class="subtitle">Content sits at the heart of the Invesis website—telling stories about infrastructure that serves communities, demonstrating portfolio value, and building stakeholder confidence.</p>
+<h2>Comprehensive Content Services</h2>
+<p>Totally proposes working with specialist copywriters from our network who understand B2B infrastructure investment, helping to refresh messaging whilst maintaining the substance and credibility already established.</p>
+<h3>Content Audit &amp; Strategy</h3>
+<p>Before writing begins, we would conduct a comprehensive content audit—reviewing what exists, what works, what needs refreshing, and what might be retired. This audit informs the content strategy, identifying priorities and opportunities.</p>
+<p>The strategy would address different audience needs: public sector clients need different content than existing clients or potential consortium partners. Clear content pathways would guide each stakeholder group to relevant information efficiently.</p>
+<h3>Copywriting &amp; Tone of Voice</h3>
+<p>Working within the Barkley brand guidelines, copywriters would refresh content across all website pages. This involves more than updating facts—it's about transforming tone where appropriate, making complex infrastructure investment concepts accessible without losing credibility.</p>
+<p>The tone would remain professional and knowledgeable whilst becoming warmer and more engaging. Infrastructure investment needn't feel dry—Invesis demonstrates genuine impact on communities, and the content should convey that human dimension.</p>
+<h3>Multi-Jurisdiction Considerations</h3>
+<p>Content must work effectively across the European markets where Invesis operates. This means:</p>
+<ul>
+<li><strong>Avoiding jurisdiction-specific assumptions</strong> that only apply in one market</li>
+<li><strong>Using examples and case studies</strong> that resonate internationally</li>
+<li><strong>Structuring content</strong> so translations maintain meaning and impact</li>
+<li><strong>Considering cultural nuances</strong> in how infrastructure investment is perceived</li>
+</ul>
+<p>Whilst Invesis manages translations in-house, the source content would be written with international audiences in mind from the outset.</p>
+<h2>Brand Alignment</h2>
+<h3>Working with the Barkley Brand Book</h3>
+<p>The existing Barkley brand guidelines provide the foundation. Rather than reinventing the visual identity, we propose evolving the digital expression—bringing the brand to life online whilst respecting established guidelines.</p>
+<p>This involves understanding the brand positioning, values, and visual language, then translating those into web-appropriate applications. Some brand elements designed for print or presentation may need adapting for digital contexts whilst maintaining the core identity.</p>
+<h3>Photography Styling &amp; Visual Treatment</h3>
+<p>Infrastructure photography presents unique challenges. Roads, railways, and hospitals can feel abstract unless shown in use. The Barkley brand book already recognises the importance of humanising these assets—showing people using the facilities that serve their communities.</p>
+</div>
+<div class="footer-divider"></div>
+<div class="page-footer">
+<div class="footer-content">Page 11 | Confidential</div>
+</div>
+</div>
+<!-- PAGE 12: CONTENT & COPYWRITING - PART 2 -->
+<div class="page">
+<div class="page-header">
+<table class="header-table">
+<tr>
+<td></td>
+<td><img alt="Totally" class="header-logo" src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099"/></td>
+</tr>
+</table>
+</div>
+<div class="header-divider"></div>
+<div class="page-content">
+<p>Totally proposes developing a consistent visual treatment approach that creates cohesive imagery across the website:</p>
+<ul>
+<li><strong>Image filters and overlays</strong> using Invesis brand colours (dark blue, plum) to create visual consistency</li>
+<li><strong>Framing techniques</strong> that draw attention to the human element within infrastructure contexts</li>
+<li><strong>Composition guidelines</strong> helping select or commission photography that aligns with brand values</li>
+<li><strong>Treatment templates</strong> the marketing team can apply to new imagery, reducing reliance on finding "perfect" photos</li>
+</ul>
+<p>This approach acknowledges a practical reality: sourcing ideal infrastructure photography with proper permissions is challenging. A consistent visual treatment transforms good photography into branded content that feels cohesive and professional.</p>
+<h3>Image Styling Process</h3>
+<p>Rather than requiring perfect source photography, the styling process would work with available imagery:</p>
+<ul>
+<li><strong>Source photography</strong> from Adobe Stock, project consortiums, or Invesis archives</li>
+<li><strong>Apply brand treatment</strong> using filters, overlays, and framing techniques</li>
+<li><strong>Ensure consistency</strong> across the website through systematic application</li>
+<li><strong>Document guidelines</strong> so the marketing team can maintain the approach</li>
+</ul>
+<p>The result: a distinctive visual language that differentiates Invesis whilst remaining flexible enough for ongoing content management.</p>
+<h2>SEO Content Optimisation</h2>
+<p>Content would be structured for search engine visibility whilst remaining readable and valuable for human audiences:</p>
+<ul>
+<li><strong>Keyword research</strong> understanding how prospects search for infrastructure investment partners</li>
+<li><strong>On-page optimisation</strong> with appropriate headings, meta descriptions, and content structure</li>
+<li><strong>Regional SEO considerations</strong> recognising search behaviour varies across markets</li>
+<li><strong>Content hierarchy</strong> that helps search engines understand site structure and priorities</li>
+</ul>
+<p>The goal is ensuring Invesis appears in relevant searches across all operating markets, attracting qualified prospects exploring infrastructure investment partnerships.</p>
+</div>
+<div class="footer-divider"></div>
+<div class="page-footer">
+<div class="footer-content">Page 12 | Confidential</div>
+</div>
+</div>
+
+
+<!-- SECTION: invesis-section-05-timeline-investment -->
+<!-- PAGE 13: PROJECT TIMELINE & PHASES (CONDENSED) -->
+<div class="page">
+<div class="page-header">
+<table class="header-table">
+<tr>
+<td></td>
+<td><img alt="Totally" class="header-logo" src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099"/></td>
+</tr>
+</table>
+</div>
+<div class="header-divider"></div>
+<div class="page-content">
+<h1 id="timeline">Project Timeline &amp; Phases</h1>
+<p class="subtitle">Totally proposes a 12-14 week programme structured in two distinct phases with clear milestones and touchpoints.</p>
+<h2>Programme Overview: 12-14 Weeks</h2>
+<table class="timeline-table">
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Key Activities</th>
+<th>Deliverables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="phase-col">Phase 1: Discovery</td>
+<td>4 weeks</td>
+<td>Requirements, research, IA, wireframes</td>
+<td>Specification &amp; fixed-cost proposal</td>
+</tr>
+<tr>
+<td class="phase-col">Phase 2: Delivery</td>
+<td>8-10 weeks</td>
+<td>Design, content, development, testing</td>
+<td>Launched website with documentation</td>
+</tr>
+</tbody>
+</table>
+<h2>Key Milestones</h2>
+
+<table class="timeline-table" style="margin-top: 15pt;">
+<thead>
+<tr>
+<th style="width: 25%;">Milestone</th>
+<th style="width: 20%;">Week</th>
+<th style="width: 55%;">Invesis Involvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="phase-col">Discovery Complete</td>
+<td>Week 4</td>
+<td><strong>Approve specification</strong> and Phase 2 proposal</td>
+</tr>
+<tr>
+<td class="phase-col">Design Concept</td>
+<td>Week 7</td>
+<td><strong>Review and approve</strong> visual design direction</td>
+</tr>
+<tr>
+<td class="phase-col">Content Review</td>
+<td>Weeks 8-11</td>
+<td>Review and approve refreshed content as developed</td>
+</tr>
+<tr>
+<td class="phase-col">User Testing</td>
+<td>Weeks 12-13</td>
+<td>Participate in acceptance testing and provide feedback</td>
+</tr>
+<tr>
+<td class="phase-col">Launch</td>
+<td>Week 14</td>
+<td><strong>Final sign-off</strong> and go-live</td>
+</tr>
+</tbody>
+</table>
+
+<div class="callout-box" style="margin-top: 20pt;">
+<p><strong>Timeline Dependencies:</strong> Delivery schedule depends on timely feedback cycles and content availability from Invesis. The 8-10 week delivery range provides flexibility to accommodate complexity discovered during discovery.</p>
+</div>
+</div>
+<div class="footer-divider"></div>
+<div class="page-footer">
+<div class="footer-content">Page 13 | Confidential</div>
+</div>
+</div>
+<!-- PAGE 14: INVESTMENT & COSTS START -->
+<div class="page">
+<div class="page-header">
+<table class="header-table">
+<tr>
+<td></td>
+<td><img alt="Totally" class="header-logo" src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099"/></td>
+</tr>
+</table>
+</div>
+<div class="header-divider"></div>
+<div class="page-content">
+<h1 id="investment">Investment &amp; Costs</h1>
+<p class="subtitle">Investment is determined following discovery based on validated requirements and agreed scope. Estimates below reflect the proposed two-phase approach.</p>
+
+<h2>Programme Investment</h2>
+
+<table class="pricing-table">
+<thead>
+<tr>
+<th>Project Phase</th>
+<th class="right-col">Investment (ex VAT)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phase 1: Discovery & UX Strategy</strong></td>
+<td class="right-col"><strong>£[AMOUNT]</strong></td>
+</tr>
+<tr>
+<td colspan="2" style="padding: 0; border: none; height: 12pt;"></td>
+</tr>
+<tr>
+<td colspan="2" style="background-color: #f9f9f9; font-weight: 600; padding: 6pt 8pt;">Phase 2: Delivery Implementation (Estimated)</td>
+</tr>
+<tr>
+<td style="padding-left: 24pt;">UI and Website Design</td>
+<td class="right-col">£[AMOUNT]</td>
+</tr>
+<tr>
+<td style="padding-left: 24pt;">Front End Development</td>
+<td class="right-col">£[AMOUNT]</td>
+</tr>
+<tr>
+<td style="padding-left: 24pt;">CMS + Back-end Development</td>
+<td class="right-col">£[AMOUNT]</td>
+</tr>
+<tr>
+<td style="padding-left: 24pt;">Project Management + QA</td>
+<td class="right-col">£[AMOUNT]</td>
+</tr>
+<tr>
+<td style="padding-left: 24pt; font-weight: 600;">Phase 2 Subtotal</td>
+<td class="right-col"><strong>£[AMOUNT]</strong></td>
+</tr>
+<tr>
+<td colspan="2" style="padding: 0; border: none; height: 8pt;"></td>
+</tr>
+<tr class="total-row">
+<td class="total-label"><strong>TOTAL PROGRAMME INVESTMENT</strong></td>
+<td class="right-col"><strong>£[AMOUNT]</strong></td>
+</tr>
+</tbody>
+</table>
+
+<p style="margin-top: 15pt;"><em>Phase 2 investment confirmed following Discovery approval with fixed-cost proposal.</em></p>
+</div>
+<div class="footer-divider"></div>
+<div class="page-footer">
+<div class="footer-content">Page 14 | Confidential</div>
+</div>
+</div>
+
+
+<!-- SECTION: invesis-section-06-about-totally -->
+<!-- PAGE 20: ABOUT TOTALLY - PART 1 -->
+<div class="page">
+<div class="page-header">
+<table class="header-table">
+<tr>
+<td></td>
+<td><img alt="Totally" class="header-logo" src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099"/></td>
+</tr>
+</table>
+</div>
+<div class="header-divider"></div>
+<div class="page-content">
+<h1>About Totally</h1>
+<p class="subtitle">Totally is a software and web development agency with over 24 years of proven expertise delivering enterprise-level digital platforms for organisations requiring institutional-grade quality and reliability.</p>
+<h2>Who We Are</h2>
+<p>We combine consultancy, bespoke software development, and design expertise to create digital propositions that drive measurable business outcomes. Operating from offices in Liverpool and London, we serve clients across the UK and internationally, delivering comprehensive technical solutions that enable organisational growth.</p>
+<h2>Our Approach</h2>
+<p>We don't simply build websites—we solve business challenges through considered digital strategy and expert technical delivery. This means understanding organisational objectives, stakeholder needs, and operational constraints before proposing solutions.</p>
+<p>Our approach centres on:</p>
+<ul>
+<li><strong>Strategic thinking</strong> that aligns digital platforms with business objectives</li>
+<li><strong>User-centred design</strong> creating experiences that serve diverse audiences effectively</li>
+<li><strong>Technical excellence</strong> delivering robust, scalable, maintainable solutions</li>
+<li><strong>Operational empowerment</strong> ensuring clients can manage platforms independently</li>
+<li><strong>Long-term partnership</strong> supporting growth beyond initial delivery</li>
+</ul>
+<h2>Totally.Tech &amp; Totally.Digital</h2>
+<p>We operate as two complementary businesses under the Totally brand:</p>
+<h3>Totally.Tech</h3>
+<p>Our technology and development practice specialising in:</p>
+<ul>
+<li>Enterprise WordPress development</li>
+<li>Bespoke software and application development</li>
+<li>System integration and CRM implementation</li>
+<li>Technical architecture and infrastructure</li>
+<li>User experience and interface design</li>
+</ul>
+</div>
+<div class="footer-divider"></div>
+<div class="page-footer">
+<div class="footer-content">Page 20 | Confidential</div>
+</div>
+</div>
+<!-- PAGE 21: ABOUT TOTALLY - PART 2 -->
+<div class="page">
+<div class="page-header">
+<table class="header-table">
+<tr>
+<td></td>
+<td><img alt="Totally" class="header-logo" src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099"/></td>
+</tr>
+</table>
+</div>
+<div class="header-divider"></div>
+<div class="page-content">
+<h3>Totally.Digital</h3>
+<p>Our digital marketing and performance practice delivering:</p>
+<ul>
+<li>Digital strategy and transformation</li>
+<li>Search engine optimisation (SEO)</li>
+<li>Paid advertising and performance marketing</li>
+<li>Content marketing and strategy</li>
+<li>Analytics and conversion optimisation</li>
+<li>Digital visibility programmes</li>
+</ul>
+<p>This dual capability means we understand both sides of the digital equation—building platforms that perform technically whilst driving business results through strategic visibility and engagement.</p>
+<h2>Core Capabilities</h2>
+<p><strong>Digital Strategy &amp; Consultancy</strong></p>
+<p>Long-term planning, digital transformation roadmaps, and technical architecture design. We help organisations navigate complex digital landscapes and make informed technology decisions.</p>
+<p><strong>Enterprise WordPress Development</strong></p>
+<p>Scalable WordPress platforms with custom functionality, designed for operational autonomy and content management efficiency. We've delivered hundreds of WordPress projects across sectors.</p>
+<p><strong>Bespoke Software Development</strong></p>
+<p>Custom applications, platform integrations, and proprietary systems tailored to specific business requirements. From member portals to workflow automation tools.</p>
+<p><strong>System Integration &amp; CRM</strong></p>
+<p>Direct API integrations, Salesforce implementations, and unified data architecture. Connecting disparate systems to create seamless operational workflows.</p>
+<p><strong>User Experience &amp; Interface Design</strong></p>
+<p>Accessible and responsive design systems, from multilingual interfaces to complex enterprise portals. Design that serves user needs whilst reflecting brand identity.</p>
+<p><strong>Performance, Accessibility &amp; Security</strong></p>
+<p>Robust infrastructure, WCAG compliance implementation, and continuous optimisation. Digital platforms that meet institutional standards.</p>
+<p><strong>SEO &amp; Digital Visibility</strong></p>
+<p>Strategic search optimisation driving organic visibility. Technical SEO, content strategy, and ongoing performance improvement for long-term results.</p>
+</div>
+<div class="footer-divider"></div>
+<div class="page-footer">
+<div class="footer-content">Page 21 | Confidential</div>
+</div>
+</div>
+<!-- PAGE 22: ABOUT TOTALLY - PART 3 -->
+<div class="page">
+<div class="page-header">
+<table class="header-table">
+<tr>
+<td></td>
+<td><img alt="Totally" class="header-logo" src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099"/></td>
+</tr>
+</table>
+</div>
+<div class="header-divider"></div>
+<div class="page-content">
+<h2>Sector Experience</h2>
+<p>Twenty-four years working across professional services, financial institutions, membership organisations, government bodies, and infrastructure sectors provides deep knowledge of complex stakeholder requirements.</p>
+<h3>Relevant Experience Highlights</h3>
+<p><strong>B2B &amp; Professional Services</strong></p>
+<p>We understand institutional communications requirements—demonstrating credibility, building stakeholder confidence, and maintaining professionalism across digital touchpoints.</p>
+<p><strong>Infrastructure &amp; Investment</strong></p>
+<div class="case-study-box">
+<h4>[Infrastructure Client Name]</h4>
+<p>[Brief description of project scope - e.g., "Complete website redevelopment for [sector] infrastructure investment firm operating across [markets]."]</p>
+<p>[Key outcomes and technologies used]</p>
+<p class="case-study-meta">Sector: Infrastructure | Location: [Country] | Technology: WordPress, Multilingual</p>
+</div>
+<p><strong>Multilingual &amp; International Platforms</strong></p>
+<p>Experience delivering websites serving multiple markets with proper multilingual implementation, regional SEO, and cultural considerations.</p>
+<div class="case-study-box">
+<h4>[Multilingual Client Name]</h4>
+<p>[Brief description of multilingual platform scope - e.g., "Multilingual platform serving [X] European markets with cascading language fallback and regional SEO."]</p>
+<p>[Key outcomes and technical highlights]</p>
+<p class="case-study-meta">Sector: [Sector] | Markets: [Countries] | Languages: [X] languages</p>
+</div>
+<p><strong>WordPress Redevelopment Projects</strong></p>
+<div class="case-study-box">
+<h4>[WordPress Client Name]</h4>
+<p>[Brief description of WordPress redevelopment - e.g., "Complete WordPress rebuild for [organisation type] with component-based architecture and enhanced CMS capabilities."]</p>
+<p>[Key outcomes and improvements delivered]</p>
+<p class="case-study-meta">Sector: [Sector] | Type: WordPress Redevelopment | Features: [Key Features]</p>
+</div>
+<p><strong>Content Strategy &amp; Transformation</strong></p>
+<p>Working with specialist copywriters to refresh messaging whilst maintaining substance and credibility.</p>
+
+<h2>Selected Clients</h2>
+<p>Over 24 years, Totally has delivered digital platforms for diverse organisations across commercial, charity, technology, and public sectors.</p>
+
+<table class="logo-grid-table">
+<tr>
+<td><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/galliard-homes/galliard-homes-trimmed.png" alt="Galliard Homes"></td>
+<td><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/british-business-bank/british-business-bank-trimmed.png" alt="British Business Bank"></td>
+<td><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/mc-saatchi-performance/mc-saatchi-performance-trimmed.png" alt="M&C Saatchi Performance"></td>
+<td><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/specsavers/specsavers-trimmed.png" alt="Specsavers"></td>
+</tr>
+<tr>
+<td><span class="logo-placeholder">Nikon (pending)</span></td>
+<td><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/stowe-family-law/stowe-family-law-trimmed.png" alt="Stowe Family Law"></td>
+<td><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/save-the-rhino/save-the-rhino-trimmed.png" alt="Save the Rhino"></td>
+<td><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/crisis/crisis-trimmed.png" alt="Crisis"></td>
+</tr>
+<tr>
+<td><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/hta/hta-trimmed.png" alt="HTA"></td>
+<td><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/gamcare/gamcare-trimmed.png" alt="GamCare"></td>
+<td><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/leonard-cheshire/leonard-cheshire-trimmed.png" alt="Leonard Cheshire"></td>
+<td><img src="https://raw.githubusercontent.com/tobytotally/assets-library/main/assets/images/logos/clients/national-garden-scheme/national-garden-scheme-trimmed.png" alt="National Garden Scheme"></td>
+</tr>
+</table>
+
+<h2>Our Team &amp; Network</h2>
+<p>Our core team brings expertise across strategy, design, development, and digital marketing. For specialist requirements—such as infrastructure sector copywriting—we engage proven partners from our extensive network.</p>
+<p>This network approach ensures the right expertise for each project whilst maintaining consistent Totally quality standards and project governance.</p>
+<p><strong>Key Team Capabilities:</strong></p>
+<ul>
+<li>WordPress development and architecture</li>
+<li>Multilingual site implementation</li>
+<li>SEO and technical search optimisation</li>
+<li>UI/UX design and user research</li>
+<li>Project management and delivery</li>
+<li>Digital strategy and consultancy</li>
+</ul>
+</div>
+<div class="footer-divider"></div>
+<div class="page-footer">
+<div class="footer-content">Page 22 | Confidential</div>
+</div>
+</div>
+<!-- PAGE 23: ABOUT TOTALLY - PART 4 / CLOSING -->
+<div class="page">
+<div class="page-header">
+<table class="header-table">
+<tr>
+<td></td>
+<td><img alt="Totally" class="header-logo" src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099"/></td>
+</tr>
+</table>
+</div>
+<div class="header-divider"></div>
+<div class="page-content">
+<h2>Why Clients Choose Totally</h2>
+<p><strong>Experience That Matters</strong></p>
+<p>24 years delivering digital platforms means we've encountered most challenges before. We bring proven approaches rather than experimental solutions.</p>
+<p><strong>Technical Excellence</strong></p>
+<p>Robust, scalable, maintainable platforms built using best practices. We don't cut corners—institutional-grade quality requires proper technical implementation.</p>
+<p><strong>Strategic Thinking</strong></p>
+<p>Understanding business objectives and translating them into effective digital solutions. Technology serves strategy, not the other way around.</p>
+<p><strong>Clear Communication</strong></p>
+<p>Complex technical projects explained in accessible language. Regular updates, transparent timelines, and honest conversations about challenges and opportunities.</p>
+<p><strong>Long-term Partnership</strong></p>
+<p>Many clients work with us across multiple projects over years. We're invested in long-term success, not just initial delivery.</p>
+<p><strong>Empowering Independence</strong></p>
+<p>Platforms designed for client teams to manage independently. We provide training, documentation, and support—but clients shouldn't depend on us for routine operations.</p>
+<h2>Our Commitment to Invesis</h2>
+<p>This proposal represents more than technical capability—it represents commitment to understanding Invesis's unique position in infrastructure investment and delivering a platform that serves stakeholder needs whilst empowering the marketing team.</p>
+<p>Totally proposes working collaboratively through discovery to validate requirements, then delivering a website that modernises the Invesis digital presence whilst maintaining the credibility and professionalism the sector demands.</p>
+<h2>Get in Touch</h2>
+<p><strong>Totally</strong></p>
+<p><strong>Web:</strong> totally.tech | totally.digital<br/>
+<strong>Email:</strong> hello@totally.group<br/>
+<strong>Phone:</strong> [Contact number]</p>
+<p><em>This proposal remains valid for 30 days from the date of issue. We look forward to discussing how Totally can support Invesis's digital objectives.</em></p>
+</div>
+<div class="footer-divider"></div>
+<div class="page-footer">
+<div class="footer-content">Page 23 | Confidential</div>
+</div>
+</div>
+
+
+<!-- SECTION: invesis-section-07-case-studies -->
+<!-- PAGE 24: CASE STUDIES - PART 1 -->
+<div class="page">
+<div class="page-header">
+<table class="header-table">
+<tr>
+<td></td>
+<td><img alt="Totally" class="header-logo" src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099"/></td>
+</tr>
+</table>
+</div>
+<div class="header-divider"></div>
+<div class="page-content">
+<h1>Case Studies &amp; Project Experience</h1>
+<p class="subtitle">Over 20 years of proven expertise across financial services, government, property, and enterprise sectors—demonstrating capabilities directly relevant to Invesis's infrastructure investment environment.</p>
+<h2>Financial Services &amp; Regulatory Compliance</h2>
+<div class="case-study-box">
+<h4>Start Up Loans Company</h4>
+<p><strong>Sector:</strong> Government Business Finance | British Business Bank</p>
+<p>Government-backed business loan provider requiring professional digital platform meeting Government Digital Service (GDS) standards for UK entrepreneurs seeking start-up funding.</p>
+<p><strong>Key Deliverables:</strong></p>
+<ul class="check-list">
+<li>Government Digital Service (GDS) standards compliance</li>
+<li>WCAG AA accessibility compliance</li>
+<li>Secure architecture for financial data</li>
+<li>Integration with loan application systems</li>
+<li>High-performance public-facing infrastructure</li>
+<li>User-centred design for diverse audiences</li>
+</ul>
+<p><strong>Relevant to Invesis:</strong></p>
+<ul class="check-list">
+<li>Government sector experience</li>
+<li>Accessibility compliance (WCAG AA)</li>
+<li>Security &amp; regulatory compliance</li>
+<li>Public-facing service reliability</li>
+<li>Complex application process simplification</li>
+<li>Multi-stakeholder B2B environment</li>
+</ul>
+<p class="case-study-meta">Government | GDS Standards | Accessibility | Business Finance | Regulatory Compliance</p>
+</div>
+<div class="case-study-box">
+<h4>Cynergy Bank</h4>
+<p><strong>Sector:</strong> Corporate Banking | FCA-Regulated Digital Challenger Bank</p>
+<p>Corporate website development for FCA-regulated digital challenger bank serving business and commercial clients.</p>
+<p><strong>Key Deliverables:</strong></p>
+<ul class="check-list">
+<li>Enterprise WordPress platform</li>
+<li>FCA regulatory compliance</li>
+<li>Professional B2B environment</li>
+<li>Secure banking platform architecture</li>
+<li>Corporate identity and brand implementation</li>
+</ul>
+<p><strong>Relevant to Invesis:</strong></p>
+<ul class="check-list">
+<li>FCA regulatory compliance experience</li>
+<li>B2B financial services environment</li>
+<li>Institutional credibility communication</li>
+<li>Secure, enterprise-level platforms</li>
+</ul>
+<p class="case-study-meta">Corporate Banking | FCA-Regulated | Enterprise WordPress | B2B Financial Services</p>
+</div>
+</div>
+<div class="footer-divider"></div>
+<div class="page-footer">
+<div class="footer-content">Page 24 | Confidential</div>
+</div>
+</div>
+<!-- PAGE 25: CASE STUDIES - PART 2 -->
+<div class="page">
+<div class="page-header">
+<table class="header-table">
+<tr>
+<td></td>
+<td><img alt="Totally" class="header-logo" src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099"/></td>
+</tr>
+</table>
+</div>
+<div class="header-divider"></div>
+<div class="page-content">
+<h2>Long-term Investment &amp; Impact Communication</h2>
+<div class="case-study-box">
+<h4>Galliard Homes</h4>
+<p><strong>Sector:</strong> Property Development | London Regeneration</p>
+<p><strong>Project Year:</strong> 2014</p>
+<p>London property developer focused on regeneration and long-term investment. Project included data visualisation and interactive mapping to communicate property development impact.</p>
+<p><strong>Key Deliverables:</strong></p>
+<ul class="check-list">
+<li>Data visualisation of development impact</li>
+<li>Interactive mapping capabilities</li>
+<li>Long-term investment storytelling</li>
+<li>Regeneration project communication</li>
+</ul>
+<p><strong>Relevant to Invesis:</strong></p>
+<ul class="check-list">
+<li><strong>Long-term investment focus</strong> (mirrors Invesis 25-30 year commitments)</li>
+<li><strong>Regeneration and community impact</strong> (parallels infrastructure benefits)</li>
+<li><strong>Data visualisation</strong> (project portfolios and impact metrics)</li>
+<li><strong>Multi-stakeholder communication</strong> (public, contractors, investors)</li>
+<li><strong>Investment credibility</strong> (institutional property development)</li>
+</ul>
+<p><strong>Why This Matters:</strong> Property development shares key characteristics with infrastructure investment—long-term commitment to projects, community and economic impact, multiple stakeholder groups (public, partners, investors), and the need to communicate lasting value and legacy.</p>
+<p class="case-study-meta">Property Development | Regeneration | Data Visualisation | Long-term Investment</p>
+</div>
+<h2>Long-term Partnership &amp; Strategic Collaboration</h2>
+<div class="case-study-box">
+<h4>M+C Saatchi Performance</h4>
+<p><strong>Duration:</strong> 15 Years (2010-2025)</p>
+<p><strong>Sector:</strong> Performance Marketing Agency</p>
+<p>15-year partnership demonstrating sustained collaboration and continuous evolution. Services delivered include WordPress platform development, component-based CMS, HubSpot CRM integration, SEO consultancy, and digital marketing strategy.</p>
+<p><strong>Project Timeline:</strong></p>
+<ul>
+<li><strong>2010:</strong> Initial partnership (Inside Mobile era)</li>
+<li><strong>2016:</strong> Digital consolidation - SEO migration</li>
+<li><strong>2017:</strong> Platform evolution and international growth</li>
+<li><strong>2019:</strong> Strategic SEO programme</li>
+<li><strong>2020:</strong> Continuous optimisation (141% traffic value increase)</li>
+<li><strong>2024:</strong> Peak performance and organic visibility</li>
+</ul>
+</div>
+</div>
+<div class="footer-divider"></div>
+<div class="page-footer">
+<div class="footer-content">Page 25 | Confidential</div>
+</div>
+</div>
+<!-- PAGE 26: CASE STUDIES - PART 3 -->
+<div class="page">
+<div class="page-header">
+<table class="header-table">
+<tr>
+<td></td>
+<td><img alt="Totally" class="header-logo" src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099"/></td>
+</tr>
+</table>
+</div>
+<div class="header-divider"></div>
+<div class="page-content">
+<p><strong>Relevant to Invesis:</strong></p>
+<ul class="check-list">
+<li><strong>15-year partnership</strong> (demonstrates long-term commitment)</li>
+<li><strong>Continuous evolution</strong> (not one-off project)</li>
+<li><strong>Strategic consultancy</strong> (ongoing advisory relationship)</li>
+<li><strong>Measurable results</strong> (141% traffic increase)</li>
+<li><strong>Complex stakeholder management</strong></li>
+</ul>
+<p><strong>Why This Matters:</strong> Invesis values long-term partnerships over transactional relationships. Our 15-year M+C Saatchi partnership demonstrates commitment to sustained collaboration and continuous improvement.</p>
+<p class="case-study-meta">15-year Partnership | WordPress | SEO | Component-based CMS | HubSpot Integration</p>
+<h2>Invesis-Specific Relevance</h2>
+<p>These projects demonstrate capabilities that directly mirror infrastructure investment sector requirements:</p>
+<p><strong>Long-term Commitment:</strong></p>
+<ul>
+<li>Property development (Galliard): multi-decade projects</li>
+<li>M+C Saatchi partnership: 15 years of sustained collaboration</li>
+<li>Infrastructure PPP: 25-30 year concessions</li>
+</ul>
+<p><strong>Multi-Stakeholder Complexity:</strong></p>
+<ul>
+<li>Government services: public, partners, entrepreneurs</li>
+<li>Property development: public sector, contractors, investors</li>
+<li>Infrastructure PPP: clients, partners, contractors, communities</li>
+</ul>
+<p><strong>Institutional Credibility:</strong></p>
+<ul>
+<li>FCA-regulated banking (Cynergy Bank)</li>
+<li>Government-backed services (Start Up Loans / British Business Bank)</li>
+<li>Infrastructure investment: PGGM backing, institutional trust</li>
+</ul>
+<p><strong>Regulatory &amp; Compliance Expertise:</strong></p>
+<ul>
+<li>FCA financial regulation</li>
+<li>Government Digital Service standards</li>
+<li>Infrastructure: public sector procurement, compliance frameworks</li>
+</ul>
+<p><strong>Public Benefit &amp; Impact Communication:</strong></p>
+<ul>
+<li>Property regeneration (Galliard): community impact</li>
+<li>Government services: supporting entrepreneurs</li>
+<li>Infrastructure PPP: transforming lives through sustainable infrastructure</li>
+</ul>
+<p>This experience positions Totally as the ideal partner to deliver Invesis's website refresh, bringing deep understanding of long-term investment communication, multi-stakeholder messaging, institutional credibility, and sustained partnership value.</p>
+</div>
+<div class="footer-divider"></div>
+<div class="page-footer">
+<div class="footer-content">Page 26 | Confidential</div>
+</div>
+</div>
+
+
+<!-- SECTION: invesis-section-08-support -->
+<!-- PAGE 1: SUPPORT OVERVIEW -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+        <h1>Support & Continual Improvement</h1>
+
+        <p class="subtitle">Totally offers comprehensive website support and maintenance ensuring platform stability, security, and optimal performance.</p>
+
+        <p>Our support framework combines proactive maintenance with responsive technical assistance, providing the Invesis team with confidence that the platform remains secure, performant, and continually evolving.</p>
+
+        <h2>Support Package Overview</h2>
+
+        <p>Totally's support services provide comprehensive platform maintenance including:</p>
+
+        <ul>
+            <li>Automated updates and security monitoring</li>
+            <li>Backup management and disaster recovery</li>
+            <li>Performance tracking and optimisation</li>
+            <li>Priority technical support through dedicated client portal</li>
+            <li>UAT environment for testing updates before production deployment</li>
+        </ul>
+
+        <div class="callout-box">
+            <p><strong>90-Day Post-Launch Warranty</strong></p>
+            <p>As part of the support package, Totally provides a 90-day warranty covering software bugs and defects in core functionality. This ensures any issues in the delivered website are addressed without additional charges, with warranty protection continuing seamlessly into ongoing platform maintenance and proactive monitoring.</p>
+        </div>
+
+        <h2>Support Options</h2>
+
+        <h3>Time & Materials Approach</h3>
+
+        <p>Individual work items charged at standard daily rates (<strong>£850 per day + VAT</strong>), suitable for occasional updates or ad-hoc requirements.</p>
+
+        <h3>Business as Usual (BAU)</h3>
+
+        <p>For organisations requiring consistent development capacity and proactive platform evolution, Totally offers a Business as Usual engagement model with committed monthly resource days.</p>
+
+        <p>This approach addresses the limitations of single-resource dependency whilst providing predictable capacity for ongoing improvements, innovative enhancements, and responsive support.</p>
+
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 15 | Confidential</div>
+    </div>
+</div>
+
+<!-- PAGE 2: BAU MODEL & PRICING -->
+<div class="page">
+    <div class="page-header">
+        <table class="header-table">
+            <tr>
+                <td></td>
+                <td><img src="https://ik.imagekit.io/0s2vhdpu9/totally-logo-2024.png?updatedAt=1733222464099" class="header-logo" alt="Totally"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="header-divider"></div>
+
+    <div class="page-content">
+
+        <h2>BAU Engagement Model</h2>
+
+        <p><strong>Monthly Committed Days:</strong> Pre-allocated development and consultancy time available each month for your priorities</p>
+
+        <p><strong>Flexible Resource Allocation:</strong> Development, design, technical SEO, and consultancy resources deployed based on monthly priorities</p>
+
+        <p><strong>Proactive Development:</strong> BAU enables continuous platform improvement, performance optimisation, and continual evolution aligned with business objectives</p>
+
+        <p><strong>Predictable Investment:</strong> Fixed monthly commitment providing budget certainty and cost efficiency</p>
+
+        <h2>Example Monthly BAU Levels</h2>
+
+        <table class="pricing-table">
+            <thead>
+                <tr>
+                    <th style="width: 15%;">Days</th>
+                    <th style="width: 60%;">Typical Use Cases</th>
+                    <th class="right-col" style="width: 25%;">Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>3 Days</strong></td>
+                    <td>Design updates, content optimisation, technical consultancy, minor enhancements</td>
+                    <td class="right-col"><strong>£2,100</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>6 Days</strong></td>
+                    <td>Feature development, data visualisation, campaign landing pages, proactive improvements</td>
+                    <td class="right-col"><strong>£4,200</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>10 Days</strong></td>
+                    <td>Strategic initiatives, AI and innovation, custom functionality, technical services</td>
+                    <td class="right-col"><strong>£7,000</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top: 15pt;"><em>Further Day Rate Discounts: £700 per day (discounted rate for committed monthly retainer)</em></p>
+
+        <div class="info-box" style="margin-top: 25pt;">
+            <p><strong>Determining the Right Support Level</strong></p>
+            <p>Totally will work with the Invesis team to determine the most appropriate support level based on platform requirements and internal capabilities. The right balance ensures the platform remains secure, performant, and continually evolving without unnecessary overhead.</p>
+        </div>
+
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="page-footer">
+        <div class="footer-content">Page 16 | Confidential</div>
+    </div>
+</div>
+
+</div><!-- End content-wrapper -->
+
+</body>
+</html>
