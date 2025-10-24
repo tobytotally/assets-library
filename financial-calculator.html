@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalCom Partnership Financial Calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+            color: #2d3748;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #1a202c;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 24px;
+        }
+
+        .controls-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-group h3 {
+            font-size: 13px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .control {
+            margin-bottom: 16px;
+        }
+
+        .control label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #4a5568;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .control-value {
+            color: #2b6cb0;
+            font-weight: 600;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #e2e8f0;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #2b6cb0;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #2b6cb0;
+            cursor: pointer;
+            border: none;
+        }
+
+        input[type="number"] {
+            width: 80px;
+            padding: 6px 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+
+        .toggle-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #2d3748;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #cbd5e0;
+            transition: .3s;
+            border-radius: 24px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #48bb78;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .metric-card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .metric-label {
+            font-size: 11px;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2d3748;
+            line-height: 1;
+        }
+
+        .metric-subtext {
+            font-size: 11px;
+            color: #a0aec0;
+            margin-top: 6px;
+        }
+
+        .metric-positive {
+            color: #38a169;
+        }
+
+        .metric-negative {
+            color: #e53e3e;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 16px;
+        }
+
+        .chart-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 16px;
+        }
+
+        .divider {
+            height: 1px;
+            background: #e2e8f0;
+            margin: 16px 0;
+        }
+
+        .chart-container canvas {
+            max-height: 400px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: #718096;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: -2px;
+        }
+
+        .tab:hover {
+            color: #2d3748;
+            background: #f7fafc;
+        }
+
+        .tab.active {
+            color: #2b6cb0;
+            border-bottom-color: #2b6cb0;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @media (max-width: 1200px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GlobalCom Partnership Financial Calculator</h1>
+        <p class="subtitle">Interactive model for performance-based commission structure</p>
+
+        <div class="dashboard">
+            <!-- Left Panel: Controls -->
+            <div class="controls-panel">
+                <div class="control-group">
+                    <h3>Client Economics</h3>
+
+                    <div class="control">
+                        <label>
+                            <span>Annual Client Value</span>
+                            <span class="control-value">$<span id="clientValueDisplay">60,000</span></span>
+                        </label>
+                        <input type="range" id="clientValue" min="5000" max="100000" step="5000" value="60000">
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="control-group">
+                    <h3>Win Rate Assumptions</h3>
+
+                    <div class="control">
+                        <label>
+                            <span>Ramp-Up Period</span>
+                            <span class="control-value"><span id="rampMonthsDisplay">12</span> months</span>
+                        </label>
+                        <input type="range" id="rampMonths" min="3" max="24" step="1" value="12">
+                    </div>
+
+                    <div class="control">
+                        <label>
+                            <span>Target Wins/Month</span>
+                            <span class="control-value"><span id="targetWinsDisplay">6</span> clients</span>
+                        </label>
+                        <input type="range" id="targetWins" min="1" max="20" step="1" value="6">
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="control-group">
+                    <h3>Commission Structure</h3>
+
+                    <div class="control">
+                        <label>
+                            <span>First 12 Months</span>
+                            <input type="number" id="commYear1" min="1" max="15" step="0.5" value="6"> %
+                        </label>
+                    </div>
+
+                    <div class="toggle-container">
+                        <span class="toggle-label">Enable Tail Commission</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="tailToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="control" id="tailCommControl" style="display: none; margin-top: 12px;">
+                        <label>
+                            <span>Ongoing (Month 13+)</span>
+                            <input type="number" id="commTail" min="0.5" max="5" step="0.5" value="2"> %
+                        </label>
+                    </div>
+
+                    <div class="metric-subtext" style="margin-top: 8px; font-size: 11px;">
+                        <span id="commissionStructure">Without tail: 0% after month 12</span>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="control-group">
+                    <h3>Ongoing Marketing</h3>
+
+                    <div class="control">
+                        <label>
+                            <span>Monthly Campaign Spend</span>
+                            <span class="control-value">$<span id="marketingDisplay">2,000</span></span>
+                        </label>
+                        <input type="range" id="marketingSpend" min="0" max="10000" step="500" value="2000">
+                    </div>
+
+                    <div class="toggle-container">
+                        <span class="toggle-label">Paid by GlobalCom</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="marketingToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="metric-subtext" style="margin-top: 8px; font-size: 11px;">
+                        <span id="marketingPayer">Totally pays (adds to investment)</span>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="control-group">
+                    <h3>Investment</h3>
+
+                    <div class="control">
+                        <label>
+                            <span>Totally Investment</span>
+                            <span class="control-value">€<span id="investmentDisplay">50,000</span></span>
+                        </label>
+                        <input type="range" id="investment" min="20000" max="100000" step="5000" value="50000">
+                    </div>
+
+                    <div class="control">
+                        <label>
+                            <span>GlobalCom Payment</span>
+                            <span class="control-value">€<span id="paymentDisplay">8,000</span></span>
+                        </label>
+                        <input type="range" id="payment" min="0" max="20000" step="1000" value="8000">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Results -->
+            <div class="results-panel">
+                <!-- Key Metrics -->
+                <div class="metrics">
+                    <div class="metric-card">
+                        <div class="metric-label">Break-Even</div>
+                        <div class="metric-value" id="breakEvenMonth">-</div>
+                        <div class="metric-subtext" id="breakEvenSubtext">-</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-label">3-Year ROI</div>
+                        <div class="metric-value" id="roi3Year">-</div>
+                        <div class="metric-subtext" id="roi3Subtext">-</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-label">Year 3 Active Clients</div>
+                        <div class="metric-value" id="activeClients">-</div>
+                        <div class="metric-subtext" id="clientsSubtext">-</div>
+                    </div>
+                </div>
+
+                <!-- Annual Commission Metrics -->
+                <div class="metrics">
+                    <div class="metric-card">
+                        <div class="metric-label">Year 1 Commission</div>
+                        <div class="metric-value" id="year1Comm">-</div>
+                        <div class="metric-subtext" id="year1Subtext">-</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-label">Year 2 Commission</div>
+                        <div class="metric-value" id="year2Comm">-</div>
+                        <div class="metric-subtext" id="year2Subtext">-</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-label">Year 3 Commission</div>
+                        <div class="metric-value" id="year3Comm">-</div>
+                        <div class="metric-subtext" id="year3Subtext">-</div>
+                    </div>
+                </div>
+
+                <!-- Charts with Tabs -->
+                <div class="tabs">
+                    <button class="tab active" onclick="switchTab('monthly')">Monthly Progression</button>
+                    <button class="tab" onclick="switchTab('cumulative')">Cumulative & Break-Even</button>
+                    <button class="tab" onclick="switchTab('annual')">Annual Summary</button>
+                </div>
+
+                <div id="monthly" class="tab-content active">
+                    <div class="chart-container">
+                        <div class="chart-title">Monthly Commission Progression</div>
+                        <canvas id="commissionChart" height="300"></canvas>
+                    </div>
+                </div>
+
+                <div id="cumulative" class="tab-content">
+                    <div class="chart-container">
+                        <div class="chart-title">Cumulative Commission & Break-Even</div>
+                        <canvas id="cumulativeChart" height="300"></canvas>
+                    </div>
+                </div>
+
+                <div id="annual" class="tab-content">
+                    <div class="chart-container">
+                        <div class="chart-title">Annual Summary</div>
+                        <canvas id="annualChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let commissionChart, cumulativeChart, annualChart;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up event listeners
+            document.querySelectorAll('input[type="range"]').forEach(input => {
+                input.addEventListener('input', updateCalculations);
+            });
+
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                input.addEventListener('input', function() {
+                    // Update commission structure text when tail rate changes
+                    if (input.id === 'commTail' && document.getElementById('tailToggle').checked) {
+                        document.getElementById('commissionStructure').textContent =
+                            `Tail enabled: ${input.value}% ongoing`;
+                    }
+                    updateCalculations();
+                });
+            });
+
+            document.getElementById('tailToggle').addEventListener('change', function() {
+                document.getElementById('tailCommControl').style.display = this.checked ? 'block' : 'none';
+                const structureText = this.checked ?
+                    `Tail enabled: ${document.getElementById('commTail').value}% ongoing` :
+                    'Without tail: 0% after month 12';
+                document.getElementById('commissionStructure').textContent = structureText;
+                updateCalculations();
+            });
+
+            document.getElementById('marketingToggle').addEventListener('change', function() {
+                const payerText = this.checked ? 'GlobalCom pays (no impact on ROI)' : 'Totally pays (adds to investment)';
+                document.getElementById('marketingPayer').textContent = payerText;
+                updateCalculations();
+            });
+
+            // Initialize charts
+            initCharts();
+
+            // Initial calculation
+            updateCalculations();
+        });
+
+        function updateCalculations() {
+            // Get values
+            const clientValue = parseInt(document.getElementById('clientValue').value);
+            const rampMonths = parseInt(document.getElementById('rampMonths').value);
+            const targetWins = parseInt(document.getElementById('targetWins').value);
+            const commYear1 = parseFloat(document.getElementById('commYear1').value);
+            const tailEnabled = document.getElementById('tailToggle').checked;
+            const commTail = tailEnabled ? parseFloat(document.getElementById('commTail').value) : 0;
+            const investment = parseInt(document.getElementById('investment').value);
+            const payment = parseInt(document.getElementById('payment').value);
+            const marketingSpend = parseInt(document.getElementById('marketingSpend').value);
+            const globalComPaysMarketing = document.getElementById('marketingToggle').checked;
+
+            // Update displays
+            document.getElementById('clientValueDisplay').textContent = clientValue.toLocaleString();
+            document.getElementById('rampMonthsDisplay').textContent = rampMonths;
+            document.getElementById('targetWinsDisplay').textContent = targetWins;
+            document.getElementById('investmentDisplay').textContent = investment.toLocaleString();
+            document.getElementById('paymentDisplay').textContent = payment.toLocaleString();
+            document.getElementById('marketingDisplay').textContent = marketingSpend.toLocaleString();
+
+            // Calculate net investment (convert EUR to USD at 1.08)
+            let netInvestment = (investment - payment) * 1.08;
+
+            // Add 3 years of marketing spend if Totally pays
+            if (!globalComPaysMarketing) {
+                netInvestment += (marketingSpend * 36); // 36 months
+            }
+
+            // Calculate commission rates per client (monthly)
+            const y1CommPerClient = (clientValue * commYear1 / 100) / 12; // First 12 months
+            const tailCommPerClient = (clientValue * commTail / 100) / 12; // Month 13+ (if enabled)
+
+            // Run simulation for 60 months
+            const simulation = runSimulation(
+                rampMonths, targetWins, y1CommPerClient,
+                tailCommPerClient, tailEnabled, netInvestment
+            );
+
+            // Update metrics
+            updateMetrics(simulation, netInvestment);
+
+            // Update charts
+            updateCharts(simulation, netInvestment);
+        }
+
+        function runSimulation(rampMonths, targetWins, y1Rate, tailRate, tailEnabled, netInvestment) {
+            const months = 60; // 5-year simulation
+            const clients = []; // Track each client: {wonMonth}
+            const monthlyData = [];
+
+            for (let month = 1; month <= months; month++) {
+                // Calculate wins for this month
+                let newWins;
+                if (month <= rampMonths) {
+                    newWins = (targetWins / rampMonths) * month;
+                } else {
+                    newWins = targetWins;
+                }
+
+                // Add new clients
+                for (let i = 0; i < newWins; i++) {
+                    clients.push({wonMonth: month});
+                }
+
+                // Calculate commission for this month
+                let commission = 0;
+                let activeCount = 0;
+
+                clients.forEach(client => {
+                    const age = month - client.wonMonth + 1;
+
+                    if (age <= 12) {
+                        // First 12 months: 6% rate
+                        commission += y1Rate;
+                        activeCount++;
+                    } else if (tailEnabled) {
+                        // Month 13+: 2% tail rate (if enabled)
+                        commission += tailRate;
+                        activeCount++;
+                    }
+                    // If age > 12 and tail not enabled, commission = 0 (client expires)
+                });
+
+                const cumulative = (monthlyData[monthlyData.length - 1]?.cumulative || 0) + commission;
+
+                monthlyData.push({
+                    month,
+                    newWins,
+                    activeClients: activeCount,
+                    commission,
+                    cumulative,
+                    netPosition: cumulative - netInvestment
+                });
+            }
+
+            return monthlyData;
+        }
+
+        function updateMetrics(simulation, netInvestment) {
+            // Find break-even month
+            const breakEvenMonth = simulation.find(m => m.netPosition >= 0);
+            const breakEvenNum = breakEvenMonth ? breakEvenMonth.month : null;
+
+            if (breakEvenNum) {
+                const years = Math.floor(breakEvenNum / 12);
+                const months = breakEvenNum % 12;
+                document.getElementById('breakEvenMonth').textContent = `Month ${breakEvenNum}`;
+                document.getElementById('breakEvenSubtext').textContent =
+                    `Year ${years + (months > 0 ? 1 : 0)}`;
+            } else {
+                document.getElementById('breakEvenMonth').textContent = '>60 months';
+                document.getElementById('breakEvenSubtext').textContent = 'Beyond 5 years';
+            }
+
+            // 3-year ROI
+            const month36 = simulation[35];
+            const roi3 = ((month36.cumulative - netInvestment) / netInvestment * 100);
+            document.getElementById('roi3Year').textContent = roi3.toFixed(0) + '%';
+            document.getElementById('roi3Subtext').textContent =
+                `$${(month36.cumulative / 1000).toFixed(0)}K total commission`;
+
+            // Year 3 active clients
+            document.getElementById('activeClients').textContent = month36.activeClients.toFixed(0);
+            const tailText = document.getElementById('tailToggle').checked ? 'with tail commission' : '12-month window only';
+            document.getElementById('clientsSubtext').textContent = tailText;
+
+            // Calculate annual commissions
+            const year1Total = simulation.slice(0, 12).reduce((sum, m) => sum + m.commission, 0);
+            const year2Total = simulation.slice(12, 24).reduce((sum, m) => sum + m.commission, 0);
+            const year3Total = simulation.slice(24, 36).reduce((sum, m) => sum + m.commission, 0);
+
+            document.getElementById('year1Comm').textContent = '$' + (year1Total / 1000).toFixed(1) + 'K';
+            document.getElementById('year1Subtext').textContent = `${simulation[11].activeClients.toFixed(0)} clients by M12`;
+
+            document.getElementById('year2Comm').textContent = '$' + (year2Total / 1000).toFixed(1) + 'K';
+            document.getElementById('year2Subtext').textContent = `${simulation[23].activeClients.toFixed(0)} clients by M24`;
+
+            document.getElementById('year3Comm').textContent = '$' + (year3Total / 1000).toFixed(1) + 'K';
+            document.getElementById('year3Subtext').textContent = `${simulation[35].activeClients.toFixed(0)} clients by M36`;
+        }
+
+        function initCharts() {
+            // Commission Chart
+            const ctx1 = document.getElementById('commissionChart').getContext('2d');
+            commissionChart = new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Monthly Commission',
+                        data: [],
+                        borderColor: '#2b6cb0',
+                        backgroundColor: 'rgba(43, 108, 176, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {display: false}
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000).toFixed(0) + 'K';
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                maxTicksLimit: 12
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Cumulative Chart
+            const ctx2 = document.getElementById('cumulativeChart').getContext('2d');
+            cumulativeChart = new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [
+                        {
+                            label: 'Cumulative Commission',
+                            data: [],
+                            borderColor: '#38a169',
+                            backgroundColor: 'rgba(56, 161, 105, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Investment',
+                            data: [],
+                            borderColor: '#e53e3e',
+                            borderDash: [5, 5],
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000).toFixed(0) + 'K';
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                maxTicksLimit: 12
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Annual Chart
+            const ctx3 = document.getElementById('annualChart').getContext('2d');
+            annualChart = new Chart(ctx3, {
+                type: 'bar',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Annual Commission',
+                        data: [],
+                        backgroundColor: '#2b6cb0'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {display: false}
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000).toFixed(0) + 'K';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateCharts(simulation, netInvestment) {
+            // Update monthly commission chart (first 36 months)
+            const monthly36 = simulation.slice(0, 36);
+            commissionChart.data.labels = monthly36.map(m => 'M' + m.month);
+            commissionChart.data.datasets[0].data = monthly36.map(m => m.commission);
+            commissionChart.update();
+
+            // Update cumulative chart (first 36 months)
+            cumulativeChart.data.labels = monthly36.map(m => 'M' + m.month);
+            cumulativeChart.data.datasets[0].data = monthly36.map(m => m.cumulative);
+            cumulativeChart.data.datasets[1].data = Array(36).fill(netInvestment);
+            cumulativeChart.update();
+
+            // Update annual chart (5 years)
+            const annualData = [];
+            for (let year = 1; year <= 5; year++) {
+                const start = (year - 1) * 12;
+                const end = year * 12;
+                const yearData = simulation.slice(start, end);
+                const yearTotal = yearData.reduce((sum, m) => sum + m.commission, 0);
+                annualData.push(yearTotal);
+            }
+
+            annualChart.data.labels = ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'];
+            annualChart.data.datasets[0].data = annualData;
+            annualChart.update();
+        }
+
+        function switchTab(tabId) {
+            // Remove active class from all tabs and content
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            // Add active class to selected tab and content
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
