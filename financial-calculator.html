@@ -669,19 +669,36 @@
             const tailText = document.getElementById('tailToggle').checked ? 'with tail commission' : '12-month window only';
             document.getElementById('clientsSubtext').textContent = tailText;
 
-            // Calculate annual commissions
+            // Calculate annual commissions and investments
             const year1Total = simulation.slice(0, 12).reduce((sum, m) => sum + m.commission, 0);
             const year2Total = simulation.slice(12, 24).reduce((sum, m) => sum + m.commission, 0);
             const year3Total = simulation.slice(24, 36).reduce((sum, m) => sum + m.commission, 0);
 
+            // Calculate Totally's investment per year
+            const baseInvestment = (parseInt(document.getElementById('investment').value) -
+                                   parseInt(document.getElementById('payment').value)) * 1.08;
+            const marketingSpend = parseInt(document.getElementById('marketingSpend').value);
+            const totallyPaysMarketing = !document.getElementById('marketingToggle').checked;
+
+            const year1Investment = totallyPaysMarketing ? baseInvestment + (marketingSpend * 12) : baseInvestment;
+            const year2Investment = totallyPaysMarketing ? (marketingSpend * 12) : 0;
+            const year3Investment = totallyPaysMarketing ? (marketingSpend * 12) : 0;
+
             document.getElementById('year1Comm').textContent = '$' + (year1Total / 1000).toFixed(1) + 'K';
-            document.getElementById('year1Subtext').textContent = `${simulation[11].activeClients.toFixed(0)} clients by M12`;
+            document.getElementById('year1Subtext').textContent =
+                `Investment: $${(year1Investment / 1000).toFixed(1)}K | ${simulation[11].activeClients.toFixed(0)} clients`;
 
             document.getElementById('year2Comm').textContent = '$' + (year2Total / 1000).toFixed(1) + 'K';
-            document.getElementById('year2Subtext').textContent = `${simulation[23].activeClients.toFixed(0)} clients by M24`;
+            document.getElementById('year2Subtext').textContent =
+                year2Investment > 0 ?
+                `Investment: $${(year2Investment / 1000).toFixed(1)}K | ${simulation[23].activeClients.toFixed(0)} clients` :
+                `${simulation[23].activeClients.toFixed(0)} clients by M24`;
 
             document.getElementById('year3Comm').textContent = '$' + (year3Total / 1000).toFixed(1) + 'K';
-            document.getElementById('year3Subtext').textContent = `${simulation[35].activeClients.toFixed(0)} clients by M36`;
+            document.getElementById('year3Subtext').textContent =
+                year3Investment > 0 ?
+                `Investment: $${(year3Investment / 1000).toFixed(1)}K | ${simulation[35].activeClients.toFixed(0)} clients` :
+                `${simulation[35].activeClients.toFixed(0)} clients by M36`;
         }
 
         function initCharts() {
